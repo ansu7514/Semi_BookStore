@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +9,29 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/adver.css">
+<link rel="stylesheet" href="css/main.css">
 <script type="text/javascript">
 	window.onload = function() {
-		slide_show();
+		slide_bigad();
 	}
 	
-	var i = 1;
+	var big = 0;
 	
-	function slide_show() {	
-		if(i > 3)
-			i = 1;
+	function slide_bigad() {	
+		if(big > 4)
+			big = 0;
 		
-		document.getElementById("adver_img").src = "image/adver_" + i + ".png";
+		document.getElementById("bigad_img").src = "image/bigad_" + big + ".png";
 		
-		setTimeout(slide_show, 3000); // 함수를 3초마다 호출
-		i++;
+		setTimeout(slide_bigad, 3000); // 함수를 3초마다 호출
+		big++;
 	}
 </script>
-<title>Advertisement</title>
+<title>Main</title>
 </head>
-<body onload="slide_show()">
-	<img id="adver_img" src="">
+<body onload="slide_bigad()">
+	<img id="bigad_img" src="">
+	
+	<div ></div>
 </body>
 </html>
