@@ -9,35 +9,48 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/main.css">
-<script type="text/javascript">
-	window.onload = function() {
-		slide_bigad();
-	}
-	
-	var big = 0;
-	
-	function slide_bigad() {	
-		if(big > 4)
-			big = 0;
-		
-		document.getElementById("bigad_img").src = "image/bigad_" + big + ".png";
-		
-		setTimeout(slide_bigad, 3000); // 함수를 3초마다 호출
-		big++;
-	}
-</script>
 <title>Main</title>
+<script type="text/javascript">
+	$("#slideshow > div:gt(0)").hide();
+
+	setInterval(function() {
+		$('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
+	}, 3000);
+</script>
 </head>
-<body onload="slide_bigad()" class="form-inline">
+<body class="form-inline">
 	<div style="float: left;">
-		<img id="bigad_img" src="">
-	</div>
-	
-	<div class="login_box">
-		<div class="lgin_form">
-			<jsp:include page="../login/login_form.jsp"/>
+		<div id="slideshow">
+			<div id="bigad">
+				<img src="image/bigad_0.png" width="760px">
+			</div>
+			
+			<div id="bigad">
+				<img src="image/bigad_1.png" width="760px">
+			</div>
+			
+			<div id="bigad">
+				<img src="image/bigad_2.png" width="760px">
+			</div>
+			
+			<div id="bigad">
+				<img src="image/bigad_3.png" width="760px">
+			</div>
+			
+			<div id="bigad">
+				<img src="image/bigad_4.png" width="760px">
+			</div>
 		</div>
 	</div>
+
+	<div class="login_box">
+		<div class="lgin_form">
+			<jsp:include page="../login/login_form.jsp" />
+		</div>
+
+		<img id="main_leaves" src="image/title_leaves.png">
+	</div>
+
+	<div class="book_list"></div>
 </body>
 </html>
