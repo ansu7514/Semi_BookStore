@@ -4,5 +4,4 @@
     pageEncoding="utf-8"%>
 <%
 	BookDTO dto = new BookDTO();
-	dto.setBook_name(${param.book_name});
 %>
