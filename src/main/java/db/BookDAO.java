@@ -64,7 +64,7 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from book where num=?";
+		String sql = "select * from book where book_id=?";
 		
 		BookDTO dto = null;
 		
