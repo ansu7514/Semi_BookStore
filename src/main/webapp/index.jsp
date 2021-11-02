@@ -14,10 +14,17 @@
 <style type="text/css">
 @import url("css/title.css");
 @import url("css/adver.css");
-body {
-	background-color: #FAF7EB;
-}
+@import url("css/main.css");
 </style>
+
+<script type="text/javascript">
+	window.onload = function() {
+		setTimeout(function(){
+			slide_bigad();
+			slide_show();
+		},3000);
+	}
+</script>
 <title>가을 책방</title>
 </head>
 <body>
@@ -40,6 +47,10 @@ body {
 	
 	<div class="layout adver">
 		<jsp:include page="layout/adver.jsp"/>
+	</div>
+	
+	<div class="layout main">
+		<jsp:include page="<%= mainPage %>"/>
 	</div>
 </body>
 </html>
