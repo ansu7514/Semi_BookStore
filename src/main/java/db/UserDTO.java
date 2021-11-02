@@ -1,17 +1,19 @@
 package db;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class UserDTO {
 	
 	private String user_id;
 	private String user_pass;
 	private String user_name;
+	private String gender;
 	private Date birthday;
 	private int point;
 	private String addr;
 	private String hp;
+	
 	
 	public String getUser_id() {
 		return user_id;
@@ -30,6 +32,12 @@ public class UserDTO {
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public Date getBirthday() {
 		return birthday;
@@ -55,6 +63,8 @@ public class UserDTO {
 	public void setHp(String hp) {
 		this.hp = hp;
 	}
+	
+	
 	
 	
 	
