@@ -10,25 +10,16 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/index.css">
-<title>가을책방</title>
+<link rel="stylesheet" href="../css/title.css">
+<title>title</title>
 </head>
 <body>
-	<%
-	// 프로젝트 경로 구하기
-	String root = request.getContextPath();
-	
-	// 기본 페이지
-	String mainPage = "layout/main.jsp";
-	
-	// main 값 읽어서 출력
-	if(request.getParameter("main") != null) {
-		mainPage = request.getParameter("main");
-	}
-	%>
-	
-	<div class="layout title">
-		<jsp:include page="layout/title.jsp"/>
+	<div id="title">
+		<a href="<c:url value='/' />/index.jsp">
+			<img id="title_img" alt="" src="<c:url value='/' />/image/title_book.png">
+			<b id="title_text_1">가을</b>
+			<b id="title_text_2"> 책방</b>
+		</a>
 	</div>
 </body>
 </html>

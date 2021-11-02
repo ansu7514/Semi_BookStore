@@ -1,0 +1,24 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap');
+#title_img {
+	width: 80px;
+	height: 80px;
+	margin-right: 20px;
+}
+
+#title_text_1 {
+	position: absolute;
+	top: 7pt;
+	font-family: 'Noto Serif KR', serif;
+	font-size: 35pt;
+	color: #55661c;
+}
+
+#title_text_2 {
+	position: absolute;
+	top: 7pt;
+	margin-left: 75pt;
+	font-family: 'Noto Serif KR', serif;
+	font-size: 35pt;
+	color: #3D2A26;
+}
