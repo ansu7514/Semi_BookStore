@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap');
+*{
+	font-family: 'Noto Serif KR', serif;
+}
 
 div.login_box {
 	position: absolute;
@@ -36,4 +39,53 @@ div.lgin_form {
     left: 10px; 
     right: 10px; 
     bottom: 10px; 
+}
+
+div.book_list {
+	width: 1000px;
+	position: absolute;
+	top: 330px;
+	left: 50px;
+}
+
+#bk_list_title {
+	font-weight: 800;
+}
+
+*{margin:0; padding:0;}
+li{list-style:none;}
+
+.slide_wrapper{
+	position: relative;
+	width: 660px;
+	margin: 0 auto;
+	height: 200px;
+	overflow:hidden;
+}
+.slides{
+	position: absolute;
+	left:0; top:0;	
+}
+.slides.animated{
+	transition: 0.5s ease-out;
+}
+.slides li{
+	width: 200px;
+	height: 200px;
+	background:#ccc;
+	float:left;
+}
+.slides li:not(:last-child){	
+	margin-right: 30px;
+}
+.controls{
+	text-align: center;
+	margin-top: 50px;
+}
+
+.controls span{
+	background:#333;
+	color: #fff;
+	padding:10px 20px;
+	margin:0 10px;
 }

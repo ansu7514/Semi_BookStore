@@ -1,6 +1,6 @@
 <%@page import="java.text.NumberFormat"%>
-<%@page import="bookDto.BookDTO"%>
-<%@page import="bookDao.BookDAO"%>
+<%@page import="db.BookDTO"%>
+<%@page import="db.BookDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
