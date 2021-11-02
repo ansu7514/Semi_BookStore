@@ -29,9 +29,15 @@
 </script>
 <title>Main</title>
 </head>
-<body onload="slide_bigad()">
-	<img id="bigad_img" src="">
+<body onload="slide_bigad()" class="form-inline">
+	<div style="float: left;">
+		<img id="bigad_img" src="">
+	</div>
 	
-	<div ></div>
+	<div class="login_box">
+		<div class="lgin_form">
+			<jsp:include page="../login/login_form.jsp"/>
+		</div>
+	</div>
 </body>
 </html>

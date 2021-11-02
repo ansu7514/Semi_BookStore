@@ -3,4 +3,18 @@
 
 #bigad_img {
 	width: 800px;
+	cursor: pointer;
+}
+
+div.login_box {
+	position: absolute;
+	left: 830px;
+	width: 300px;
+	height: 300px;
+	border: 3px solid #3d2a26;
+}
+
+div.lgin_form {
+	position: absolute;
+	left: -100px;
 }
