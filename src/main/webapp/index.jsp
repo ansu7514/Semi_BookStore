@@ -12,9 +12,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/index.css">
 <style type="text/css">
-@import url("css/title.css");'
+@import url("css/title.css");
+@import url("css/adver.css");
+body {
+	background-color: #FAF7EB;
+}
 </style>
-<title>가을책방</title>
+<title>가을 책방</title>
 </head>
 <body>
 	<%
@@ -32,6 +36,10 @@
 	
 	<div class="layout title">
 		<jsp:include page="layout/title.jsp"/>
+	</div>
+	
+	<div class="layout adver">
+		<jsp:include page="layout/adver.jsp"/>
 	</div>
 </body>
 </html>
