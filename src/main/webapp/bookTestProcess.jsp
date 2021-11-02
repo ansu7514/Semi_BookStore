@@ -1,4 +1,5 @@
 <%@page import="java.sql.Date"%>
+<%@page import="db.StringToBlob"%>
 <%@page import="db.BookDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -16,9 +17,10 @@
 	String chapter = request.getParameter("chapter");
 	String accum = request.getParameter("accum");
 	
-	byte[] byteArray = bookImage.getBytes();
-	String bBookImage = byteArray
+	StringToBlob s2b = new StringToBlob();
 	
-	BookDTO dto = new BookDTO(bookName, bookImage, writer, content, publisher, year, ea, bookPrice, chapter, accum);
+	/* BookDTO dto = new BookDTO(bookName, , writer, content, publisher, year, ea, bookPrice, chapter, accum); */
 	
 %>
+
+<%=%>
