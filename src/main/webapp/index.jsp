@@ -10,7 +10,10 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="css/index.css">
+<style type="text/css">
+@import url("css/title.css");'
+</style>
 <title>가을책방</title>
 </head>
 <body>
