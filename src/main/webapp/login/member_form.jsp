@@ -21,7 +21,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 //
 %>
 <script type="text/javascript">
-//비밀번호 입력조건 , 일치여부 확인
+/* 비밀번호 입력조건 , 일치여부 확인 */
 function check_pw(){
 	 
     var pw = document.getElementById('pw').value;

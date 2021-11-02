@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +16,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 
 </head>
 <body>
-
+수정/탈퇴시 필요한 비밀번호 입력해주세요
 </body>
 </html>
