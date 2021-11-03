@@ -5,21 +5,20 @@ html {
 	background-color: #FAF7EB;
 }
 
-div.layout {
-	position: absolute;
+.index {
+	min-width: 1150px;
+	min-height: 696px;
+	background-color: #FAF7EB;
+}
+
+html {
+	padding-left: 10%;
+	padding-right: 10%;
 }
 
 div.title {
-	left: 39%;
-	top: 30px;
-}
-
-div.adver {
-	left: 15%;
-	top: 150px;
-}
-
-div.main {
-	left: 13%;
-	top: 250px;
+	width: 100%;
+	min-width: 900px;
+	padding-left: 40%;
+	padding-right: 30%;
 }

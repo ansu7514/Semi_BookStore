@@ -14,14 +14,14 @@
   <link href="https://fonts.googleapis.com/css2?
 family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <%
-//
-//
+//id 읽어오기
+String myid=(String)session.getAttribute("myid");
 %>
 </head>
 <body>
 
 <div style="margin-left: 100px; margin-top: 80px;"></div>
-	<button type="button" class="btn btn-default"
+	<button type="button" class="btn btn-warning"
 	onclick="location.href='logout_action.jsp'">로그아웃</button>
 </body>
 </html>

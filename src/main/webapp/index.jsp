@@ -12,11 +12,10 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/index.css">
 <style type="text/css">
-@import url("css/title.css");
-@import url("css/adver.css");
-@import url("css/main.css");
+	@import url("css/title.css");
+	@import url("css/adver.css");
+	@import url("css/main.css");
 </style>
-
 <script type="text/javascript">
 	window.onload = function() {
 		setTimeout(function(){
@@ -27,30 +26,18 @@
 <title>가을 책방</title>
 </head>
 <body>
-	<%
-	// 프로젝트 경로 구하기
-	String root = request.getContextPath();
-	
-	// 기본 페이지
-	String mainPage = "layout/main.jsp";
-	
-	// main 값 읽어서 출력
-	if(request.getParameter("main") != null) {
-		mainPage = request.getParameter("main");
-	}
-	%>
-	
-	<div class="layout title">
-		<jsp:include page="layout/title.jsp"/>
+	<div class="index">
+		<div class="title">
+			<jsp:include page="layout/title.jsp"/>
+		</div>
+		
+		<div class="layout adver">
+			<jsp:include page="layout/adver.jsp"/>
+		</div>
+		
+		<div class="layout main">
+			<jsp:include page="layout/main.jsp"/>
+		</div>
 	</div>
-
-	<div class="layout main">
-		<jsp:include page="<%= mainPage %>"/>
-	</div>
-	
-	<div class="layout adver">
-		<jsp:include page="layout/adver.jsp"/>
-	</div>
-	
 </body>
 </html>

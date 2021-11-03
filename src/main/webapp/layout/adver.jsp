@@ -10,7 +10,6 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/adver.css">
 <script type="text/javascript">
 	window.onload = function() {
 		slide_show();
