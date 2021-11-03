@@ -28,9 +28,9 @@ if(saveok!=null)
 
 <body>
 
-<div style="margin-left: 100px;">
-	<form action="login_action.jsp" method="post" class="form-inline" name="frm">
-		<table class="" style="width: 295px; margin-left: 10px;">
+<div style="width:200px; margin: 10% 0px 14% 8%;">
+	<form action="login_action.jsp" method="post" name="frm"">
+		<table class="">
     
      <tr height="3px"></tr>
     
