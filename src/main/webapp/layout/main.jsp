@@ -1,3 +1,6 @@
+<%@page import="db.BookDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="db.BookDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -23,6 +26,12 @@
 				.appendTo('#slideshow');
 	}, 3000);
 </script>
+<%
+BookDAO dao = new BookDAO();
+
+ArrayList<BookDTO> bk_list = dao.getAllBook();
+ArrayList<BookDTO> best_list = dao.getBestSeller();
+%>
 </head>
 <body>
 	<div style="width: 100%">
@@ -63,29 +72,22 @@
 			<br>
 
 			<ul class="best_sell_list" style="width: 100%; height: 100%;">
-				<li class="best_sell_book"><img alt="" src="image/test.jpg">
-					<h4>
-						<b>안녕하세요책1</b>
-					</h4>
-					<h5>저자 : 안수현 / 출판사 : sist</h5></li>
-
-				<li class="best_sell_book"><img alt="" src="image/test.jpg">
-					<h4>
-						<b>안녕하세요책1</b>
-					</h4>
-					<h5>저자 : 안수현 / 출판사 : sist</h5></li>
-
-				<li class="best_sell_book"><img alt="" src="image/test.jpg">
-					<h4>
-						<b>안녕하세요책1</b>
-					</h4>
-					<h5>저자 : 안수현 / 출판사 : sist</h5></li>
-
-				<li class="best_sell_book"><img alt="" src="image/test.jpg">
-					<h4>
-						<b>안녕하세요책1</b>
-					</h4>
-					<h5>저자 : 안수현 / 출판사 : sist</h5></li>
+				
+				<%
+				for(int i = 0; i < 4; i++) {
+					BookDTO bk_dto = best_list.get(i);
+				%>
+					<li class="best_sell_book">
+						<a>
+							<img src="<%= bk_dto.getBook_image() %>">
+						</a>
+						
+						<h4><a><b>안녕하세요책1</b></a></h4>
+						<h5><a>저자 : 안수현 / 출판사 : sist</a></h5>
+					</li>
+				<%	
+				}
+				%>
 			</ul>
 		</div>
 
@@ -97,25 +99,18 @@
 			<br>
 			<div id="slideShow">
 				<ul class="slides">
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					
-					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					<%
+					for(int i = 0; i < 10; i++) {
+						BookDTO bk_dto = bk_list.get(i);
+					%>
+						<li>
+							<a href="">
+								<img class="book_list_de" src="image/book/<%= bk_dto.getBook_image() %>">
+							</a>
+						</li>
+					<%
+					}
+					%>
 				</ul>
 				<p class="controller">
 					<!-- &lang: 왼쪽 방향 화살표 &rang: 오른쪽 방향 화살표 -->

@@ -8,11 +8,12 @@ next = document.querySelector(".next");
 
 slideWidth = 300;
 slideMargin = 100;
-slides.style.width = ((slideWidth + slideMargin) * 10) + 100 + "px";
+slides.style.width = (slideWidth + slideMargin)*slideCount + "px";
+
 
 function moveSlide(num) {
-	// 왼쪽으로 100px씩 이동
-	slides.style.left = -num * 100 + "px";
+	// 왼쪽으로 300px씩 이동
+	slides.style.left = -num * 400 + "px";
 	currentIdx = num;
 }
 
@@ -25,5 +26,5 @@ prev.addEventListener('click', function(){
 next.addEventListener('click', function(){
 	// 마지막 슬라이드로 표시 됐을때는 다음 버튼 눌러도 아무런 반응 없게 하기 위해
 	// currentIdx !==slideCount - 1 일때만 moveSlide 함수 불러옴
-	if(currentIdx !== 10) moveSlide(currentIdx + 1);
+	if(currentIdx !== 6) moveSlide(currentIdx + 1);
 });
