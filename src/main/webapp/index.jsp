@@ -20,7 +20,6 @@
 <script type="text/javascript">
 	window.onload = function() {
 		setTimeout(function(){
-			slide_bigad();
 			slide_show();
 		},3000);
 	}
@@ -44,13 +43,14 @@
 	<div class="layout title">
 		<jsp:include page="layout/title.jsp"/>
 	</div>
+
+	<div class="layout main">
+		<jsp:include page="<%= mainPage %>"/>
+	</div>
 	
 	<div class="layout adver">
 		<jsp:include page="layout/adver.jsp"/>
 	</div>
 	
-	<div class="layout main">
-		<jsp:include page="<%= mainPage %>"/>
-	</div>
 </body>
 </html>
