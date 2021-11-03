@@ -1,52 +1,45 @@
 package db;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import org.apache.catalina.connector.Response;
 
 public class BookDAO {
 
 	DBConnector db = new DBConnector();
 	
 	//전체출력
-	public ArrayList<BookDTO> getAllBook(Response response) {
+	public ArrayList<BookDTO> getAllBook() {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
 		
-		String sql = "select * from Book";
+		String sql = "select * from BOOK";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				list.add(new BookDTO(
-						rs.getString(1),//책아이디
-						rs.getString(2),//책이름
-						rs.getBlob(3),//책이미지
-						rs.getString(4),//저자
-						rs.getString(5),//내용
-						rs.getString(6),//출판사
-						rs.getDate(7),//출간년도
-						rs.getInt(8),//권수
-						rs.getInt(9),//책가격
-						rs.getString(10),//목차
-						rs.getInt(11)//누적판매량
-				));
+			while(rs.next()) {				
+				BookDTO dto = new BookDTO();
+				dto.setBookId(rs.getString("book_id"));//책아이디
+				dto.setBookName(rs.getString("book_name"));//책이름
+				dto.setBookImage(rs.getString("book_image"));//책이미지
+				dto.setWriter(rs.getString("writer"));//저자
+				dto.setContent(rs.getString("content"));//내용
+				dto.setPublisher(rs.getString("publisher"));//출판사
+				dto.setYear(Date.valueOf(rs.getString("year")));//출간년도
+				dto.setEa(rs.getInt("ea"));//권수
+				dto.setBookPrice(rs.getInt("book_price"));//책가격
+				dto.setChapter(rs.getString("chapter"));//목차
+				dto.setAccum(rs.getInt("accum"));//누적판매량
+				
+				list.add(dto);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,7 +47,6 @@ public class BookDAO {
 		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
-		
 		return list;
 	}
 	
@@ -64,7 +56,7 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from book where book_id=?";
+		String sql = "select * from BOOK where book_id=?";
 		
 		BookDTO dto = null;
 		
@@ -75,19 +67,18 @@ public class BookDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dto = new BookDTO(
-							rs.getString(1),//책아이디
-							rs.getString(2),//책이름
-							rs.getBlob(3),//책이미지
-							rs.getString(4),//저자
-							rs.getString(5),//내용
-							rs.getString(6),//출판사
-							rs.getDate(7),//출간년도
-							rs.getInt(8),//권수
-							rs.getInt(9),//책가격
-							rs.getString(10),//목차
-							rs.getInt(11)//누적판매량
-						);
+				dto = new BookDTO();
+				dto.setBookId(rs.getString("book_id"));//책아이디
+				dto.setBookName(rs.getString("book_name"));//책이름
+				dto.setBookImage(rs.getString("book_image"));
+				dto.setWriter(rs.getString("writer"));//저자
+				dto.setContent(rs.getString("content"));//내용
+				dto.setPublisher(rs.getString("publisher"));//출판사
+				dto.setYear(Date.valueOf(rs.getString("year")));//출간년도
+				dto.setEa(rs.getInt("ea"));//권수
+				dto.setBookPrice(rs.getInt("book_price"));//책가격
+				dto.setChapter(rs.getString("chapter"));//목차
+				dto.setAccum(rs.getInt("accum"));//누적판매량
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -99,29 +90,39 @@ public class BookDAO {
 		return dto;
 	}
 	
+	//베스트셀러 10개
+	public ArrayList<BookDTO> getBestSeller(){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from BOOK where ";
+	}
+	
 	//insert
-	public void insertBook(BookDTO dto) throws FileNotFoundException {
+	public void insertBook(BookDTO dto) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql ="insert into book values(null,?,?,?,?,?,?,?,?,?,?)";
+		String sql ="insert into BOOK(book_name, book_image, writer, content, publisher, year, ea, book_price, chapter, accum) values(?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getBook_name());
-			pstmt.setBlob(2, dto.getBook_image());
+
+			pstmt.setString(1, dto.getBookName());
+			pstmt.setString(2, dto.getBookImage());
 			pstmt.setString(3, dto.getWriter());
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getPublisher());
 			pstmt.setDate(6, dto.getYear());
 			pstmt.setInt(7, dto.getEa());
-			pstmt.setInt(8, dto.getBook_price());
+			pstmt.setInt(8, dto.getBookPrice());
 			pstmt.setString(9, dto.getChapter());
 			pstmt.setInt(10, dto.getAccum());
 			
 			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			db.dbClose(pstmt, conn);
