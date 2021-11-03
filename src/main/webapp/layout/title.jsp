@@ -10,15 +10,17 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/title.css">
+<link rel="stylesheet" href="css/title.css">
 <title>title</title>
 </head>
 <body>
-	<a href="<c:url value='/' />/index.jsp">
+	<form action="<c:url value='/' />/index.jsp">
+		<a href="<c:url value='/' />/index.jsp">
 		<img id="title_book" alt="" src="<c:url value='/' />/image/title_book.png">
 		<b id="title_text_1">가을</b>
 		<b id="title_text_2"> 책방</b>
 		<img id="title_leaves" alt="" src="<c:url value='/' />/image/title_leaves.png">
 	</a>
+	</form>
 </body>
 </html>

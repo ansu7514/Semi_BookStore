@@ -15,7 +15,11 @@ div.title {
 }
 
 div.adver {
-	font-family: 'Noto Serif KR', serif;
 	left: 15%;
 	top: 150px;
+}
+
+div.main {
+	left: 13%;
+	top: 250px;
 }

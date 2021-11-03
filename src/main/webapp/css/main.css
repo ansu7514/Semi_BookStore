@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap')
+	;
+
+* {
+	font-family: 'Noto Serif KR', serif;
+}
+
+div.login_box {
+	position: absolute;
+	left: 830px;
+	width: 300px;
+	height: 300px;
+	border: 3px solid #3d2a26;
+	border-radius: 10px;
+}
+
+div.lgin_form {
+	position: absolute;
+	left: -100px;
+}
+
+#main_leaves {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 200px;
+	top: 25px;
+}
+
+#slideshow {
+	position: absolute;
+	left: 35px;
+	width: 780px;
+	height: 300px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+}
+
+#slideshow>div {
+	position: absolute;
+	top: 14px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+}
+
+#slideshow>div>img {
+	height: 99.5%;
+}
+
+div.book_list {
+	width: 1000px;
+	position: absolute;
+	top: 330px;
+	left: 50px;
+}
+
+#bk_list_title {
+	font-weight: 800;
+}
+
+#best_seller {
+	width: 1200px;
+	height: 450px;
+	margin-left: -25px;
+}
+
+li.best_sell_book {
+	list-style-type: none;
+	width: 280px;
+	height: 400px;
+	float: left;
+}
+
+li.best_sell_book> img {
+	width: 200px;
+	height: 330px;
+	margin-bottom: 10px;
+}
+
+li.best_sell_book>h5 {
+	color: #55661c;
+}
