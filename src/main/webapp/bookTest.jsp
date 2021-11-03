@@ -16,12 +16,12 @@
 		책이름	<input type="text" name="bookName"><br>
 		책이미지	<input type="file" name="bookImage"><br>
 		저자	<input type="text" name="writer"><br>
-		내용	<input type="text" name="content"><br>
+		내용	<textarea name="content" cols="10" rows="10" style="width: 300px;"></textarea><br>
 		출판사	<input type="text" name="publisher"><br>
 		출판일	<input type="date" name="year"><br>
 		남은갯수	<input type="text" name="ea"><br>
 		가격	<input type="text" name="bookPrice"><br>
-		목차	<input type="text" name="chapter"><br>
+		목차	<textarea name="chapter" cols="10" rows="10" style="width: 300px;"></textarea><br>
 		누적판매량	<input type="text" name="accum"><br>
 		<input type="submit" value="입력">
 	</form>

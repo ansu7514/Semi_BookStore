@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class BookDTO {
 	
-	private String bookId;
-	private String bookName;
-	private String bookImage;
+	private String book_id;
+	private String book_name;
+	private String book_image;
 	private String writer;
 	private String content;
 	private String publisher;
@@ -16,23 +16,24 @@ public class BookDTO {
 	private String chapter;
 	private int accum;
 	
-	public String getBookId() {
-		return bookId;
+
+	public String getBook_id() {
+		return book_id;
 	}
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
+	public void setBook_id(String book_id) {
+		this.book_id = book_id;
 	}
-	public String getBookName() {
-		return bookName;
+	public String getBook_name() {
+		return book_name;
 	}
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
+	public void setBook_name(String book_name) {
+		this.book_name = book_name;
 	}
-	public String getBookImage() {
-		return bookImage;
+	public String getBook_image() {
+		return book_image;
 	}
-	public void setBookImage(String bookImage) {
-		this.bookImage = bookImage;
+	public void setBook_image(String book_image) {
+		this.book_image = book_image;
 	}
 	public String getWriter() {
 		return writer;

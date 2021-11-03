@@ -27,9 +27,9 @@ public class BookDAO {
 			
 			while(rs.next()) {				
 				BookDTO dto = new BookDTO();
-				dto.setBookId(rs.getString("book_id"));//책아이디
-				dto.setBookName(rs.getString("book_name"));//책이름
-				dto.setBookImage(rs.getString("book_image"));//책이미지
+				dto.setBook_id(rs.getString("book_id"));//책아이디
+				dto.setBook_name(rs.getString("book_name"));//책이름
+				dto.setBook_image(rs.getString("book_image"));//책이미지
 				dto.setWriter(rs.getString("writer"));//저자
 				dto.setContent(rs.getString("content"));//내용
 				dto.setPublisher(rs.getString("publisher"));//출판사
@@ -68,9 +68,9 @@ public class BookDAO {
 			
 			if(rs.next()) {
 				dto = new BookDTO();
-				dto.setBookId(rs.getString("book_id"));//책아이디
-				dto.setBookName(rs.getString("book_name"));//책이름
-				dto.setBookImage(rs.getString("book_image"));
+				dto.setBook_id(rs.getString("book_id"));//책아이디
+				dto.setBook_name(rs.getString("book_name"));//책이름
+				dto.setBook_image(rs.getString("book_image"));
 				dto.setWriter(rs.getString("writer"));//저자
 				dto.setContent(rs.getString("content"));//내용
 				dto.setPublisher(rs.getString("publisher"));//출판사
@@ -96,7 +96,28 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from BOOK where accum > (select ";
+		String sql = "select * from BOOK where book_name = (select book_name from BOOK order by accum limit 10)";
+		
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BookDTO dto = getBook(rs.getString("book_id"));
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
 	}
 	
 	//insert
@@ -109,8 +130,8 @@ public class BookDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, dto.getBookName());
-			pstmt.setString(2, dto.getBookImage());
+			pstmt.setString(1, dto.getBook_name());
+			pstmt.setString(2, dto.getBook_image());
 			pstmt.setString(3, dto.getWriter());
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getPublisher());
