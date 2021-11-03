@@ -35,7 +35,7 @@ public class ReviewDAO {
 		}
 	}
 	
-	//리뷰출력
+	//전체리뷰출력
 	public ArrayList<ReviewDTO> readReview(String book_id) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -47,6 +47,7 @@ public class ReviewDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString(1, book_id);
 			
 			rs = pstmt.executeQuery();
@@ -71,4 +72,51 @@ public class ReviewDAO {
 		
 		return list;
 	}
+	
+	//리뷰삭제(해당 댓글도 삭제됨)
+	public void deleteReview(ReviewDTO dto) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from REVIEW where user_id=? and book_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getBook_id());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
+	//리뷰수정
+	public void updateReview(ReviewDTO dto) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update REVIEW set rating=?, content=? where re_user_id=? and book_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setDouble(1, dto.getRating());
+			pstmt.setString(2,dto.getContent());
+			pstmt.setString(3, dto.getUser_id());
+			pstmt.setString(4, dto.getBook_id());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+
 }
