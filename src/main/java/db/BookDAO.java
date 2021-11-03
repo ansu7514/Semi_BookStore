@@ -96,7 +96,7 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from BOOK where ";
+		String sql = "select * from BOOK where accum > (select ";
 	}
 	
 	//insert
