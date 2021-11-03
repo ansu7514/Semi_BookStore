@@ -1,6 +1,7 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,13 +22,13 @@ public class OrderDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getUserId());
-			pstmt.setString(2, dto.getBookId());
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getBook_id());
 			pstmt.setString(3, dto.getRecipent());
 			pstmt.setString(4, dto.getLocation());
 			pstmt.setDate(5, dto.getPayDay());
 			pstmt.setInt(6, dto.getEa());
-			pstmt.setString(7, dto.getPayMethod());
+			pstmt.setString(7, dto.getPay_method());
 			
 			pstmt.executeUpdate();
 			isOrder = true;
@@ -68,11 +69,57 @@ public class OrderDAO {
 			
 			while(rs.next()) {
 				OrderDTO dto = new OrderDTO();
-				dto.setOrderId(rs.getString("order_id"));
-				dto.setUserId(rs.getString("user_id"));
-				dto.setBookId(rs.getString("book_id"));
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setBook_id(rs.getString("book_id"));
 				dto.setRecipent(rs.getString("recipient"));
-				// TODO
+				dto.setLocation(rs.getString("location"));
+				dto.setPayDay(rs.getDate("pay_day"));
+				dto.setEa(rs.getInt("ea"));
+				dto.setPay_method(rs.getString("pay_method"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
+	
+	//특정기간 주문조회
+	public ArrayList<OrderDTO> orderDateList(String user_id, Date from, Date to){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
+		
+		String sql = "select * from ORDERED wehre user_id=? and pay_day between ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, user_id);
+			pstmt.setDate(2, from);
+			pstmt.setDate(3, to);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderDTO dto = new OrderDTO();
+				dto.setOrder_id(rs.getString("order_id"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setBook_id(rs.getString("book_id"));
+				dto.setRecipent(rs.getString("recipient"));
+				dto.setLocation(rs.getString("location"));
+				dto.setPayDay(rs.getDate("pay_day"));
+				dto.setEa(rs.getInt("ea"));
+				dto.setPay_method(rs.getString("pay_method"));
+				
+				list.add(dto);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

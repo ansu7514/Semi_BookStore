@@ -42,8 +42,8 @@
 		int accum = Integer.parseInt(multi.getParameter("accum"));		
 		
 		BookDTO dto = new BookDTO();
-		dto.setBookName(bookName);//책이름
-		dto.setBookImage(bookImage); //책이미지
+		dto.setBook_name(bookName);//책이름
+		dto.setBook_image(bookImage); //책이미지
 		dto.setWriter(writer);//저자
 		dto.setContent(content);//내용
 		dto.setPublisher(publisher);//출판사
