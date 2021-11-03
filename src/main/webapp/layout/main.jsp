@@ -97,13 +97,30 @@
 			<br>
 			<div id="slideShow">
 				<ul class="slides">
-					<c:forEach var="i" begin="1" end="10">
-						<li><img src="image/book/그냥 하지 말라.jpg"></li>
-					</c:forEach>
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
+					
+					<li><img src="image/book/그냥 하지 말라.jpg"></li>
 				</ul>
 				<p class="controller">
 					<!-- &lang: 왼쪽 방향 화살표 &rang: 오른쪽 방향 화살표 -->
-					<span class="prev">&lang;</span> <span class="next">&rang;</span>
+					<span class="prev">&lang;</span>
+					<span class="next">&rang;</span>
 				</p>
 			</div>
 			<script src="JS/slide_show.js"></script>

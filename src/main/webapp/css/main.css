@@ -152,6 +152,7 @@ li {
 ul.slides>li>img {
 	width: 200px;
 	height: 330px;
+	cursor: pointer;
 }
 
 .copyright {
