@@ -16,7 +16,7 @@
 }
  </style>
 <%
-// Remember Me(아이디 저장 체크)
+// 아이디 저장 체크박스
 // 세션값 얻어오기
 String saveok=(String)session.getAttribute("saveok");
 String myid="";

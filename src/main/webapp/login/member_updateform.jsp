@@ -1,3 +1,5 @@
+<%@page import="db.UserDTO"%>
+<%@page import="db.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
@@ -14,11 +16,6 @@
   <link href="https://fonts.googleapis.com/css2?
 family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-<%
-//
-
-//
-%>
 <script type="text/javascript">
 /* 비밀번호 입력조건 , 일치여부 확인 */
 function check_pw(){
@@ -54,144 +51,89 @@ function check_pw(){
 </script>
 
 </head>
+
+<%
+//id 읽기
+String user_id=request.getParameter("user_id");
+//dao 선언
+UserDAO dao=new UserDAO();
+//dto 얻기
+UserDTO dto=dao.getUser(user_id);
+
+%>
+
 <body>
+
+<!-- 수정할 부분 : 사용자이름, 비밀번호, 생년월일, 주소, 전화번호 => 회원정보 설정화면으로 돌아감 -->
 
 <form action="member_updateproc.jsp" method="post">
 
 <!-- hidden -->
-<input type="hidden" name="user_id" value=""> <!-- value안에도 user_id넘기기 -->
 
-<!-- 수정할 부분 : 사용자이름, 비밀번호, 생년월일, 주소, 전화번호 => 회원정보 설정화면으로 돌아감 -->
+<input type="hidden" name="user_id" value="<%=user_id%>">
+
 
 <div class="form-group" style="width: 180px;">
 	<label>아이디</label>
-	<input type="text" name="user_id" class="form-control">
+	<input type="text" name="user_id" class="form-control" 
+	required="required">
 </div>
  
 <div class="form-group" style="width: 180px;">
 	<label>비밀번호</label>
 	<input type="password" name="user_pass1" id="pw" class="form-control"
-	onchange="check_pw()">
-</div>
- 
-<div class="form-group" style="width: 180px;">
+	onchange="check_pw()" required="required">
+	<br>
 	<label>비밀번호 재확인</label>
 	<input type="password" name="user_pass2" id="pw2" class="form-control"
-	onchange="check_pw()">&nbsp;<span id="check"></span>
+	onchange="check_pw()" required="required">&nbsp;<span id="check"></span>
 </div>
  
 <div class="form-group" style="width: 180px;">
 	<label>이름</label>
-	<input type="text" name="user_name" class="form-control">
+	<input type="text" name="user_name" class="form-control" required="required"
+	value="<%=dto.getUser_name()%>">
 </div>
 
 <div class="form-group" style="width: 180px;">
 	<label>주소</label>
-	<input type="text" name="addr" class="form-control">
+	<input type="text" name="addr" class="form-control" required="required"
+	value="<%=dto.getAddr()%>">
 </div>
  
 <div class="form-group" style="width: 180px;">
 	<label>생년월일</label> <br>
   
 	<input type="text" name="birthday1" class="form-inline" 
-	style="width: 57px; height: 20px;" placeholder="년(4자)">
-  
-	<select name="birth2" id="birthday2" class="form-inline"
-	style="width: 57px; height: 20px;">
+	style="width: 50px; height: 20px;" placeholder="년(4자)">
+	<b>-</b>
+	<select name="birthday2" id="birthday2" class="form-inline"
+	style="width: 50px; height: 20px;">
 	<option value="">월</option>
 	<c:forEach var="i" begin="1" end="12">
 	<option value="${i}">${i}</option>
 	</c:forEach>
 	</select>
-  
+	<b>-</b>
 	<input type="text" name="birthday3" class="form-inline" 
-	style="width: 57px; height: 20px;" placeholder="일">
+	style="width: 50px; height: 20px;" placeholder="일">
 </div> 
 
-<div class="form-group" style="width: 180px;">
-	<label>성별</label>
-	<select id="gender" class="form-control">
-	<option value="">성별</option>
-	<option value="남자">남자</option>
-	<option value="여자">여자</option>
-	</select>
-</div>
  
 <div class="form-group" style="width: 180px;">
 	<label>휴대전화</label>
-	<input type="text" name="hp" class="form-control">
+	<input type="text" name="hp" class="form-control" required="required"
+	value="<%=dto.getHp()%>">
 </div>
  
-<!-- 캡챠 -->
- <div id="google_recaptha">
-	 <script src='https://www.google.com/recaptcha/api.js'></script>
-	 <div class="g-recaptcha" data-sitekey="6LfQugsdAAAAAMsc4blU0sNU9CBZdnflfGNKYveI"></div>
- </div>
  
 <div style="margin-left: 50px;">
-	<button type="submit" class="btn btn-default"
-	onclick="location.href=''">회원가입</button>
+	<button type="submit" class="btn btn-warning">수정하기</button>
 </div>
  
- <!-- 회원정보 설정화면으로 돌아감 -->
-<div style="margin-left: 50px;">
-	<button type="button" class="btn btn-default"
-	onclick="location.href=''">회원정보수정</button>
-  
-	<button type="button" class="btn btn-default"
-	onclick="location.href=''">회원탈퇴</button>
-</div>
+ 
 </form>
 
-<!-- 삭제 모달창과 자바스크립트 코드 추가 --> <!-- member_delete에서 처리해주기 -->
-<!-- 삭제 모달 -->
-<!-- Modal -->
-<!-- <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
-
-    Modal content
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">삭제확인</h4>
-      </div>
-      
-      
-      <div class="modal-body form-inline">
-      <input type="hidden" id="delnum">
-        <b>삭제 비밀번호: </b>
-        <input type="password" id="delpass" class="form-control" style="width: 120px;">
-      </div>
-      
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default delbtn" data-dismiss="modal">삭제</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<script type="text/javascript">
-function delfunc(num) {
-        
-        //alert(num);
-        $("#delnum").val(num);
-        $("#myModal").modal();
-        
-        //모달삭제버튼이벤트
-        $("button.delbtn").click(function(){
-                
-        //num,pass읽기
-        var num=$("#delnum").val();
-        var pass=$("#delpass").val();
-        //삭제파일 호출
-        location.href="member/memberdelete.jsp?num="+num+"&pass="+pass;
-   });
-}
-
-</script> -->
 
 </body>
 </html>

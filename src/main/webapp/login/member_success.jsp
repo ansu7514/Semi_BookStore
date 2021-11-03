@@ -1,3 +1,4 @@
+<%@page import="db.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
@@ -15,17 +16,24 @@
 family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <%	//id읽어오기
 
+	String user_id=request.getParameter("user_id");
+	
 	//dao선언
 	
-	//id에 대한 이름 가져오기
-%>
+	UserDAO dao=new UserDAO();
+%> 
 </head>
 <body>
-<div style="margin: 0 auto; width: 100%"> <!-- 해당 메인의 가운데로 -->
-	<b>회원 가입이 완료되었습니다.</b> <!--b태그 안 jstl name주기 -->
+<div style="border: 2px dotted #55661C; width: 300px; height: 100px;">
+	<br> 
+	<b style="font-size: 9pt; padding: 60px;">< 회원 가입이 완료 되었습니다 ></b>
+	
 	<br><br>
-	<button type="button" class="btn btn-default"
-	onclick="location.href=''">Home</button>
+	
+	<!-- 회원가입이 완료되었을 경우 , 로그인 버튼을 누를 시 메인페이지로 이동해 로그인하기 -->
+	<button type="button" style="background-color: #55661C; width: 90px; margin-left: 100px;"
+	onclick="location.href=''">로그인</button>
+	 
 </div>
 </body>
 </html>

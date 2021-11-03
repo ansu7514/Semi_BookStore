@@ -14,12 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?
 family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-
-<%
-//
-
-//
-%>
 <script type="text/javascript">
 /* 비밀번호 입력조건 , 일치여부 확인 */
 function check_pw(){
@@ -52,6 +46,7 @@ function check_pw(){
         }
     }
 }
+
 </script>
 
 </head>
@@ -61,52 +56,51 @@ function check_pw(){
 
 <div class="form-group" style="width: 180px;">
 	<label>아이디</label>
-	<input type="text" name="user_id" class="form-control">
+	<input type="text" name="user_id" class="form-control"
+	required="required" placeholder="아이디입력">
 </div>
  
 <div class="form-group" style="width: 180px;">
 	<label>비밀번호</label>
 	<input type="password" name="user_pass1" id="pw" class="form-control"
-	onchange="check_pw()">
-</div>
- 
-<div class="form-group" style="width: 180px;">
+	onchange="check_pw()" required="required" placeholder="비밀번호입력">
+	<br>
 	<label>비밀번호 재확인</label>
 	<input type="password" name="user_pass2" id="pw2" class="form-control"
-	onchange="check_pw()">&nbsp;<span id="check"></span>
+	onchange="check_pw()" required="required" placeholder="비밀번호재입력">&nbsp;<span id="check"></span>
 </div>
  
 <div class="form-group" style="width: 180px;">
 	<label>이름</label>
-	<input type="text" name="user_name" class="form-control">
+	<input type="text" name="user_name" class="form-control" required="required" placeholder="이름입력">
 </div>
 
 <div class="form-group" style="width: 180px;">
 	<label>주소</label>
-	<input type="text" name="addr" class="form-control">
+	<input type="text" name="addr" class="form-control" required="required" placeholder="주소입력">
 </div>
  
 <div class="form-group" style="width: 180px;">
 	<label>생년월일</label> <br>
   
 	<input type="text" name="birthday1" class="form-inline" 
-	style="width: 57px; height: 20px;" placeholder="년(4자)">
-  
-	<select name="birth2" id="birthday2" class="form-inline"
-	style="width: 57px; height: 20px;">
+	style="width: 50px; height: 20px;" placeholder="년(4자)">
+	<b>-</b>
+	<select name="birthday2" id="birthday2" class="form-inline"
+	style="width: 50px; height: 20px;">
 	<option value="">월</option>
 	<c:forEach var="i" begin="1" end="12">
 	<option value="${i}">${i}</option>
 	</c:forEach>
 	</select>
-  
+	<b>-</b>
 	<input type="text" name="birthday3" class="form-inline" 
-	style="width: 57px; height: 20px;" placeholder="일">
+	style="width: 50px; height: 20px;" placeholder="일">
 </div> 
 
 <div class="form-group" style="width: 180px;">
 	<label>성별</label>
-	<select id="gender" class="form-control">
+	<select name="gender" class="form-control">
 	<option value="">성별</option>
 	<option value="남자">남자</option>
 	<option value="여자">여자</option>
@@ -115,7 +109,7 @@ function check_pw(){
  
 <div class="form-group" style="width: 180px;">
 	<label>휴대전화</label>
-	<input type="text" name="hp" class="form-control">
+	<input type="text" name="hp" class="form-control" required="required" placeholder="번호입력">
 </div>
  
 <!-- 캡챠 -->
@@ -125,8 +119,7 @@ function check_pw(){
  </div>
  
 <div style="margin-left: 50px;">
-	<button type="submit" class="btn btn-default"
-	onclick="location.href=''">회원가입</button>
+	<button type="submit" class="btn btn-warning">회원가입</button>
 </div>
  
  

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +13,20 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 
 </head>
 <body>
-<% 
-//내가 만들어 놓은 세션 ex) loginok 세션 제거
-session.removeAttribute("loginok");
 
-//login_main 이동
-response.sendRedirect("");
+<%
+//저장된 loginok 읽어오기
+String loginok=(String)session.getAttribute("loginok");
+
+//loginok는 로그인 성공시 저장하고 로그아웃시 제거
+if(loginok==null)
+{%>
+	<jsp:include page="login_form.jsp"/>
+<%}else
+{%>
+	<jsp:include page="logout_form.jsp"/>
+<%}
 %>
+
 </body>
 </html>
