@@ -149,8 +149,8 @@
 	
 			<div id="img">
 				<!-- 검산용 -->
-				<% System.out.println(dto.getBook_image()); %>
-				<img src="<%=dto.getBook_image()%>" id="book_img">
+				<% System.out.println("../image/book/"+dto.getBook_image()); %>
+				<img src="../image/book/<%=dto.getBook_name()%>.jpg" id="book_img">
 			</div>
 		
 		
