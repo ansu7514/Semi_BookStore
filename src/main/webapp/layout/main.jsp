@@ -77,8 +77,8 @@ String loginok = (String)session.getAttribute("loginok");
 	
 	<!-- 베스트셀러 -->
 	<div class="best_seller">
-		<h2 class="bk_list_title">베스트 셀러</h2>
-		<h4 class="bk_list_title" style="color: #55661c;">가을 책방 Top 4</h4>
+		<h2 class="bk_list_title">🍁 베스트 셀러</h2>
+		<h4 class="bk_list_title" style="color: #55661c; margin-left: 4.4%;">가을 책방 Top 4</h4>
 
 		<div class="best_sell_list">
 			<ul>
@@ -88,13 +88,15 @@ String loginok = (String)session.getAttribute("loginok");
 				%>
 				<div class="best_sell_book">
 					<li>
-						<a href="">
+						<a href="index.jsp?main=book/book_info.jsp?book_id=<%= bk_dto.getBook_id() %>">
 							<img src="image/book/<%= bk_dto.getBook_image() %>">
 						</a>
 						
 						<div style="width: 180px;">
-							<h4><a href=""><b><%= bk_dto.getBook_name() %></b></a></h4>
-							<h5><a href="">저자 : <%= bk_dto.getWriter() %><br>출판사 : <%= bk_dto.getPublisher() %></a></h5>
+							<h4><a href="index.jsp?main=book/book_info.jsp?book_id=<%= bk_dto.getBook_id() %>">
+								<b><%= bk_dto.getBook_name() %></b>
+							</a></h4>
+							<h5><a href="index.jsp?main=book/book_info.jsp?book_id=<%= bk_dto.getBook_id() %>">저자 : <%= bk_dto.getWriter() %><br>출판사 : <%= bk_dto.getPublisher() %></a></h5>
 						</div>
 					</li>
 				</div>
@@ -108,8 +110,8 @@ String loginok = (String)session.getAttribute("loginok");
 	<!-- 전체 책 스크롤 리스트 -->
 		<div class="book_list" style="width: 100%;">
 			<!-- 책 출력 위치 -->
-			<h2 class="bk_list_title">가을 책방이 소개하는 책</h2>
-			<h4 class="bk_list_title" style="color: #55661c">가을 책방과 함께하는 독서의
+			<h2 class="bk_list_title">🍂 가을 책방이 소개하는 책</h2>
+			<h4 class="bk_list_title" style="color: #55661c; margin-left: 4.5%;">가을 책방과 함께하는 독서의
 				습관</h4>
 			<br>
 			<div id="slideShow">
@@ -119,7 +121,7 @@ String loginok = (String)session.getAttribute("loginok");
 						BookDTO bk_dto = bk_list.get(i);
 					%>
 						<li>
-							<a href="">
+							<a href="index.jsp?main=book/book_info.jsp?book_id=<%= bk_dto.getBook_id() %>">
 								<img class="book_list_de" src="image/book/<%= bk_dto.getBook_image() %>">
 							</a>
 						</li>

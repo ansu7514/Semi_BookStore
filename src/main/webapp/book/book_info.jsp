@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="../css/book.css?after">
+<link rel="stylesheet" href="css/book.css?after">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
@@ -37,9 +37,6 @@
 	
 		//파라미터값 가져오기 - book_id
 		String book_id = request.getParameter("book_id");
-	
-		//임의로 부여한 값
-		book_id="5";
 		
 		//파라미터값 가져오기 - user_id
 		String user_id = request.getParameter("user_id");
@@ -158,7 +155,7 @@
 		if(i > 3)
 			i = 1;
 		
-		document.getElementById("adver_img").src = "../image/adver_" + i + ".png";
+		document.getElementById("adver_img").src = "image/adver_" + i + ".png";
 		
 		setTimeout(slide_show, 3000); // 함수를 3초마다 호출
 		i++;
@@ -191,8 +188,8 @@
 		
 				<div id="img">
 					<!-- 검산용 -->
-					<% System.out.println("../image/book/"+dto.getBook_image()); %>
-					<img src="../image/book/<%=dto.getBook_name()%>.jpg" id="bookImg">
+					<% System.out.println("image/book/"+dto.getBook_image()); %>
+					<img src="image/book/<%=dto.getBook_name()%>.jpg" id="bookImg">
 				</div>
 			
 			
