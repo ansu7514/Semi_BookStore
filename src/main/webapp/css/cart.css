@@ -1,0 +1,35 @@
+@charset "EUC-KR";
+
+h2{
+	font-size: 1.2em;
+	margin-left: 570px;
+	padding-top: 20px;
+}
+
+div > hr{
+	background-color: #fff;
+	border-top: 3px dotted #bbb;
+}
+
+table.one{
+	position: relative;
+	width: 80%;
+	margin-left: 130px;
+	box-shadow: 0 0 0 1px #000;
+	border-radius: 10px;
+
+}
+
+table.two{
+	position: relative;
+	width: 20%;
+	margin-left: 700px;
+	margin-top: 50px;
+	box-shadow: 0 0 0 1px #000;
+	border-radius: 10px;
+
+}
+
+.one th,td{
+	text-align: center;
+}
