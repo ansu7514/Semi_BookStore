@@ -42,8 +42,10 @@
 	<div class="index">
 		<!-- 타이틀 -->
 		<jsp:include page="layout/title.jsp"/>
+		
 		<!-- 광고 -->
 		<jsp:include page="layout/adver.jsp"/>
+		
 		<!-- 책들(내용) -->
 		<jsp:include page="<%= mainPage %>"/>
 		

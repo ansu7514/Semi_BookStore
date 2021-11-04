@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap');
 
-* {
+body *{
 	font-family: 'Noto Serif KR', serif;
 }
 
@@ -15,9 +15,8 @@ a:hover {
 
 #slideshow {
 	position: relative;
-	left: 35px;
-	width: 950px;
-	height: 350px;
+	width: 100%;
+	height: 100%;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 	border-radius: 10px;
 }
@@ -35,61 +34,75 @@ a:hover {
 	height: 99.5%;
 }
 
-.main_ad {
-	position: relative;
-	top: 100px;
-	left: -3%;
-	float: left;
+.main_login{
+	margin-top: 80px;
+	display: inline-flex;
+	width: 100%;
+	height: 400px;
+}
+
+.main_login > .main_ad {
+	width: 60%;
 	margin-right: 3%
 }
 
-.login_box {
-	position: relative;
-	z-index: 3;
+.main_login > .login_box {
+	width: 35%;
 	border: 3px solid #3d2a26;
 	border-radius: 10px;
-	top: 100px;
 }
 
-.bk_list_title {
-	clear: both;
+.best_seller{
+	margin-top: 80px; 
+	width: 100%;
+	padding-left: 15px;
+}
+
+.best_seller > .bk_list_title {
 	font-weight: 800;
 }
 
-.best_seller {
-	position: relative;
-	z-index: 2;
-	top: 150px;
-	margin-left: 4%
+.best_seller > .best_sell_list{
+	margin-left: 5%;
+	width: 100%;
+	flex-wrap: wrap;
+	margin-top: 50px;
 }
 
-li.best_sell_book {
+.best_sell_book{
+	width:100%;
+}
+
+.best_sell_book li {
 	list-style-type: none;
-	width: 280px;
+	width: 20%;
 	height: 400px;
 	float: left;
 	margin-bottom: 20px;
 	margin-left: 0.5%;
+	margin-right: 20px;
 }
 
-li.best_sell_book>a>img {
+.best_sell_book img {
 	width: 200px;
 	height: 330px;
 	margin-bottom: 5%;
 	cursor: pointer;
 }
 
-li.best_sell_book>div>h4>a {
+.best_sell_book h4 > a {
 	color: #3d2a26;
 	cursor: pointer;
 }
 
-li.best_sell_book>div>h5>a {
+.best_sell_book h5 > a {
 	color: #55661c;
 	cursor: pointer;
 }
 
+ 
 .book_list {
+	clear: both;
 	position: relative;
 	top: 200px;
 	margin-left: 4%
@@ -139,7 +152,6 @@ li {
 	text-align: center;
 	border-radius: 50%;
 	padding: 10px 20px;
-	top: 50%;
 	font-size: 1.3em;
 	cursor: pointer;
 }

@@ -36,7 +36,8 @@ String loginok = (String)session.getAttribute("loginok");
 %>
 </head>
 <body>
-	<div style="width: 100%">
+	<!-- 광고, 로그인 -->
+	<div class="main_login">
 		<!-- 메인 창 광고 -->
 		<div class="main_ad" style="width: 70%">
 			<div id="slideshow" style="width: 100%">
@@ -76,20 +77,21 @@ String loginok = (String)session.getAttribute("loginok");
 			}
 			%>
 		</div>
+	</div>
+	
+	<!-- 베스트셀러 -->
+	<div class="best_seller">
+		<h2 class="bk_list_title">베스트 셀러</h2>
+		<h4 class="bk_list_title" style="color: #55661c;">가을 책방 Top 4</h4>
 
-		<div class="best_seller" style="width: 100%;">
-			<!-- 베스트 셀러 -->
-			<h2 class="bk_list_title">베스트 셀러</h2>
-			<h4 class="bk_list_title" style="color: #55661c">가을 책방 Top 4</h4>
-			<br>
-
-			<ul class="best_sell_list" style="width: 100%; height: 100%;">
-				
+		<div class="best_sell_list">
+			<ul>
 				<%
 				for(int i = 0; i < 4; i++) {
 					BookDTO bk_dto = best_list.get(i);
 				%>
-					<li class="best_sell_book">
+				<div class="best_sell_book">
+					<li>
 						<a href="">
 							<img src="image/book/<%= bk_dto.getBook_image() %>">
 						</a>
@@ -99,12 +101,15 @@ String loginok = (String)session.getAttribute("loginok");
 							<h5><a href="">저자 : <%= bk_dto.getWriter() %><br>출판사 : <%= bk_dto.getPublisher() %></a></h5>
 						</div>
 					</li>
+				</div>
 				<%
 				}
 				%>
 			</ul>
 		</div>
-
+	</div>
+	
+	<!-- 전체 책 스크롤 리스트 -->
 		<div class="book_list" style="width: 100%;">
 			<!-- 책 출력 위치 -->
 			<h2 class="bk_list_title">가을 책방이 소개하는 책</h2>
@@ -138,6 +143,5 @@ String loginok = (String)session.getAttribute("loginok");
 		<div class="copyright" style="width: 50%">
 			<h6>Copyright ⓒ 2021 by 가을 책방 All Pictures cannot be copied without permission.</h6>
 		</div>
-	</div>
 </body>
 </html>
