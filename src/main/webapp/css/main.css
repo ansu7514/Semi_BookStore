@@ -1,10 +1,6 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap');
 
-body *{
-	font-family: 'Noto Serif KR', serif;
-}
-
 a {
 	text-decoration: none !important;
 }
@@ -35,10 +31,10 @@ a:hover {
 }
 
 .main_login{
-	margin-top: 80px;
+	margin-top: 50px;
 	display: inline-flex;
 	width: 100%;
-	height: 400px;
+	height: 350px;
 }
 
 .main_login > .main_ad {
@@ -53,8 +49,9 @@ a:hover {
 }
 
 .best_seller{
-	margin-top: 80px; 
+	margin-top: 50px; 
 	width: 100%;
+	height: 550px;
 	padding-left: 15px;
 }
 
@@ -79,12 +76,11 @@ a:hover {
 	height: 400px;
 	float: left;
 	margin-bottom: 20px;
-	margin-left: 0.5%;
 	margin-right: 20px;
 }
 
 .best_sell_book img {
-	width: 200px;
+	width: 210px;
 	height: 330px;
 	margin-bottom: 5%;
 	cursor: pointer;
@@ -100,12 +96,16 @@ a:hover {
 	cursor: pointer;
 }
 
- 
+
 .book_list {
-	clear: both;
-	position: relative;
-	top: 200px;
-	margin-left: 4%
+	margin-top: 50px; 
+	width: 100%;
+	height: 550px;
+	padding-left: 15px;
+}
+
+.book_list > .bk_list_title {
+	font-weight: 800;
 }
 
 li {
@@ -152,6 +152,7 @@ li {
 	text-align: center;
 	border-radius: 50%;
 	padding: 10px 20px;
+	top: 50%;
 	font-size: 1.3em;
 	cursor: pointer;
 }
@@ -187,7 +188,6 @@ li {
 
 .copyright {
 	position: relative;
-	top: 250px;
 	padding-bottom: 40px;
 	margin-left: 33%;
 	color: #3d2a26;

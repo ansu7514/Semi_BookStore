@@ -10,8 +10,8 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/index.css">
 <style type="text/css">
+	@import url("css/index.css");
 	@import url("css/title.css");
 	@import url("css/adver.css");
 	@import url("css/main.css");
@@ -48,18 +48,6 @@
 		
 		<!-- 책들(내용) -->
 		<jsp:include page="<%= mainPage %>"/>
-		
-		<%-- <div class="title">
-			<jsp:include page="layout/title.jsp"/>
-		</div>
-		
-		<div class="adver">
-			<jsp:include page="layout/adver.jsp"/>
-		</div>
-		
-		<div class="main">
-			<jsp:include page="<%= mainPage %>"/>
-		</div> --%>
 	</div>
 </body>
 </html>
