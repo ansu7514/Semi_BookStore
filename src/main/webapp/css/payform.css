@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+		/* 전체 div */
+		#wrapper{
+			width: 80%;
+			margin-left: 10%;
+			margin-top: 2%;
+			
+			background-color: yellow;
+		}
+		
+		/* font: 주문결제 */
+		#title{
+			font-size: 38px;
+			font-family: "Montserrat", sans-serif;
+			font-weight: bold;
+			color: black;
+			padding-left: 7%;
+		}
+		
+		#top_hr{
+			margin-top: 2%;
+			background-color:black;
+		}
+		
+		
+		/* 세 div를 담는 div */
+		#container{
+			width: 100%;
+			margin-top: 2%;
+			display: flex;
+			
+			background-color: red;
+		}
+		
+		
+		#left_info{
+			width: 50%;
+		}
+		
+		
+		/* 배송지 정보 div */
+		#transport_info{
+			width: 100%;
+			
+			/* background-color: blue; */
+		}
+		
+		
+		/* 배송지 선택,  */
+		.captions{
+			font-size: 20px;
+			font-family: "Montserrat", sans-serif;
+			color: black;
+			font-weight: bold;
+			padding-left: 7%;
+		}
+		
+		
+		
+		/* 배송지적는 테이블 div */
+		#transport_form{
+			width: 100%;
+		}
+		
+		
+		/* 상품 정보 div */
+		#product_info{
+			width: 100%;
+			
+			background-color: green;
+		}
+		
+		
+		/* 결제 정보 div */
+		#payment_info{
+			width: 50%;
+			float: right;
+			
+			background-color: gray;
+		}
+		
+		
+		
+		
