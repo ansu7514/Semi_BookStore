@@ -14,8 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="../css/book.css">
-<link rel="stylesheet" href="../css/detail.scss">
+<link rel="stylesheet" href="../css/book.css?after">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
@@ -34,7 +33,7 @@
 		String book_id = request.getParameter("book_id");
 		
 		//임의로 부여한 값
-		book_id="1";
+		book_id="5";
 	
 		//DAO 객체선언
 		BookDAO dao = new BookDAO();
@@ -50,12 +49,26 @@
 		int val = 1234567;
 		System.out.println(df.format(val));
 		
+		
+		
+		// 프로젝트 경로 구하기
+		String root = request.getContextPath();
+		
+		// 기본 페이지
+		String mainPage = "layout/main.jsp";
+		
+		// main 값 읽어서 출력
+		if(request.getParameter("main") != null) {
+			mainPage = request.getParameter("main");
+		}
 	%>
 	
 
 <script type="text/javascript">
 
 	window.onload=function(){
+		
+		slide_show();
 		
 		/* 실행시 상품 기본가격 출력 */
 		var a = (String)($("#ea").val()*<%=dto.getBookPrice()%>);
@@ -79,6 +92,7 @@
 		var rnd = parseInt(Math.random()*4);
 		
 		document.getElementById("summary").innerText= mentArr[rnd];
+		
 	}
 
 	
@@ -123,76 +137,126 @@
 			  target2.disabled = false;
 		}
 	}	 
+	
+	
+		
+
+	
+	var i = 1;
+	
+	function slide_show() {	
+		if(i > 3)
+			i = 1;
+		
+		document.getElementById("adver_img").src = "../image/adver_" + i + ".png";
+		
+		setTimeout(slide_show, 3000); // 함수를 3초마다 호출
+		i++;
+	}
 
 </script>	
 	
 
 
-<body>
+<body style="background-color: #FAF7EB">
 
 	<div id="wrapper">
 	
-		<div id="book_title" style="width: 800px;">
-			<!-- JSTL 문법을 사용해 위의 값 출력 -->
-			<font class="title"><b><%=dto.getBook_name() %></b></font></p>
+		<div id="container">
+		
+			<div id="book_title">
+				<!-- JSTL 문법을 사용해 위의 값 출력 -->
+				<font class="title"><b><%=dto.getBook_name() %></b></font></p>
+				
+				
+				<font class="subInfo"><b><%=dto.getWriter() %></b></font> &nbsp;		
+				<font class="subInfo"><b><%=dto.getPublisher() %></b></font> &nbsp;
+				<font class="subInfo"><b><%=dto.getYear() %></b></font>		
+			
+			</div>
+				
+			<hr id="top_hr">
+			
+			<div id="content">
+		
+				<div id="img">
+					<!-- 검산용 -->
+					<% System.out.println("../image/book/"+dto.getBook_image()); %>
+					<img src="../image/book/<%=dto.getBook_name()%>.jpg" id="bookImg">
+				</div>
 			
 			
-			<font class="subInfo"><b><%=dto.getWriter() %></b></font> &nbsp;		
-			<font class="subInfo"><b><%=dto.getPublisher() %></b></font> &nbsp;
-			<font class="subInfo"><b><%=dto.getYear() %></b></font>		
+				<div id="selInfo">
+				
+						<!-- 별점-얼마나 차있는지 위에 함수로 줘야함 -->
+						<div class="star-ratings-fill" id="star">
+							<span class="star">★</span>
+							<span class="star">★</span>
+							<span class="star">★</span>
+							<span class="star">★</span>
+							<span class="star">★</span>
+						</div>
+					
+						<div id="summary"></div>
+						
+						<div id="detail">
+						
+							판매가:&nbsp;&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
+							
+							포인트:&nbsp;&nbsp; <%=dto.getBookPrice()/10 %> pt <br>
+							
+							재고량:&nbsp;&nbsp; <%=dto.getEa() %> 권 <br>
+							
+							<!-- 재고가 수량보다 적어 음수가 될 경우, 구매불가 메시지 출력-->
+							주문량:&nbsp;&nbsp; <input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
+					
+							총금액:&nbsp;&nbsp; <font id="totP"></font>
+						
+						</div>	
+		
+							<!-- 장바구니, 바로구매 버튼 -->
+		
+						<div id="btns">
+							<button id="buy" class="btn fourth" onclick="location.href=''">바로구매</button>
+							<button id="goCart" class="btn fourth" onclick="location.href=''">장바구니</button>
+						</div>
+						
+				</div>
+			</div>
 		
 		</div>
-			
-		<hr class="hr">
-		
-		<div id="content">
-	
-			<div id="img">
-				<!-- 검산용 -->
-				<% System.out.println("../image/book/"+dto.getBook_image()); %>
-				<img src="../image/book/<%=dto.getBook_name()%>.jpg" id="book_img">
-			</div>
 		
 		
-			<div id="selInfo">
-				<div>
-			
-				<!-- 별점-얼마나 차있는지 위에 함수로 줘야함 -->
-				<div class="star-ratings-fill" id="star">
-					<span class="star">★</span>
-					<span class="star">★</span>
-					<span class="star">★</span>
-					<span class="star">★</span>
-					<span class="star">★</span>
-				</div>
-			
-				<div id="summary"></div>
-				
-				<div id="detail">
-				
-					판매가:&nbsp;&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
-					
-					포인트:&nbsp;&nbsp; <%=dto.getBookPrice()/10 %> pt <br>
-					
-					재고량:&nbsp;&nbsp; <%=dto.getEa() %> 권 <br>
-					
-					<!-- 재고가 수량보다 적어 음수가 될 경우, 구매불가 메시지 출력-->
-					주문량:&nbsp;&nbsp; <input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
-			
-					총금액:&nbsp;&nbsp; <font id="totP"></font>
-				
-				</div>	
+		<!-- 광고 이미지 -->
+		<div class="layout adver" onload="slide_show()">
+			<img id="adver_img" src="">
+		</div>
 
-					<!-- 장바구니, 바로구매 버튼 -->
+		
+		<!-- 책소개 -->
+		<div id="book_content">
 
-				<div id="btns">
-					<button id="buy" class="btn fourth" onclick="location.href=''">바로구매</button>
-					<button id="goCart" class="btn fourth" onclick="location.href=''">장바구니</button>
-				</div>
-								
-			</div>
+			<!-- 내용나누는 줄 -->
+			<hr id="blur_hr1">	
+			
+			<div id="book_summary">책소개</div>
+			
+			<div id="book_summary_detail"><%=dto.getContent() %></div>
+			
+		</div>
+		
+		
+		<!-- 책 목차 -->
+		<div id="index">
+			
+			<!-- 내용나누는 줄 -->
+			<hr id="blur_hr2">	
+			
+			<div id="book_index">목차</div>
+			
+			<div id="book_index_detail"><%=dto.getChapter() %></div>
+			
 		</div>
 	</div>
-</div>
 </body>
 </html>
