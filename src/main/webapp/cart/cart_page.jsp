@@ -1,3 +1,5 @@
+<%@page import="db.BookDTO"%>
+<%@page import="db.BookDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.CartDTO"%>
 <%@page import="db.CartDAO"%>
@@ -24,11 +26,13 @@ String user_id=request.getParameter("user_id");
 user_id="apple"; //검사용도
 
 //	1) db 선언
+BookDAO dao=new BookDAO();
+
+BookDTO Bdto=new BookDTO();
 
 CartDAO db=new CartDAO();
 
 //	2) dao에서 list 가져오기
-
 
 ArrayList<CartDTO>list=db.selectCart(user_id);  
 
@@ -51,14 +55,14 @@ ArrayList<CartDTO>list=db.selectCart(user_id);
 for(int i=0; i<list.size(); i++){ 
 	
 	CartDTO dto=list.get(i); 
-	
+	Bdto=dao.getBook(dto.getBook_id());
 	%>
 
 	<tr style="text-align: center;">
 		<td>
 		<input type="checkbox" name="buy" onclick="">
 		</td>
-		<td></td>
+		<td><%=Bdto.getBook_name() %></td>
 		<td></td>
 		<td>
 		<input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" 
