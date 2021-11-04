@@ -96,7 +96,7 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from BOOK where book_name = (select book_name from BOOK order by accum limit 10)";
+		String sql = "select * from BOOK where book_name in (select book_name from BOOK order by accum) limit 10";
 		
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
 		
