@@ -30,7 +30,7 @@
 	request.setCharacterEncoding("utf-8");
 	BookDAO dao = new BookDAO();
 	BookDTO dto = dao.getBook("17");
-	out.println(dto.getBook_image());
+	out.println(dto.getBookImage());
 %>
 
 </body>
