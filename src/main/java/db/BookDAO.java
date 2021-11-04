@@ -149,4 +149,27 @@ public class BookDAO {
 			db.dbClose(pstmt, conn);
 		}
 	}
+	
+	//update 
+	public void updateBook(BookDTO dto) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update BOOK set content=?, chapter=? where book_name=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getContent());
+			pstmt.setString(2, dto.getChapter());
+			pstmt.setString(3, dto.getBook_name());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
 }
