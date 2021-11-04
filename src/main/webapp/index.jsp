@@ -10,11 +10,18 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap" rel="stylesheet">
 <style type="text/css">
 	@import url("css/index.css");
 	@import url("css/title.css");
 	@import url("css/adver.css");
-	@import url("css/main.css");
+	@import url("css/main.css"); 
+	@import url("css/copyright.css");
+</style>
+<style type="text/css">
+* {
+	font-family: 'Noto Serif KR', serif;
+}
 </style>
 <script type="text/javascript">
 	window.onload = function() {
@@ -48,6 +55,9 @@
 		
 		<!-- 책들(내용) -->
 		<jsp:include page="<%= mainPage %>"/>
+		
+		<!-- copyright -->
+		<jsp:include page="layout/copyright.jsp"/>
 	</div>
 </body>
 </html>

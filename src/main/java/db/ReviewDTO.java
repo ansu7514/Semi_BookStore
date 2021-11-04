@@ -7,7 +7,6 @@ public class ReviewDTO {
 	private String book_id;
 	private double rating;
 	private Date wrtieday;
-	private int heart;
 	private String content;
 	
 	public String getUser_id() {
@@ -33,12 +32,6 @@ public class ReviewDTO {
 	}
 	public void setWrtieday(Date wrtieday) {
 		this.wrtieday = wrtieday;
-	}
-	public int getHeart() {
-		return heart;
-	}
-	public void setHeart(int heart) {
-		this.heart = heart;
 	}
 	public String getContent() {
 		return content;

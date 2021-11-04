@@ -12,7 +12,7 @@ slides.style.width = (slideWidth + slideMargin)*slideCount + "px";
 
 
 function moveSlide(num) {
-	// 왼쪽으로 300px씩 이동
+	// 왼쪽으로 400px씩 이동
 	slides.style.left = -num * 400 + "px";
 	currentIdx = num;
 }

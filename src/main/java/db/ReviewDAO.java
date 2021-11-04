@@ -58,7 +58,6 @@ public class ReviewDAO {
 				dto.setBook_id(rs.getString("book_id"));
 				dto.setRating(rs.getDouble("rating"));
 				dto.setWrtieday(rs.getDate("writeday"));
-				dto.setHeart(rs.getInt("heart"));
 				dto.setContent(rs.getString("content"));
 				
 				list.add(dto);

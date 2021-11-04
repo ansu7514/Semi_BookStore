@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.copyright {
+	display: flex;
+	justify-content: center;
+	color: #3d2a26;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
