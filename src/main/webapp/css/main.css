@@ -45,6 +45,7 @@ a:hover {
 
 .login_box {
 	position: relative;
+	z-index: 3;
 	border: 3px solid #3d2a26;
 	border-radius: 10px;
 	top: 100px;
@@ -57,8 +58,9 @@ a:hover {
 
 .best_seller {
 	position: relative;
+	z-index: 2;
 	top: 150px;
-	margin-left: 5%;
+	margin-left: 4%
 }
 
 li.best_sell_book {
@@ -67,6 +69,7 @@ li.best_sell_book {
 	height: 400px;
 	float: left;
 	margin-bottom: 20px;
+	margin-left: 0.5%;
 }
 
 li.best_sell_book>a>img {
@@ -76,12 +79,12 @@ li.best_sell_book>a>img {
 	cursor: pointer;
 }
 
-li.best_sell_book>h4>a {
+li.best_sell_book>div>h4>a {
 	color: #3d2a26;
 	cursor: pointer;
 }
 
-li.best_sell_book>h5>a {
+li.best_sell_book>div>h5>a {
 	color: #55661c;
 	cursor: pointer;
 }
@@ -89,7 +92,7 @@ li.best_sell_book>h5>a {
 .book_list {
 	position: relative;
 	top: 200px;
-	margin-left: 5%;
+	margin-left: 4%
 }
 
 li {
@@ -172,8 +175,8 @@ li {
 
 .copyright {
 	position: relative;
-	top: 200px;
-	padding-bottom: 30px;
+	top: 250px;
+	padding-bottom: 40px;
 	margin-left: 33%;
 	color: #3d2a26;
 }

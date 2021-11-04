@@ -31,11 +31,11 @@
 			<jsp:include page="layout/title.jsp"/>
 		</div>
 		
-		<div class="layout adver">
+		<div class="adver">
 			<jsp:include page="layout/adver.jsp"/>
 		</div>
 		
-		<div class="layout main">
+		<div class="main">
 			<jsp:include page="layout/main.jsp"/>
 		</div>
 	</div>

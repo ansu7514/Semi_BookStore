@@ -1,3 +1,5 @@
+<%@page import="db.UserDTO"%>
+<%@page import="db.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
@@ -16,12 +18,67 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <%
 //id 읽어오기
 String myid=(String)session.getAttribute("myid");
+
+UserDAO user_dao = new UserDAO();
+UserDTO user_dto = user_dao.getUser(myid);
 %>
 </head>
 <body>
-
-<div style="margin-left: 100px; margin-top: 80px;"></div>
-	<button type="button" class="btn btn-warning"
-	onclick="location.href='logout_action.jsp'">로그아웃</button>
+	<div class="logpout_form" style="padding-left: 5%; padding-top: 30px; padding-right: 5%;">
+		<table style="width: 100%; height: 100%">
+			<tr>
+				<td width="68%"><h3><b>📙 <%= user_dto.getUser_name() %> 📙</b>님</h3></td>
+				<td width="32%">
+					<button type="button" class="btn btn-warning" style="margin-top: 10px;"
+					onclick="location.href='login/logout_action.jsp'">로그아웃</button>
+				</td>
+			</tr>
+			
+			<tr height="40px"></tr>
+			
+			<tr>
+				<td colspan="2">
+					<ul style="display: flex; justify-content: center; padding:0px;">
+						<li style="float: left; cursor: pointer;">
+							<a href="" style="color: #55661c; font-size: 16pt;"><b>🙌 내 정보</b></a>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<ul style="display: flex; justify-content: center; padding:0px;">
+						<li style="float: left; margin-right: 5%; cursor: pointer;">
+							<a href="" style="color: #55661c; font-size: 16pt;"><b>🧾 구매 내역</b></a>
+						</li>
+						
+						<li style="float: left; margin-right: 3%; cursor: pointer;">
+							<a href="" style="color: #55661c; font-size: 16pt;"><b>🛒 장바구니</b></a>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			
+			<tr height="40px"></tr>
+			
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<b style="font-size: 20px;">🍁 Autumn Points 🍁</b>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<h4 style="color: #6d3b1c;">
+						<b style="font-size: 20pt; color: #55661c;"><%= user_dto.getPoint() %></b>
+						<b>Points</b>
+					</h4>
+				</td>
+			</tr>
+			
+			<tr height="20px"></tr>
+		</table>
+	</div>
 </body>
 </html>

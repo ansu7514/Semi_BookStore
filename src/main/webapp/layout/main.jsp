@@ -31,6 +31,8 @@ BookDAO dao = new BookDAO();
 
 ArrayList<BookDTO> bk_list = dao.getAllBook();
 ArrayList<BookDTO> best_list = dao.getBestSeller();
+
+String loginok = (String)session.getAttribute("loginok");
 %>
 </head>
 <body>
@@ -62,7 +64,17 @@ ArrayList<BookDTO> best_list = dao.getBestSeller();
 
 		<!-- 로그인 화면 include -->
 		<div class="login_box" style="width: 27%; float: left;">
-			<jsp:include page="../login/login_form.jsp" />
+			<%
+			if(loginok == "yes") {
+			%>
+				<jsp:include page="../login/logout_form.jsp" />
+			<%
+			} else {
+			%>
+				<jsp:include page="../login/login_form.jsp" />
+			<%
+			}
+			%>
 		</div>
 
 		<div class="best_seller" style="width: 100%;">
@@ -78,14 +90,16 @@ ArrayList<BookDTO> best_list = dao.getBestSeller();
 					BookDTO bk_dto = best_list.get(i);
 				%>
 					<li class="best_sell_book">
-						<a>
-							<img src="<%= bk_dto.getBook_image() %>">
+						<a href="">
+							<img src="image/book/<%= bk_dto.getBook_image() %>">
 						</a>
 						
-						<h4><a><b>안녕하세요책1</b></a></h4>
-						<h5><a>저자 : 안수현 / 출판사 : sist</a></h5>
+						<div style="width: 180px;">
+							<h4><a href=""><b><%= bk_dto.getBook_name() %></b></a></h4>
+							<h5><a href="">저자 : <%= bk_dto.getWriter() %><br>출판사 : <%= bk_dto.getPublisher() %></a></h5>
+						</div>
 					</li>
-				<%	
+				<%
 				}
 				%>
 			</ul>

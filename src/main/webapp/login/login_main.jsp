@@ -19,7 +19,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 String loginok=(String)session.getAttribute("loginok");
 
 //loginok는 로그인 성공시 저장하고 로그아웃시 제거
-if(loginok==null)
+if(loginok == null)
 {%>
 	<jsp:include page="login_form.jsp"/>
 <%}else

@@ -28,8 +28,8 @@ if(saveok!=null)
 
 <body>
 
-<div style="width:200px; margin: 10% 0px 14% 8%;">
-	<form action="login_action.jsp" method="post" name="frm"">
+<div style="width:200px; margin: 7% 0px 16% 8%;">
+	<form action="login/login_action.jsp" method="post" name="frm"">
 		<table class="">
     
      <tr height="3px"></tr>
@@ -46,7 +46,7 @@ if(saveok!=null)
     
 	<tr height="50px">
 		<td>
-			<input type="text" name="id" class="form-control" style="width: 230px; height: 40px; margin-left: 20px;"
+			<input type="text" name="user_id" class="form-control" style="width: 230px; height: 40px; margin-left: 20px;"
 			autofocus="autofocus" required="required" placeholder="Id">
 		</td>
 	</tr>
@@ -55,7 +55,7 @@ if(saveok!=null)
     
 	<tr height="50px">
 		<td>
-			<input type="password" name="pass" class="form-control" style="width: 230px; height: 40px; margin-left: 20px;"
+			<input type="password" name="user_pass" class="form-control" style="width: 230px; height: 40px; margin-left: 20px;"
 			required="required" placeholder="PassWord">
 		</td>
 	</tr>
