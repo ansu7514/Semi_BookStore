@@ -60,7 +60,7 @@ a:hover {
 }
 
 .best_seller > .best_sell_list{
-	margin-left: 5%;
+	margin-left: 7%;
 	width: 100%;
 	flex-wrap: wrap;
 	margin-top: 50px;
@@ -184,11 +184,4 @@ li {
 	width: 200px;
 	height: 330px;
 	cursor: pointer;
-}
-
-.copyright {
-	position: relative;
-	padding-bottom: 40px;
-	margin-left: 33%;
-	color: #3d2a26;
 }

@@ -13,11 +13,12 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://fonts.googleapis.com/css2?
-family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
-	rel="stylesheet">
-
+<style type="text/css">
+body {
+	font-family: 'Noto Serif KR', serif;
+	font-size: 20px;
+}
+</style>
 <script type="text/javascript">
 /* 비밀번호 입력조건 , 일치여부 확인 */
 function check_pw(){
@@ -56,67 +57,118 @@ function check_pw(){
 </head>
 <body>
 	<form action="login/member_add.jsp" method="post">
-		<div sty>
-			<div class="form-group" style="width: 180px;">
-				<label>아이디</label> <input type="text" name="user_id"
-					class="form-control" required="required" placeholder="아이디입력">
-			</div>
+		<div class="member_form" style="display: flex; justify-content: center;">
+			<div class="member_form_de" style="padding-top: 50px;">
+				<div class="member_form_de_center">
+					<!-- 아이디 -->
+					<div class="form-group" style="width: 200px; margin-bottom: 20px;">
+						<label>아이디</label> <input type="text" name="user_id"
+							class="form-control" required="required" placeholder="아이디 입력">
+					</div>
+					
+					<!-- 비밀번호 -->
+					<div class="form-group" style="display: inline-flex; margin-bottom: 20px;">
+						<table id="pw_table" class="form-inline">
+							<tr>
+								<td><label>비밀번호</label></td>
+								<td width="20px;"></td>
+								<td><label>비밀번호 재확인</label></td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="password" name="user_pass1" style="width: 200px;"
+									id="pw" class="form-control" onchange="check_pw()"
+									required="required" placeholder="비밀번호 입력">
+								</td>
+								
+								<td width="20px;"></td>
+								
+								<td>
+									<input type="password" name="user_pass2" id="pw2"
+									style="width: 200px;" class="form-control"
+									onchange="check_pw()" required="required" placeholder="비밀번호 재입력">&nbsp;<span
+									id="check"></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<!-- 이름 -->
+					<div class="form-group" style="width: 200px; margin-bottom: 20px;">
+						<label>이름</label> <input type="text" name="user_name"
+							class="form-control" required="required" placeholder="이름 입력">
+					</div>
 
-			<div class="form-group" style="width: 180px;">
-				<label>비밀번호</label> <input type="password" name="user_pass1" id="pw"
-					class="form-control" onchange="check_pw()" required="required"
-					placeholder="비밀번호입력"> <br> <label>비밀번호 재확인</label> <input
-					type="password" name="user_pass2" id="pw2" class="form-control"
-					onchange="check_pw()" required="required" placeholder="비밀번호재입력">&nbsp;<span
-					id="check"></span>
-			</div>
+					<!-- 주소 -->
+					<div class="form-group" style="width: 425px; margin-bottom: 20px;">
+						<label>주소</label> <input type="text" name="addr"
+							class="form-control" required="required" placeholder="주소 입력">
+					</div>
+					
+					<!-- 생년월일 -->
+					<div class="form-group" style="margin-bottom: 20px;">
+						<table>
+							<tr>
+								<td><label>생년월일</label></td>
+							</tr>
+							
+							<tr>
+								<td class="form-inline">
+									<input type="text" name="birthday1"
+									class="form-control" style="width: 100px;"
+									placeholder="년(4자)"> 
+								</td>
+								
+								<td width="30px;" style="text-align: center;"><b>-</b></td>
+								
+								<td class="form-inline">
+									<select name="birthday2"
+									id="birthday2" class="form-control"
+									style="width: 100px;">
+										<option value="">월</option>
+										<c:forEach var="i" begin="1" end="12">
+											<option value="${i}">${i}</option>
+										</c:forEach>
+									</select>
+								</td>
+								
+								<td width="30px;" style="text-align: center;"><b>-</b></td>
+								
+								<td class="form-inline">
+									<input type="text" name="birthday3" class="form-control"
+									style="width: 100px;" placeholder="일">
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<!-- 성별 -->
+					<div class="form-group" style="width: 200px; margin-bottom: 20px;">
+						<label>성별</label> <select name="gender" class="form-control">
+							<option value="">성별</option>
+							<option value="남자">남자</option>
+							<option value="여자">여자</option>
+						</select>
+					</div>
+					
+					<!-- hp -->
+					<div class="form-group" style="width: 200px; margin-bottom: 20px; margin-bottom: 50px;">
+						<label>휴대전화</label> <input type="text" name="hp"
+							class="form-control" required="required" placeholder="핸드폰 번호 입력">
+					</div>
+				</div>
 
-			<div class="form-group" style="width: 180px;">
-				<label>이름</label> <input type="text" name="user_name"
-					class="form-control" required="required" placeholder="이름입력">
-			</div>
+				<!-- 캡챠 -->
+				<div id="google_recaptha" style="display: flex; justify-content: center;">
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class="g-recaptcha"
+						data-sitekey="6LfQugsdAAAAAMsc4blU0sNU9CBZdnflfGNKYveI"></div>
+				</div>
 
-			<div class="form-group" style="width: 180px;">
-				<label>주소</label> <input type="text" name="addr"
-					class="form-control" required="required" placeholder="주소입력">
-			</div>
-
-			<div class="form-group" style="width: 180px;">
-				<label>생년월일</label> <br> <input type="text" name="birthday1"
-					class="form-inline" style="width: 50px; height: 20px;"
-					placeholder="년(4자)"> <b>-</b> <select name="birthday2"
-					id="birthday2" class="form-inline"
-					style="width: 50px; height: 20px;">
-					<option value="">월</option>
-					<c:forEach var="i" begin="1" end="12">
-						<option value="${i}">${i}</option>
-					</c:forEach>
-				</select> <b>-</b> <input type="text" name="birthday3" class="form-inline"
-					style="width: 50px; height: 20px;" placeholder="일">
-			</div>
-
-			<div class="form-group" style="width: 180px;">
-				<label>성별</label> <select name="gender" class="form-control">
-					<option value="">성별</option>
-					<option value="남자">남자</option>
-					<option value="여자">여자</option>
-				</select>
-			</div>
-
-			<div class="form-group" style="width: 180px;">
-				<label>휴대전화</label> <input type="text" name="hp"
-					class="form-control" required="required" placeholder="번호입력">
-			</div>
-
-			<!-- 캡챠 -->
-			<div id="google_recaptha">
-				<script src='https://www.google.com/recaptcha/api.js'></script>
-				<div class="g-recaptcha"
-					data-sitekey="6LfQugsdAAAAAMsc4blU0sNU9CBZdnflfGNKYveI"></div>
-			</div>
-
-			<div style="margin-left: 50px;">
-				<button type="submit" class="btn btn-warning">회원가입</button>
+				<div style="display: flex; justify-content: center; margin-top: 35px; margin-bottom: 30px;">
+					<button type="submit" class="btn btn-warning">회원가입</button>
+				</div>
 			</div>
 		</div>
 	</form>

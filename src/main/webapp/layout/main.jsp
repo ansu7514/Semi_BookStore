@@ -135,9 +135,5 @@ String loginok = (String)session.getAttribute("loginok");
 			</div>
 			<script src="JS/slide_show.js"></script>
 		</div>
-		
-		<div class="copyright" style="width: 50%">
-			<h6>Copyright ⓒ 2021 by 가을 책방 All Pictures cannot be copied without permission.</h6>
-		</div>
 </body>
 </html>

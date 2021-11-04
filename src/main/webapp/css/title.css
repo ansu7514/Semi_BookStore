@@ -11,6 +11,7 @@
 
 .title_de{
 	margin-top: -8px;
+	margin-bottom: 20px;
 	padding-left: 30%;
 	padding-right: 30%;
 	height: 100%;
@@ -37,6 +38,7 @@
 	margin-top: 35px;
 	max-width: 60px;
 	max-height: 60px;
+	margin-right: 1%;
 }
 
 #title_text_1 {
@@ -44,6 +46,7 @@
 	font-size: 35pt;
 	color: #55661c;
 	margin-top: 33px;
+	margin-right: 2%;
 }
 
 #title_text_2 {
@@ -59,4 +62,5 @@
 	margin-top: 65px;
 	max-width: 30px;
 	max-height: 30px;
+	margin-left: 1%;
 }
