@@ -2,10 +2,10 @@
 	width: 100%;
 }
 
-.frm-review > .input-review{
+.input-review{
 	display: flex;
 	width: 100%;
-	height: 150px;
+	height: 100px;
 }
 
 .input-review > textarea{
@@ -14,16 +14,17 @@
 	height: 100%;
 }
 
-.input-review > button#submit-review{
+.input-review > .submit-review{
 	border: none;
 	border-radius: 5px;
 	color: #FFF;
 	background-color: #E6B05F;
 	margin-left: 2%;
-	width: 10%;
+	margin-right: 2%;
+	width: 15%;
 	height: 100%;
 }
 
-.input-review > button#submit-review:hover{
+.input-review > #submit-review:hover{
 	background-color: #E09B3F;
 }

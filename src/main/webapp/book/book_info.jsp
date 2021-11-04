@@ -18,7 +18,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
-<%@ page import="java.text.*"%>
+<!-- 리뷰 -->
+<link rel="stylesheet" type="text/css" href="../css/star-rating-svg.css">
+<link rel="stylesheet" type="text/css" href="../css/review.css">
+<script src="../JS/rating.js"></script>
+
+<%@ page import="java.text.DecimalFormat"%>
 
 
 <title>Insert title here</title>
@@ -37,7 +42,7 @@
 		
 		//파라미터값 가져오기 - user_id
 		String user_id = request.getParameter("user_id");
-		
+		user_id="apple";
 	
 		//DAO 객체선언
 		BookDAO dao = new BookDAO();
@@ -261,6 +266,8 @@
 			<div id="book_index_detail"><%=dto.getChapter() %></div>
 			
 		</div>
+		
+		<jsp:include page="../review/review.jsp"/>
 	</div>
 </body>
 </html>
