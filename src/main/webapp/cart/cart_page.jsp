@@ -1,3 +1,5 @@
+<%@page import="db.BookDTO"%>
+<%@page import="db.BookDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.CartDTO"%>
 <%@page import="db.CartDAO"%>
@@ -18,10 +20,22 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 </head>
 <body>
 <%
+
+String user_id=request.getParameter("user_id");
+
+user_id="apple"; //검사용도
+
 //	1) db 선언
+BookDAO dao=new BookDAO();
+
+BookDTO Bdto=new BookDTO();
+
 CartDAO db=new CartDAO();
+
 //	2) dao에서 list 가져오기
-//ArrayList<CartDTO>list=db.selectCart(user_id);  
+
+ArrayList<CartDTO>list=db.selectCart(user_id);  
+
 %>
 
 <div class="title">
@@ -38,25 +52,21 @@ CartDAO db=new CartDAO();
 	<th width="30px">삭제</th>               
 </tr>
 <%
-//for(CartDTO dto:list)
-{%>
+for(int i=0; i<list.size(); i++){ 
+	
+	CartDTO dto=list.get(i); 
+	Bdto=dao.getBook(dto.getBook_id());
+	%>
+
 	<tr style="text-align: center;">
 		<td>
 		<input type="checkbox" name="buy" onclick="">
 		</td>
+		<td><%=Bdto.getBook_name() %></td>
 		<td></td>
-		<td></td>
-		<!-- <td>
-		<input type="text" name="su" id="su" size="2" maxlength="4" class="su" value="1" onkeyup="">
-		<button type="button" class="btn btn-default btn-xs" style="width: 35px;">추가</button>
-		<button type="button" class="btn btn-default btn-xs" style="width: 35px;">삭제</button>
-		</td> -->
 		<td>
-		<select style="width: 40px;">
-		<c:forEach var="i" begin="1" end="15">
-		<option value="${i}">${i}</option>
-		</c:forEach>
-		</select>
+		<input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" 
+		min="1" value="<%=dto.getEa() %>">
 		</td>
 		<td>
 		<button type="button" class="btn btn-danger btn-xs" 

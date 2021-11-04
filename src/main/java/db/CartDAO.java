@@ -79,6 +79,10 @@ public class CartDAO {
 				dto.setBook_id(rs.getString(2));
 				dto.setEa(rs.getInt(3));
 				
+				System.out.println(dto.getUser_id());
+				System.out.println(dto.getBook_id());
+				System.out.println(dto.getEa());
+				
 				list.add(dto);
 			}
 		} catch (SQLException e) {
