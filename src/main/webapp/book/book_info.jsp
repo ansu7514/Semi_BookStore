@@ -29,11 +29,15 @@
 
 	<%
 	
-		//파라미터값 가져오기
+		//파라미터값 가져오기 - book_id
 		String book_id = request.getParameter("book_id");
-		
+	
 		//임의로 부여한 값
 		book_id="5";
+		
+		//파라미터값 가져오기 - user_id
+		String user_id = request.getParameter("user_id");
+		
 	
 		//DAO 객체선언
 		BookDAO dao = new BookDAO();
@@ -218,7 +222,7 @@
 		
 						<div id="btns">
 							<button id="buy" class="btn fourth" onclick="location.href=''">바로구매</button>
-							<button id="goCart" class="btn fourth" onclick="location.href=''">장바구니</button>
+							<button id="goCart" class="btn fourth" onclick="location.href='book_to_cart.jsp'">장바구니</button>
 						</div>
 						
 				</div>
