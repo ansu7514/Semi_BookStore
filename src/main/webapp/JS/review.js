@@ -23,6 +23,11 @@ $(function(){
 			user_id : "<$=user_id$>"
 		};
 		
+		console.log(review.content);
+		console.log(review.book_id);
+		console.log(review.rating);
+		console.log(review.user_id);
+		
 		$.ajax({
 			url:"reviewAction.jsp",
 			type:"post",

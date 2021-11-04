@@ -19,9 +19,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 <!-- 리뷰 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/star-rating-svg.css">
 <link rel="stylesheet" type="text/css" href="../css/review.css">
-<script src="../JS/rating.js"></script>
+<script src="../JS/review.js"></script>
 
 <%@ page import="java.text.DecimalFormat"%>
 
