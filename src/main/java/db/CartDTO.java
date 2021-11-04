@@ -22,7 +22,7 @@ public class CartDTO {
 		return ea;
 	}
 	public void setEa(int ea) {
-		ea = ea;
+		this.ea = ea;
 	}
 	
 	

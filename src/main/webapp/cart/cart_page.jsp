@@ -48,8 +48,11 @@ ArrayList<CartDTO>list=db.selectCart(user_id);
 	<th width="30px">삭제</th>               
 </tr>
 <%
-for(int i=0; i<list.size(); i++)
-{ CartDTO dto=list.get(i); %>
+for(int i=0; i<list.size(); i++){ 
+	
+	CartDTO dto=list.get(i); 
+	
+	%>
 
 	<tr style="text-align: center;">
 		<td>
