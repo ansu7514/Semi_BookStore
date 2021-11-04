@@ -13,17 +13,15 @@
 <title>title</title>
 </head>
 <body>
-	<form action="<c:url value='/' />index.jsp">
-		<div class="title_de">
-			<a id="title_de" href="<c:url value='/' />index.jsp">
-				<img id="title_book" alt="" src="<c:url value='/' />/image/title_book.png">
-				
-				<b id="title_text_1">가을</b>
-				<b id="title_text_2"> 책방</b>
-			</a>
+	<div class="title_de">
+		<a id="title_de" href="<c:url value='/' />index.jsp">
+			<img id="title_book" alt="" src="<c:url value='/' />/image/title_book.png">
+			
+			<b id="title_text_1">가을</b>
+			<b id="title_text_2"> 책방</b>
 			
 			<img id="title_leaves" alt="" src="<c:url value='/' />/image/title_leaves.png">
-		</div>
-	</form>
+		</a>
+	</div>
 </body>
 </html>

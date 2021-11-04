@@ -24,7 +24,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 %>
 </head>
 <body>
-	<div class="logpout_form" style="padding-left: 5%; padding-top: 30px; padding-right: 5%;">
+	<div class="logpout_form" style="padding-left: 7%; padding-top: 30px; padding-right: 4%;">
 		<table style="width: 100%; height: 100%">
 			<tr>
 				<td width="68%"><h3><b>📙 <%= user_dto.getUser_name() %> 📙</b>님</h3></td>
@@ -34,7 +34,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 				</td>
 			</tr>
 			
-			<tr height="40px"></tr>
+			<tr height="35px"></tr>
 			
 			<tr>
 				<td colspan="2">
@@ -45,6 +45,8 @@ UserDTO user_dto = user_dao.getUser(myid);
 					</ul>
 				</td>
 			</tr>
+			
+			<tr height="10px"></tr>
 			
 			<tr>
 				<td colspan="2">
@@ -60,7 +62,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 				</td>
 			</tr>
 			
-			<tr height="40px"></tr>
+			<tr height="35px"></tr>
 			
 			<tr>
 				<td colspan="2" style="text-align: center;">

@@ -9,15 +9,16 @@
 	text-decoration: none !important;
 }
 
-.title_de {
-	width: 100%;
+.title_de{
+	display: flex;
+	justify-content: center;
+	height: 100%;
 }
 
 #title_book {
 	width: 20%;
 	height: auto;
-	position: relative;
-	top: 25px;
+	margin-top: 25px;
 	max-width: 65px;
 }
 
@@ -25,22 +26,19 @@
 	font-family: 'Noto Serif KR', serif;
 	font-size: 35pt;
 	color: #55661c;
-	position: relative;
-	top: 37px;
+	margin-top: 37px;
 }
 
 #title_text_2 {
 	font-family: 'Noto Serif KR', serif;
 	font-size: 35pt;
 	color: #3D2A26;
-	position: relative;
-	top: 37px;
+	margin-top: 37px;
 }
 
 #title_leaves {
 	width: 10%;
 	height: auto;
-	position: relative;
-	top: 45px;
+	margin-top: 45px;
 	max-width: 41px;
 }

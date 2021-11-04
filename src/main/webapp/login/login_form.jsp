@@ -28,21 +28,20 @@ if(saveok!=null)
 
 <body>
 
-<div style="width:200px; margin: 7% 0px 16% 8%;">
+<div style="width:200px; margin: 4% 0px 10% 8%;">
 	<form action="login/login_action.jsp" method="post" name="frm"">
-		<table class="">
+		<table>
     
      <tr height="3px"></tr>
     
-	<tr height="80px">
-	
+	<tr height="60px">
 		<td colspan="2" align="left">
 			<input type="checkbox" name="chsave" style="margin-right: 5px; margin-left: 20px;">
 			<b style="font-size: 1.2em;">아이디 저장</b>
 		</td>
 	</tr>
     
-    <tr height="10px"></tr>
+    <tr height="8px"></tr>
     
 	<tr height="50px">
 		<td>
@@ -51,7 +50,7 @@ if(saveok!=null)
 		</td>
 	</tr>
     
-    <tr height="10px"></tr>
+    <tr height="8px"></tr>
     
 	<tr height="50px">
 		<td>
@@ -65,6 +64,15 @@ if(saveok!=null)
 	<tr>
 		<td colspan="2" style="padding-left: 20px;">
 			<button type="submit" class="btn btn-warning" style="width: 230px;">로그인</button>
+		</td>
+	</tr>
+	
+	<tr height="15px"></tr>
+    
+	<tr>
+		<td colspan="2" style="padding-left: 20px;">
+			<button type="button" class="btn btn-warning" style="width: 230px;"
+			onclick="location.href='index.jsp?main=login/member_form.jsp'">회원 가입</button>
 		</td>
 	</tr>
     

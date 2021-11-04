@@ -26,8 +26,28 @@
 <title>가을 책방</title>
 </head>
 <body>
+	<%
+	// 프로젝트 경로 구하기
+	String root = request.getContextPath();
+	
+	// 기본 페이지
+	String mainPage = "layout/main.jsp";
+	
+	// url을 통해서 main값을 읽어서 출력
+	if(request.getParameter("main") != null) {
+		mainPage = request.getParameter("main");
+	}
+	%>
+	
 	<div class="index">
-		<div class="title">
+		<!-- 타이틀 -->
+		<jsp:include page="layout/title.jsp"/>
+		<!-- 광고 -->
+		<jsp:include page="layout/adver.jsp"/>
+		<!-- 책들(내용) -->
+		<jsp:include page="<%= mainPage %>"/>
+		
+		<%-- <div class="title">
 			<jsp:include page="layout/title.jsp"/>
 		</div>
 		
@@ -36,8 +56,8 @@
 		</div>
 		
 		<div class="main">
-			<jsp:include page="layout/main.jsp"/>
-		</div>
+			<jsp:include page="<%= mainPage %>"/>
+		</div> --%>
 	</div>
 </body>
 </html>
