@@ -14,12 +14,50 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/payform.css">
+<link rel="stylesheet" href="../css/payform.css?after">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!-- bx 슬라이더용 추가 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
 <title>Insert title here</title>
+
+	<!-- bx 슬라이더용 추가 -->
+	<!-- 가능하면 나중에 js로 따로 만들어서 뺄것 -->
+	<script>
+	
+		$(document).ready(function(){
+		
+			$('.slider').bxSlider();
+			
+		    $('.bxslider').bxSlider({ // 클래스명 주의!
+
+		        auto: false, // 자동으로 애니메이션 시작
+
+		        speed: 500,  // 애니메이션 속도
+
+		        pause: 5000,  // 애니메이션 유지 시간 (1000은 1초)
+
+		        mode: 'horizontal', // 슬라이드 모드 ('fade', 'horizontal', 'vertical' 이 있음)
+
+		        autoControls: true, // 시작 및 중지버튼 보여짐
+
+		        pager: true, // 페이지 표시 보여짐
+
+		        captions: true, // 이미지 위에 텍스트를 넣을 수 있음
+
+		    });
+		
+		});
+	
+	</script>
+
+
 </head>
 
 	<%
@@ -74,22 +112,22 @@
 					<table class="table table-hover" id="transport_form">
 						<caption class="captions">배송지 선택</caption>
 							<tr>
-								<td colspan="2"><input type="checkbox">회원정보와 동일</td>
+								<th colspan="2" style="text-align: left;">회원정보와 동일 &nbsp;<input type="checkbox"></th>
 								<td></td>
 							</tr>
 						
 							<tr>
-								<td>주문자 정보</td>
+								<th>주문자 정보</th>
 								<td><input type="text" id="orderer"></td>
 							</tr>
 							
 							<tr>
-								<td>주소</td>
+								<th>주소</th>
 								<td><input type="text" id="addr"></td>
 							</tr>
 
 							<tr>
-								<td>연락처</td>
+								<th>연락처</th>
 								<td>
 									<input type="text" id="hp1" class="hp">&nbsp;-&nbsp;
 									<input type="text" id="hp2" class="hp">&nbsp;-&nbsp;
@@ -103,45 +141,53 @@
 				<!-- 삼품정보 div -->
 				<div id="product_info">
 				
-					<h4 class="captions">주문정보</h4>
+					<h4 class="captions">주문 정보</h4>
 					
-					<!-- list이기 때문에 for문 출력을 합니다 -->
-					<%
-						for(int i=0; i < cart_list.size(); i++){
-							
-							/* 각 i값마다 list에서 dto 가져옴 */
-							Cdto = cart_list.get(i);
-							
-							/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
-							Bdto = Bdao.getBook(Cdto.getBook_id());
-							
-							/* 검산용 - book id check */
-							System.out.println("책id(book_id): "+ Cdto.getBook_id());
-							
-							/* 검산용 - 갯수 ea check */
-							System.out.println("주문수량(ea): "+ Cdto.getEa());
+						<!-- bxSlider 조건에 맞춰 class명 부여 -->
+						<div id="slider">
 						
-							/* 검산용 - CartDAO에서 뽑아온 book_id를 통해 BookDAO에서 값 가져옴 */
-							/* 위에서 이미 book_id를 통해서 Bdto값을 선언해줬음 */
-							System.out.println("책이름(book_name): " + Bdto.getBook_name());
-							System.out.println("책이미지(book_image): " + Bdto.getBook_image());
+							<ul class="bxslider">
 							
-							/* 총금액은 갯수 곱하기 책가격의 포맷형식 */
-							System.out.println("총가격(book_price): " + df.format(Bdto.getBookPrice()*Cdto.getEa()));
-
-							%>
+								<!-- list이기 때문에 for문 출력을 합니다 -->
+								<%
+									for(int i=0; i < cart_list.size(); i++){
+										
+										/* 각 i값마다 list에서 dto 가져옴 */
+										Cdto = cart_list.get(i);
+										
+										/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
+										Bdto = Bdao.getBook(Cdto.getBook_id());
+										
+										/* 검산용 - book id check */
+										System.out.println("책id(book_id): "+ Cdto.getBook_id());
+										
+										/* 검산용 - 갯수 ea check */
+										System.out.println("주문수량(ea): "+ Cdto.getEa());
+									
+										/* 검산용 - CartDAO에서 뽑아온 book_id를 통해 BookDAO에서 값 가져옴 */
+										/* 위에서 이미 book_id를 통해서 Bdto값을 선언해줬음 */
+										System.out.println("책이름(book_name): " + Bdto.getBook_name());
+										System.out.println("책이미지(book_image): " + Bdto.getBook_image());
+										
+										/* 총금액은 갯수 곱하기 책가격의 포맷형식 */
+										System.out.println("총가격(book_price): " + df.format(Bdto.getBookPrice()*Cdto.getEa()));
+			
+										%>
+										
+										<!-- 회전판에 책 img 목록들 추가 -->
+										<li class="img_div">
+											<h5 class="img_name"><%=Bdto.getBook_name() %></h5>
+											<img class="img" src="../image/book/<%=Bdto.getBook_image()%>">
+											<h6 class="totP_ea"><%=df.format(Bdto.getBookPrice()*Cdto.getEa()) %>원 &nbsp;/ &nbsp;<%=Cdto.getEa() %>개</h6>
+										</li>
+										
+									<%}
+								%>
 							
-							
-							
-							<!-- 시험: list로 받은 값 출력 -->
-							<!-- 책이름, 이미지, 수량, 총가격 -->
-							<h1>d</h1>
-						<%}
-					%>
-				
-				
-				</div>			
-			</div>
+							</ul>
+						</div>
+					</div>			
+				</div>
 			
 			
 			<!-- 결제정보 div -->

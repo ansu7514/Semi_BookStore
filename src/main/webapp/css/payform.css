@@ -18,9 +18,10 @@
 			padding-left: 7%;
 		}
 		
+		/* 맨위의 선 */
 		#top_hr{
 			margin-top: 2%;
-			background-color:black;
+			background-color:gray;
 		}
 		
 		
@@ -34,23 +35,31 @@
 		}
 		
 		
+		/* 왼쪽 - 배송지선택 div & 주문정보 div */
 		#left_info{
 			width: 50%;
 			margin-right: 4%;
 		}
 		
+		
+		/* 테이블 전체적용 */
 		table{
 			font-family: dotum, "돋움";
 			width: 100%;
 			margin-left: 3%;
-			
 		}
+		
 		
 		/* 배송지 정보 div */
 		#transport_info{
 			width: 100%;
 			margin-bottom: 5%;
 			/* background-color: blue; */
+		}
+		
+		
+		#transport_form>td{
+			width: 30%;
 		}
 		
 		
@@ -61,7 +70,7 @@
 			color: black;
 			font-weight: bold;
 			padding-left: 7%;
-			margin-bottom: 2%;
+			margin-bottom: 4%;
 		}
 		
 		
@@ -72,15 +81,68 @@
 		}
 		
 		
-		
-		
-		/* 상품 정보 div */
+		/* 주문 정보 div */
 		#product_info{
 			width: 100%;
-			padding-top: 5%;
-			margin-left: 2%;
-			
+			padding-top: 4%;
+			margin-left: 3%;
 			/* background-color: green; */
+		}
+		
+		
+		/* 슬라이드 안의 이미지 */
+		img{
+			/* margin-top: 1%; */
+			width: 50%;
+			height: 50%;
+		}
+		
+		/* 슬라이더를 담고있는 div */
+		div.bx-wrapper{
+			background-image: url(../image/frame.png);
+			/* background-color: #ffffde; */
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		
+		/* 이미지를 담고있는 div */
+		.img_div{
+			text-align: center;
+			align-self: center;
+			/* background-color: #ffdca1; */
+			/* background-image: url(../image/frame.png);
+			background-color: #ffffde;
+			background-repeat: no-repeat;
+			background-size: 100% 100%; */
+		}
+		
+		
+		/* 슬라이드 안의 이미지 */
+		.img{
+			/* padding: 30px 0px 100px 185px; */
+			margin: auto;
+			/* 그림자 */
+			box-shadow: 7px 7px 7px gray;
+		}
+		
+		
+		/* 책이름 */
+		.img_name{
+			padding-top: 9%;
+			padding-bottom: 3%;
+			font-family: "Noto Serif KR";
+			font-size: 1.7em;
+			font-weight: bold;
+		}
+		
+		
+		/* 책 총가격, 갯수 */
+		.totP_ea{
+			padding-top: 3%;
+			padding-bottom: 6%;
+			font-family: 'Tahoma';
+			font-size: 1.2em;
+			font-weight: bold;
 		}
 		
 		
