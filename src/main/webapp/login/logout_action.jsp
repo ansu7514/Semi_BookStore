@@ -21,7 +21,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 session.removeAttribute("loginok");
 
 //login_main 이동
-response.sendRedirect("../index.jsp?main=login/login_form.jsp");
+response.sendRedirect("../index.jsp?login/login_form.jsp");
 %>
 </body>
 </html>

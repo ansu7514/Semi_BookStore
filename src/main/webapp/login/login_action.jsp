@@ -41,7 +41,7 @@ if(b)
 	session.setAttribute("saveok", chsave==null?null:"yes");
 	
 	//로그인 성공시 -> 로그인된 메인화면으로 이동하기
-	response.sendRedirect("../index.jsp?main=login/logout_form.jsp");
+	response.sendRedirect("../index.jsp?login/logout_form.jsp");
 }else
 {%>
 	<script type="text/javascript">
