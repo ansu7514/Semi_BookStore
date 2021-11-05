@@ -6,7 +6,7 @@
 			margin-left: 10%;
 			margin-top: 2%;
 			
-			background-color: yellow;
+			/* background-color: yellow;	 */
 		}
 		
 		/* font: 주문결제 */
@@ -30,19 +30,26 @@
 			margin-top: 2%;
 			display: flex;
 			
-			background-color: red;
+			/* background-color: red; */
 		}
 		
 		
 		#left_info{
 			width: 50%;
+			margin-right: 4%;
 		}
 		
+		table{
+			font-family: dotum, "돋움";
+			width: 100%;
+			margin-left: 3%;
+			
+		}
 		
 		/* 배송지 정보 div */
 		#transport_info{
 			width: 100%;
-			
+			margin-bottom: 5%;
 			/* background-color: blue; */
 		}
 		
@@ -54,21 +61,26 @@
 			color: black;
 			font-weight: bold;
 			padding-left: 7%;
+			margin-bottom: 2%;
 		}
 		
 		
 		
 		/* 배송지적는 테이블 div */
-		#transport_form{
-			width: 100%;
+		.hp{
+			width: 100px;
 		}
+		
+		
 		
 		
 		/* 상품 정보 div */
 		#product_info{
 			width: 100%;
+			padding-top: 5%;
+			margin-left: 2%;
 			
-			background-color: green;
+			/* background-color: green; */
 		}
 		
 		
@@ -79,6 +91,10 @@
 			
 			background-color: gray;
 		}
+		
+		
+		
+		
 		
 		
 		
