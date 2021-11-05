@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap');
 
 html {
-	background-color: #FAF7EB;
+	background-color: #FAF7EB !important;
 	font-family: 'Noto Serif KR', serif;
 }
 

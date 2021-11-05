@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;700&display=swap" rel="stylesheet">
 <style type="text/css">
 	@import url("css/index.css");
 	@import url("css/title.css");

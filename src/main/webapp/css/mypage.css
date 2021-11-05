@@ -1,13 +1,21 @@
 @charset "UTF-8";
 
-.mypage_title> #user_name {
+.mypage_title> #user_name>b {
 	font-size: 30px;
 	margin-top: 50px;
 	padding-left: 2%;
 }
 
-.mypage_magin {
-	margin-top: 20px;
+.mypage_title> #user_name {
+	margin-top: 50px;
+	font-size: 23x1px;
+	font-weight: bold;
+}
+
+.mypage_main {
+	display: flex;
+	margin-top: 15px;
+	margin-top: 30px;
 }
 
 .mypage_main> .mypage_menu {
@@ -17,18 +25,48 @@
 
 .mypage_menu_table {
 	width: 80%;
-	height: 80%;
+	height: 250px;
 }
 
 .mypage_menu_table, tr, td {
-	border: 1px solid #3d2a26;
+	border: 2px solid #3d2a26;
 }
 
-body {
-	background-color: red;
+.mypage_menu_table>tr>td {
+	height: 80px;
 }
 
-.mypage_menu_table> #table_name {
-	font-size: 25px;
+#table_name_td {
+	height: 50px;
+	background-color: rgba(200, 171, 66, 0.5);
+}
+
+#table_name {
+	font-size: 23px;
 	margin-left: 5%;
+	color: #3d2a26;
+	margin-top: 3px;
+}
+
+.table_sub_td {
+	height: 50px;
+	cursor: pointer;
+}
+
+.table_sub_td> .table_sub {
+	margin-left: 10%;
+	color: #3d2a26;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.mypage_print {
+	width: 100%;
+	margin-right: 2%;
+}
+
+#show_menu {
+	width: 100%;
+	min-height: 1100px;
+	background-color: #FAF7EB;
 }
