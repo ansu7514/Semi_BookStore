@@ -5,20 +5,18 @@
 <head>
 <meta charset="utf-8">
 
-<!-- 리뷰 -->
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/star-rating-svg.css">
-<link rel="stylesheet" type="text/css" href="css/review.css">
-<script src="JS/review.js?after"></script>
-<script src="JS/jquery.star-rating-svg.js"></script>
+<!-- 별점 -->
 
+<!-- 리뷰 -->
+<link rel="stylesheet" href="css/review.css">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script src="JS/review.js"></script>
 
 </head>
 <body>
    <div class="review">
       <!-- 별점 및 리뷰-->
-      
+	  
       <div class="input-review">
          <textarea name="review-content" placeholder="리뷰를 입력해주세요"></textarea>
          <button class="submit-review" id="submit-review" onclick="return false">입력</button>

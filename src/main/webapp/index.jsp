@@ -49,7 +49,6 @@
 		mainPage = request.getParameter("main");
 	}
 	%>
-	<div class="my-rating-4"></div>
 	<div class="index">
 		<!-- 타이틀 -->
 		<jsp:include page="layout/title.jsp"/>

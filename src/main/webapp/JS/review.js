@@ -2,17 +2,6 @@ $(function(){
 	
 	$(".input-comment").hide();
 	
-	//별점
-	$(".my-rating-4").starRating({
-		totalStars: 5,
-		starShape: 'rounded',
-		starSize: 40,
-		emptyColor: 'lightgray',
-		hoverColor: 'crimson',
-		activeColor: 'crimson',
-		useGradient: false
-	});
-	
 	//리뷰작성
 	$("#submit-review").click(function(){
 		
