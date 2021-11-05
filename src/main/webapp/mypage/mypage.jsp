@@ -7,13 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- 전체 css -->
 <link rel="stylesheet" href="css/mypage.css">
+<!-- js -->
+<link rel="stylesheet" href="JS/mypage.js">
 <title>My page</title>
 </head>
 <%
@@ -27,7 +25,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 	<div class="mypage_wrapper">
 		<!-- 타이틀 -->
 		<div class="mypage_title">
-			<h4 id="user_name">🏠 <b><%= user_dto.getUser_name() %></b>의 My Page</h4>
+			<h4 id="user_name"><b style="color : #55661c;">🏠 <%= user_dto.getUser_name() %></b>의 My Page</h4>
 		</div>	
 		
 		<!-- 전체 화면 -->
@@ -37,46 +35,52 @@ UserDTO user_dto = user_dao.getUser(myid);
 				<!-- 주문 관리 -->
 				<table class="mypage_menu_table">
 					<tr>
-						<td><a href=""><label id="table_name">📦 주문 관리</label></a></td>
+						<td id="table_name_td"><label id="table_name">📦 주문 관리</label></td>
 					</tr>
 					
 					<tr>
-						<td>
-							<a href="">-  주문 배송 / 조회</a>
+						<td class="table_sub_td">
+							<span class="table_sub" id="order_see">-  주문 배송 / 조회</span>
 						</td>
 					</tr>
 					
 					<tr>
-						<td>
-							<a href="">-  취소 / 교환 / 반품 조회</a>
+						<td class="table_sub_td">
+							<span class="table_sub" id="order_del">-  취소 / 교환 / 반품 조회</span>
 						</td>
 					</tr>
 					
 					<!-- 회원 정보 관리 -->
 					<tr>
-						<td>
-							<a href="">
-								<%
-								if(user_dto.getGender().equals("남자")) {
-								%>
-									<label id="table_name">🧑 회원 정보 관리</label>
-								<%
-								} else {
-								%>
-									<label id="table_name">👧 회원 정보 관리</label>
-								<%
-								}
-								%>
-							</a>
+						<td id="table_name_td">
+							<%
+							String user_gender = user_dto.getGender();
+							
+							if(user_gender.equals("남자")) {
+							%>
+								<label id="table_name">🧑 회원 정보 관리</label>
+							<%
+							} else {
+							%>
+								<label id="table_name">👧 회원 정보 관리</label>
+							<%
+							}
+							%>
 						</td>
 					</tr>
 					
 					<tr>
-						<td>
-							<a href="">-  회원 정보 수정 / 탈퇴</a>
+						<td class="table_sub_td">
+							<span class="table_sub" id="my_mem">-  회원 정보 수정 / 탈퇴</span>
 						</td>
 					</tr>
 				</table>
+			</div>
+			
+			<!-- 출력 화면 -->
+			<div class="mypage_print">
+				<script src="JS/mypage.js"></script>
+				<embed id="show_menu" type="text/html" src="">
 			</div>
 		</div>
 	</div>
