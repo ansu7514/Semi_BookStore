@@ -19,9 +19,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 <!-- 리뷰 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/star-rating-svg.css">
-<link rel="stylesheet" type="text/css" href="../css/review.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="css/star-rating-svg.css">
+<link rel="stylesheet" type="text/css" href="css/review.css">
 <script src="../JS/review.js"></script>
 
 <%@ page import="java.text.DecimalFormat"%>
@@ -35,12 +35,13 @@
 
 	<%
 	
+		request.setCharacterEncoding("utf-8");
+
 		//파라미터값 가져오기 - book_id
 		String book_id = request.getParameter("book_id");
 		
 		//파라미터값 가져오기 - user_id
 		String user_id = request.getParameter("user_id");
-		user_id="apple";
 	
 		//DAO 객체선언
 		BookDAO dao = new BookDAO();
@@ -55,19 +56,6 @@
 		/* 예시 */
 		int val = 1234567;
 		System.out.println(df.format(val));
-		
-		
-		
-		// 프로젝트 경로 구하기
-		String root = request.getContextPath();
-		
-		// 기본 페이지
-		String mainPage = "layout/main.jsp";
-		
-		// main 값 읽어서 출력
-		if(request.getParameter("main") != null) {
-			mainPage = request.getParameter("main");
-		}
 	%>
 	
 
@@ -197,27 +185,27 @@
 				
 						<!-- 별점-얼마나 차있는지 위에 함수로 줘야함 -->
 						<div class="star-ratings-fill" id="star">
-							<span class="star">★</span>
-							<span class="star">★</span>
-							<span class="star">★</span>
-							<span class="star">★</span>
-							<span class="star">★</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
 						</div>
 					
 						<div id="summary"></div>
 						
 						<div id="detail">
 						
-							판매가:&nbsp;&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
+							판매가 :&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
 							
-							포인트:&nbsp;&nbsp; <%=dto.getBookPrice()/10 %> pt <br>
+							포인트 :&nbsp; <%=dto.getBookPrice()/10 %> pt <br>
 							
-							재고량:&nbsp;&nbsp; <%=dto.getEa() %> 권 <br>
+							재고량 :&nbsp; <%=dto.getEa() %> 권 <br>
 							
 							<!-- 재고가 수량보다 적어 음수가 될 경우, 구매불가 메시지 출력-->
-							주문량:&nbsp;&nbsp; <input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
+							주문량 :&nbsp; <input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
 					
-							총금액:&nbsp;&nbsp; <font id="totP"></font>
+							총금액 :&nbsp; <font id="totP"></font> 원
 						
 						</div>	
 		
@@ -239,7 +227,7 @@
 			<img id="adver_img" src="">
 		</div>
 
-		
+
 		<!-- 책소개 -->
 		<div id="book_content">
 

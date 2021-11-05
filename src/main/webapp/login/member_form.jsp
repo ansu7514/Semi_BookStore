@@ -62,7 +62,7 @@ function check_pw(){
 				<div class="member_form_de_center">
 					<!-- 아이디 -->
 					<div class="form-group" style="width: 200px; margin-bottom: 20px;">
-						<label>아이디</label> <input type="text" name="user_id"
+						<label style="font-size: 15pt;">아이디</label> <input type="text" name="user_id"
 							class="form-control" required="required" placeholder="아이디 입력">
 					</div>
 					
@@ -70,9 +70,9 @@ function check_pw(){
 					<div class="form-group" style="display: inline-flex; margin-bottom: 20px;">
 						<table id="pw_table" class="form-inline">
 							<tr>
-								<td><label>비밀번호</label></td>
+								<td><label style="font-size: 15pt;">비밀번호</label></td>
 								<td width="20px;"></td>
-								<td><label>비밀번호 재확인</label></td>
+								<td><label style="font-size: 15pt;">비밀번호 재확인</label></td>
 							</tr>
 							
 							<tr>
@@ -87,22 +87,25 @@ function check_pw(){
 								<td>
 									<input type="password" name="user_pass2" id="pw2"
 									style="width: 200px;" class="form-control"
-									onchange="check_pw()" required="required" placeholder="비밀번호 재입력">&nbsp;<span
-									id="check"></span>
+									onchange="check_pw()" required="required" placeholder="비밀번호 재입력">
 								</td>
+							</tr>
+							
+							<tr>
+								<td><span id="check" style="font-weight: bold"></span></td>
 							</tr>
 						</table>
 					</div>
 					
 					<!-- 이름 -->
 					<div class="form-group" style="width: 200px; margin-bottom: 20px;">
-						<label>이름</label> <input type="text" name="user_name"
+						<label style="font-size: 15pt;">이름</label> <input type="text" name="user_name"
 							class="form-control" required="required" placeholder="이름 입력">
 					</div>
 
 					<!-- 주소 -->
 					<div class="form-group" style="width: 425px; margin-bottom: 20px;">
-						<label>주소</label> <input type="text" name="addr"
+						<label style="font-size: 15pt;">주소</label> <input type="text" name="addr"
 							class="form-control" required="required" placeholder="주소 입력">
 					</div>
 					
@@ -110,7 +113,7 @@ function check_pw(){
 					<div class="form-group" style="margin-bottom: 20px;">
 						<table>
 							<tr>
-								<td><label>생년월일</label></td>
+								<td><label style="font-size: 15pt;">생년월일</label></td>
 							</tr>
 							
 							<tr>
@@ -145,7 +148,7 @@ function check_pw(){
 					
 					<!-- 성별 -->
 					<div class="form-group" style="width: 200px; margin-bottom: 20px;">
-						<label>성별</label> <select name="gender" class="form-control">
+						<label style="font-size: 15pt;">성별</label> <select name="gender" class="form-control">
 							<option value="">성별</option>
 							<option value="남자">남자</option>
 							<option value="여자">여자</option>
@@ -154,7 +157,7 @@ function check_pw(){
 					
 					<!-- hp -->
 					<div class="form-group" style="width: 200px; margin-bottom: 20px; margin-bottom: 50px;">
-						<label>휴대전화</label> <input type="text" name="hp"
+						<label style="font-size: 15pt;">휴대전화</label> <input type="text" name="hp"
 							class="form-control" required="required" placeholder="핸드폰 번호 입력">
 					</div>
 				</div>

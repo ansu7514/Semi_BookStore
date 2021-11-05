@@ -34,6 +34,8 @@
 </head>
 <body>
 	<%
+	request.setCharacterEncoding("utf-8");
+	
 	// 프로젝트 경로 구하기
 	String root = request.getContextPath();
 	
