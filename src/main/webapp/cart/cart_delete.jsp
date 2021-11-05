@@ -17,7 +17,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <body>
 삭제
 <%
-//user_id , book_id 읽기
+//user_id , book_id 읽기 ??
 String user_id=(String)request.getParameter("user_id");
 String book_id=(String)request.getParameter("book_id");
 
@@ -33,7 +33,7 @@ dao.deleteCart(dto);
 //삭제후 다시 장바구니로 이동
 response.sendRedirect("cart_page.jsp");
 %>
-<script type="text/javascript">
+<script type="text/javascript"> /* ?? */
 alert("해당 상품을 삭제하였습니다.");
 </script>
 

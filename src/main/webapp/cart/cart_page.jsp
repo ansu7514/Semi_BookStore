@@ -88,7 +88,7 @@ System.out.println(df.format(val));
 </div>
 
 <!-- 체크박스 , 상품명, 총가격, 수량, 삭제 th , 캡션 -->
-<div class="tableone" id="orderF">
+<div class="tableone">
 <table class="table table-bordered">
 <caption class="title2">장바구니 목록</caption>
 <tr>
