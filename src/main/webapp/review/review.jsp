@@ -4,6 +4,13 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+<!-- 리뷰 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="css/star-rating-svg.css">
+<link rel="stylesheet" type="text/css" href="css/review.css">
+<script src="JS/review.js"></script>
+
 </head>
 <body>
    <div class="review">

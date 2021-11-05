@@ -18,11 +18,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
-<!-- 리뷰 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="css/star-rating-svg.css">
-<link rel="stylesheet" type="text/css" href="css/review.css">
-<script src="../JS/review.js"></script>
 
 <%@ page import="java.text.DecimalFormat"%>
 
@@ -132,27 +127,8 @@
 			  target2.disabled = false;
 		}
 	}	 
-	
-	
-		
-
-	
-	var i = 1;
-	
-	function slide_show() {	
-		if(i > 3)
-			i = 1;
-		
-		document.getElementById("adver_img").src = "image/adver_" + i + ".png";
-		
-		setTimeout(slide_show, 3000); // 함수를 3초마다 호출
-		i++;
-	}
-
 </script>	
 	
-
-
 <body style="background-color: #FAF7EB">
 
 	<div id="wrapper">
@@ -198,7 +174,7 @@
 						
 							판매가 :&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
 							
-							포인트 :&nbsp; <%=dto.getBookPrice()/10 %> pt <br>
+							포인트 :&nbsp; <%=dto.getBookPrice()/10 %> point <br>
 							
 							재고량 :&nbsp; <%=dto.getEa() %> 권 <br>
 							
@@ -220,13 +196,6 @@
 			</div>
 		
 		</div>
-		
-		
-		<!-- 광고 이미지 -->
-		<div class="layout adver" onload="slide_show()">
-			<img id="adver_img" src="">
-		</div>
-
 
 		<!-- 책소개 -->
 		<div id="book_content">

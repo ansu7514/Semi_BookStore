@@ -117,7 +117,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	text-align: left;
 	letter-spacing: 1px;
 	line-height: 220%;
-	padding-left: 33%;
+	padding-left: 30%;
 }
 
 #btns {
@@ -156,11 +156,13 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .fourth {
 	border-color: #f1c40f;
-	color: #ff00c3;
+	color: #3d2a26;
 	background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
 	background-position: 100%;
 	background-size: 400%;
 	transition: background 300ms ease-in-out;
+	font-family: 'Noto Serif KR', serif;
+	font-weight: 900;
 }
 
 .fourth:hover {
@@ -170,9 +172,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 /* 버튼 아이디 */
 #buy, #goCart {
 	font-size: 20pt;
-	padding-left: 10%;
+	padding-left: 13%;
 	padding-right: 10%;
 	height: 70px;
+	margin-top: 15px;
 }
 
 /* 슬라이드 광고 */
@@ -183,19 +186,18 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 /* 여기서부터 content */
 #book_content {
 	width: 100%;
-	padding-top: 3%;
 }
 
 /* 책소개 */
 #blur_hr1 {
-	margin-top: 3%;
 	width: 70%;
-	margin-right: 10%;
 	height: 2px;
 	/* 창 줄여도 안밀림 */
 	background-color: #fa9b28;
 	border-radius: 100%;
 	display: flex;
+	margin-top: 70px;
+	margin-bottom: 50px;
 }
 
 #book_summary {
@@ -221,12 +223,13 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 /* 책목차 */
 #blur_hr2 {
 	width: 70%;
-	margin-top: 5%;
-	margin-right: 10%;
+	height: 2px;
 	/* 창 줄여도 안밀림 */
-	background-color: black;
+	background-color: #fa9b28;
 	border-radius: 100%;
 	display: flex;
+	margin-top: 70px;
+	margin-bottom: 70px;
 }
 
 #book_index {
@@ -248,4 +251,5 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	font-weight: bold;
 	line-height: 1.8;
 	letter-spacing: -0.02em;
+	margin-bottom: 150px;
 }
