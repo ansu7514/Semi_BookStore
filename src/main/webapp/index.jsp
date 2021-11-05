@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -30,6 +31,7 @@
 		},3000);
 	}
 </script>
+
 <title>가을 책방</title>
 </head>
 <body>
@@ -47,7 +49,7 @@
 		mainPage = request.getParameter("main");
 	}
 	%>
-	
+	<div class="my-rating-4"></div>
 	<div class="index">
 		<!-- 타이틀 -->
 		<jsp:include page="layout/title.jsp"/>
