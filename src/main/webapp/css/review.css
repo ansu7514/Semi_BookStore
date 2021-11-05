@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+.my-rating-4{
+	margin-left: 2%;
+}
+
+/* 리뷰 */
 .review{
 	width: 100%;
 }
@@ -11,12 +16,14 @@
 }
 
 .input-review > textarea{
+	margin-left: 2%;
 	resize: none;
 	width: 80%;
 	height: 100%;
 }
 
 .input-review > .submit-review{
+	font-size: 1.2em;
 	border: none;
 	border-radius: 5px;
 	color: #FFF;
@@ -28,5 +35,54 @@
 }
 
 .input-review > #submit-review:hover{
+	background-color: #E09B3F;
+}
+
+/* 댓글 */
+.comment{
+	width: 100%;
+}
+
+.comment > .show-box{
+	display: flex;
+}
+
+.show-box .show-comment{
+	margin-top: 5px;
+	cursor: pointer;
+	margin-left: auto;
+	font-size: 0.9em;
+	margin-right: 2%;
+	user-select:none;
+}
+
+.comment > .input-comment{
+	margin-top: 20px;
+	display: flex;
+	width: 100%;
+	height: 50px;
+}
+
+.input-comment > textarea{
+	margin-left: 20%;
+	resize: none;
+	width: 90%;
+	height: 100%;
+}
+
+.input-comment > .submit-comment{
+	border: none;
+	border-radius: 5px;
+	color: #FFF;
+	background-color: #E6B05F;
+	margin-left: 2%;
+	margin-right: 2%;
+	width: 15%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.input-comment > .submit-comment:hover{
+	cursor: pointer;
 	background-color: #E09B3F;
 }

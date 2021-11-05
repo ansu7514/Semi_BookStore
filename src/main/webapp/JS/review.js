@@ -1,4 +1,7 @@
 $(function(){
+	
+	$(".input-comment").hide();
+	
 	//별점
 	$(".my-rating-4").starRating({
 		totalStars: 5,
@@ -12,6 +15,10 @@ $(function(){
 	
 	//리뷰작성
 	$("#submit-review").click(function(){
+		
+		if($('input[name="review-content"]').val() == ""){
+			return;
+		}
 		
 		var content = $('input[name="review-content"]').val();
 		content = content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
@@ -44,4 +51,15 @@ $(function(){
 		});
 	});
 	
+	//댓글보기 버튼
+	var triger = true;
+	$(".show-comment").on("click",function(){
+		if(triger){ //true
+			$(".input-comment").show();
+			triger = false;
+		} else { //false
+			$(".input-comment").hide();
+			triger = true;
+		}	
+	});
 });

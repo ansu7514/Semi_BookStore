@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+.comment{
+	width: 100%;
+}
+
+.input-comment{
+	margin-left: 10%;
+	display: flex;
+	width: 80%;
+	height: 100px;
+}
+
+.input-comment > textarea{
+	resize: none;
+	width: 90%;
+	height: 100%;
+}
+
+.input-comment > .submit-comment{
+	border: none;
+	border-radius: 5px;
+	color: #FFF;
+	background-color: #E6B05F;
+	margin-left: 2%;
+	margin-right: 2%;
+	width: 15%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.input-comment > #submit-comment:hover{
+	background-color: #E09B3F;
+}
