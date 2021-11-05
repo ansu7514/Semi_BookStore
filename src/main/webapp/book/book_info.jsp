@@ -23,7 +23,6 @@
 
 <%@ page import="java.text.DecimalFormat"%>
 
-
 <title>Insert title here</title>
 </head>
 
@@ -222,7 +221,9 @@
 			
 		</div>
 		
+		<!-- 리뷰 -->
 		<jsp:include page="../review/review.jsp"/>
+		
 	</div>
 </body>
 </html>
