@@ -9,7 +9,7 @@
 	text-decoration: none !important;
 }
 
-.title_de{
+.title_de {
 	margin-top: -8px;
 	margin-bottom: 20px;
 	padding-left: 30%;
@@ -26,6 +26,7 @@
 	justify-content: center;
 	width: 100%;
 	margin-top: 24px;
+	cursor: pointer;
 }
 
 .title_text_de > b{

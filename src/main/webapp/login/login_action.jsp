@@ -41,11 +41,11 @@ if(b)
 	session.setAttribute("saveok", chsave==null?null:"yes");
 	
 	//로그인 성공시 -> 로그인된 메인화면으로 이동하기
-	response.sendRedirect("../index.jsp?main=login/logout_form.jsp");
+	response.sendRedirect("../index.jsp?login/logout_form.jsp");
 }else
 {%>
 	<script type="text/javascript">
-	alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+	alert("⚠ 아이디 또는 비밀번호가 일치하지 않습니다. ⚠");
 	history.back();
 	</script>
 <%}

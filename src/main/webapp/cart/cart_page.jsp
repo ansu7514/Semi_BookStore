@@ -19,20 +19,31 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?
 family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<script type="text/javascript">
-/* 그냥 체크여부 한번 테스트해봄  */
-/* $(document).ready(function(){
-    $("#rowcheck").change(function(){
-        if($("#rowcheck").is(":checked")){
-            alert("체크 되었음");
-        }else{
-            alert("해제 되었음");
-        }
-    });
-}); */
-</script>
+
 
 </head>
+
+<%
+//1) db 선언
+BookDAO dao=new BookDAO();
+BookDTO Bdto=new BookDTO();
+CartDAO db=new CartDAO();
+%>
+
+<script type="text/javascript">
+function tot(num,price,i) {
+	var a=(String)(num*price);
+	a=a.replace(/\B(?=(\d{3})+(?!\d))/g,",");
+	
+	console.log(num);
+	console.log(price);
+	console.log(i);
+	console.log(a);
+	
+	document.getElementById(i).innerText=a;
+	
+}
+</script>
 <body>
 
 
@@ -41,26 +52,25 @@ String user_id=request.getParameter("user_id");
 
 user_id="apple"; //검사용도
 
-//	1) db 선언
-BookDAO dao=new BookDAO();
-BookDTO Bdto=new BookDTO();
-CartDAO db=new CartDAO();
 
 //	2) dao에서 list 가져오기
 ArrayList<CartDTO>list=db.selectCart(user_id);  
 
 //	돈 자릿수포맷
 DecimalFormat df = new DecimalFormat("###,###");
+
 /* 예시 */
 int val = 34567;
 System.out.println(df.format(val));
 %>
 
+<div class="wrapper">
 <div class="title">
 <h2>장바구니</h2>
 <hr>
 </div>
 
+<div class="tableone">
 <table class="one">
 <caption>장바구니 목록</caption>
 <tr>
@@ -85,10 +95,10 @@ for(int i=0; i<list.size(); i++){
 		onclick="">
 		</td>
 		<td><%=Bdto.getBook_name() %></td>
-		<td><%=df.format((Bdto.getBookPrice() * dto.getEa())) %>원</td>
+		<td><span id="print_totP<%=(i) %>"><%=df.format(Bdto.getBookPrice() * dto.getEa()) %></span></td>
 		<td>
-		<input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" 
-		min="1" value="<%=dto.getEa() %>">
+		<input type="number" id="ea<%=(i) %>" style="width: 70px; height: 40px; text-align: center;" 
+		min="1" value="<%=dto.getEa() %>" onchange="tot(this.value, <%=Bdto.getBookPrice()%>,'print_totP<%=(i)%>')">
 		</td>
 		<td>
 		<button type="button" class="btn btn-warning btn-xs" 
@@ -101,6 +111,7 @@ for(int i=0; i<list.size(); i++){
 %>
 
 </table>
+</div>
 
 <table class="two">
 
@@ -117,6 +128,6 @@ for(int i=0; i<list.size(); i++){
 	</tr>
 	
 </table>
-
+</div>
 </body>
 </html>
