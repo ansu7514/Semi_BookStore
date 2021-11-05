@@ -40,7 +40,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 				<td colspan="2">
 					<ul style="display: flex; justify-content: center; padding:0px;">
 						<li style="float: left; cursor: pointer;">
-							<a href="" style="color: #55661c; font-size: 16pt;"><b>🙌 내 정보</b></a>
+							<a href="index.jsp?main=mypage/mypage.jsp?my_id=<%= user_dto.getUser_id() %>" style="color: #55661c; font-size: 16pt;"><b>🙌 내 정보</b></a>
 						</li>
 					</ul>
 				</td>

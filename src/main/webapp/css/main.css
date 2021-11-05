@@ -159,7 +159,7 @@ li {
 
 /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
 .controller span:hover {
-	background-color: rgba(86, 102, 29, 0.5);
+	background-color: rgb(169, 169, 169, 0.5);
 }
 
 .prev {

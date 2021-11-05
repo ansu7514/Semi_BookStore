@@ -55,7 +55,7 @@ if(key==null)
 	}else
 	{%>
 		<script type="text/javascript">
-		alert("비밀번호가 틀렸습니다.");
+		alert("❌ 비밀번호가 틀렸습니다. ❌");
 		history.back();
 		</script>
 	<%}

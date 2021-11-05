@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.mypage_title> #user_name {
+	font-size: 30px;
+	margin-top: 50px;
+	padding-left: 2%;
+}
+
+.mypage_magin {
+	margin-top: 20px;
+}
+
+.mypage_main> .mypage_menu {
+	width: 40%;
+	padding-left: 2%;
+}
+
+.mypage_menu_table {
+	width: 80%;
+	height: 80%;
+}
+
+.mypage_menu_table, tr, td {
+	border: 1px solid #3d2a26;
+}
+
+body {
+	background-color: red;
+}
+
+.mypage_menu_table> #table_name {
+	font-size: 25px;
+	margin-left: 5%;
+}
