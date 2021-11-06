@@ -185,22 +185,7 @@
 										Cdto = cart_list.get(i);
 										
 										/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
-										Bdto = Bdao.getBook(Cdto.getBook_id());
-										
-										/* 검산용 - book id check */
-										System.out.println("책id(book_id): "+ Cdto.getBook_id());
-										
-										/* 검산용 - 갯수 ea check */
-										System.out.println("주문수량(ea): "+ Cdto.getEa());
-									
-										/* 검산용 - CartDAO에서 뽑아온 book_id를 통해 BookDAO에서 값 가져옴 */
-										/* 위에서 이미 book_id를 통해서 Bdto값을 선언해줬음 */
-										System.out.println("책이름(book_name): " + Bdto.getBook_name());
-										System.out.println("책이미지(book_image): " + Bdto.getBook_image());
-										
-										/* 총금액은 갯수 곱하기 책가격의 포맷형식 */
-										System.out.println("총가격(book_price): " + df.format(Bdto.getBookPrice()*Cdto.getEa()));
-										
+										Bdto = Bdao.getBook(Cdto.getBook_id());										
 										
 										/* for문 마다 앞서 선언한 변수에 더해줍니다 */
 										/* 후에 돈자리 , 계산을 위해 포멧을 넣어줍니다 */
@@ -326,11 +311,6 @@
 		function use_point(point){
 			
 			var left_point = <%=Udto.getPoint()%> - $("#use_point").val();
-			
-			console.log(<%=Udto.getPoint()%>);
-			console.log(point);
-			console.log(left_point);
-			console.log(<%=payment_totP%>);
 
 			
 			/* 남은 포인트 정보 산정 */
