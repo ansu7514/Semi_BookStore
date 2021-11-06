@@ -33,9 +33,7 @@ dao.deleteCart(dto);
 //삭제후 다시 장바구니로 이동
 response.sendRedirect("cart_page.jsp");
 %>
-<script type="text/javascript"> /* ?? */
-alert("해당 상품을 삭제하였습니다.");
-</script>
+
 
 </body>
 </html>
