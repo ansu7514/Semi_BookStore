@@ -74,7 +74,7 @@
 		String user_id = request.getParameter("user_id");
 		
 		/* 임시값 */
-		user_id= "iam";
+		user_id= "apple";
 				
 		/* user_id에 따른 Cart 정보를 받을 list를 선언합니다. */
 		ArrayList<CartDTO> cart_list = Cdao.selectCart(user_id);
@@ -95,46 +95,13 @@
 		
 		/* 전화번호를 나누기 위해 전화번호를 변수로 저장합니다 */
 		String hp = Udto.getHp();
+		
+		/* 총 상품금액을 계산하기 위한 변수를 선언 */
+		int payment_totP = 0;
+		
 	%>
-
-
-	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
-	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
-	<script type="text/javascript">
-		function same_info(){
-			
-				/* 체크여부 확인 - check된 경우 */
-				if($("input:checkbox[name=chk_info]").is(":checked")==true){
-				
-				$("#orderer").val("<%=Udto.getUser_name()%>");
-				$("#addr1").val("<%=Udto.getAddr()%>");
-				
-				
-				if(<%=hp.substring(0,3).equals("010")%>){
-					$("#select_hp1").val("010").prop("selected", true);					
-				} else if(<%=hp.substring(0,3).equals("012")%>){
-					$("#select_hp1").val("012").prop("selected", true);										
-				} else if(<%=hp.substring(0,3).equals("016")%>){
-					$("#select_hp1").val("016").prop("selected", true);										
-				} else if(<%=hp.substring(0,3).equals("017")%>){
-					$("#select_hp1").val("017").prop("selected", true);										
-				}
-				
-				
-				$("#hp2").val("<%=hp.substring(4,8)%>");
-				$("#hp3").val("<%=hp.substring(8)%>");
-				
-			/* check안 된 경우 */	
-			}else{
-				
-				$("#orderer").val("");
-				$("#addr1").val("");
-				$("#select_hp1").val("010").prop("selected", true);	;
-				$("#hp2").val("");
-				$("#hp3").val("");
-			}
-		}
-	</script>
+	
+	
 
 
 <body>
@@ -233,6 +200,11 @@
 										
 										/* 총금액은 갯수 곱하기 책가격의 포맷형식 */
 										System.out.println("총가격(book_price): " + df.format(Bdto.getBookPrice()*Cdto.getEa()));
+										
+										
+										/* for문 마다 앞서 선언한 변수에 더해줍니다 */
+										/* 후에 돈자리 , 계산을 위해 포멧을 넣어줍니다 */
+										payment_totP += (Bdto.getBookPrice()*Cdto.getEa());
 			
 										%>
 										
@@ -254,12 +226,146 @@
 			
 			<!-- 결제정보 div -->
 			<div id="payment_info">
-				여기에는 결제창이 나옵니다
+				<h4 class="captions">최종결제 정보</h4>
+				
+				<div id="final_payment_info">
+					<ul id="final_payment_ul">
+						
+						<!-- 총 상품금액: 돈, 포멧을 적용합니다-->
+						<font class="payment_detail"><%=df.format((payment_totP)) %> 
+							<font class="unit"> 원</font>
+						</font>
+						<li class="naming">총 상품금액</li>
+
+						<!-- 적립 포인트 -->						
+						<font class="payment_detail" id="get_point"><%=payment_totP*2/100 %> 
+							<font class="unit"> Point</font>
+						</font>
+						<li class="naming">적립 포인트</li>
+						
+						<!-- 사용 포인트 -->						
+						<font class="payment_detail">
+						
+							<!-- input에 입력 포인트가 바뀔때마다 함수호출 -->
+							<!-- 숫자만 입력되도록 변경 - type을 number로 안한것은 위아래 버튼이 거추장스럽기때문 -->
+							<input type="text" id="use_point" onchange="use_point(this.value)"
+							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							<font class="unit"> Point</font>
+						</font>
+						<li class="naming">사용 포인트</li>
+						
+						<!-- 남은 포인트 -->						
+						<font class="payment_detail" id="left_point"><%=Udto.getPoint() %>
+							<font class="unit"> Point</font>
+						</font>
+						<li class="naming">남은 포인트</li>
+					</ul>
+					
+					<hr id="final_payment_hr">
+						
+					<ul id="final_payment_ul">	
+						<font class="payment_detail" id="totP" style="color: red;"><%=df.format((payment_totP)) %>
+							<font class="unit" style="color: black;"> 원</font>						
+						</font>
+						<li class="naming_pay">결제금액</li>
+					</ul>
+					
+					
+					<!-- 버튼 -->
+					<div id="btns">
+						<button id="buy" class="btn fourth" onclick="location.href=''">결제하기</button>
+					</div>
+				</div>
 			</div>	
 					
 		</div>
 		
 	</div>
 
+
+
+	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
+	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
+	<script type="text/javascript">
+		function same_info(){
+			
+				/* 체크여부 확인 - check된 경우 */
+				if($("input:checkbox[name=chk_info]").is(":checked")==true){
+				
+				$("#orderer").val("<%=Udto.getUser_name()%>");
+				$("#addr1").val("<%=Udto.getAddr()%>");
+				
+				
+				if(<%=hp.substring(0,3).equals("010")%>){
+					$("#select_hp1").val("010").prop("selected", true);					
+				} else if(<%=hp.substring(0,3).equals("012")%>){
+					$("#select_hp1").val("012").prop("selected", true);										
+				} else if(<%=hp.substring(0,3).equals("016")%>){
+					$("#select_hp1").val("016").prop("selected", true);										
+				} else if(<%=hp.substring(0,3).equals("017")%>){
+					$("#select_hp1").val("017").prop("selected", true);										
+				}
+				
+				
+				$("#hp2").val("<%=hp.substring(4,8)%>");
+				$("#hp3").val("<%=hp.substring(8)%>");
+				
+			/* check안 된 경우 */	
+			}else{
+				
+				$("#orderer").val("");
+				$("#addr1").val("");
+				$("#select_hp1").val("010").prop("selected", true);	;
+				$("#hp2").val("");
+				$("#hp3").val("");
+			}
+		}
+		
+		
+		/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
+		function use_point(point){
+			
+			var left_point = <%=Udto.getPoint()%> - $("#use_point").val();
+			
+			console.log(<%=Udto.getPoint()%>);
+			console.log(point);
+			console.log(left_point);
+			console.log(<%=payment_totP%>);
+
+			
+			/* 남은 포인트 정보 산정 */
+			/* 단위 값은 폰트 사이즈 유지되도록 하기 */
+			$("#left_point").html(left_point + "<font class='unit'> Point</font>");
+			
+			
+			/* 남은 총 결제액 돈자릿수 포맷 포함 변수선언 */
+			var totP = (String)(<%=payment_totP%> - point);
+			
+			/* javascript 내부에서 돈자릿수 콤마 더하기 작업 */
+			totP = totP.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			
+			/* 금액변경시 총 결제액 변경 */
+			$("#totP").text(totP);
+			
+			/* 만약 포인트가 음수로 갈경우 */
+			if(left_point < 0){
+				
+				/* 포인트란에 경고메시지 */
+				$("#totP").html("<h3 style='color: red; font-weight: bold;'>포인트 부족으로 결제불가</h3>");
+				
+				/* 결제버튼 비활성화 */
+				const target1 = document.getElementById("pay");
+				target1.disabled = true;
+			
+			} else{
+				
+				/* 남은 포인트가 다시 양수로 돌아왔을 경우 */
+				/* 돈의 단위는 무조건 원래 폰트와 색을 유지하도록 설정했음 */
+				$("#totP").html(totP + "<font class='unit' style='color: black;'> 원</font>");
+			}
+			
+		}
+		
+	</script>
 </body>
 </html>

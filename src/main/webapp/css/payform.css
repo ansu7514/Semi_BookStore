@@ -208,12 +208,147 @@
 		
 		/* 결제 정보 div */
 		#payment_info{
-			width: 50%;
+			width: 40%;
+			/* max-height: 720px; */
 			float: right;
-			
-			background-color: gray;
+			margin-left: 5%;
+			/* background-color: yellow; */
 		}
 		
+		
+		/* 최종결제 정보 div */
+		#final_payment_info{
+			margin-top: 5%;
+			position: sticky;
+ 			top: 10px;
+			height: 50%;
+			border: 7px	solid #faab3c;
+		}
+		
+		
+		#final_payment_hr{
+			height: 3px;
+			color: black;
+			width: 100%;
+		}
+		
+		
+		/* ul li의 디테일 css */
+		#final_payment_ul{
+			margin-top: 5%;
+			line-height: 4em;
+			font-family: 'Tahoma';
+			padding-left: 12%;
+			font-size: 1.2em; 
+			/*font-weight: bold;  */
+		}
+		
+		
+		/* 좌측 결제정보 naming된 것들 */
+		.naming{
+			font-family: "Montserrat", sans-serif;
+			font-size: 0.9em;
+		}
+		
+		
+		/* 좌측 결제금액 폰트 */
+		.naming_pay{
+			font-family: "Montserrat", sans-serif;
+			font-size: 1.3em;
+			font-weight: bold;
+		}
+		
+		
+		
+		/* 우측에 동적으로 입력될 값들 */
+		.payment_detail{
+			float: right;
+			margin-bottom: -5%;
+			margin-right: 8%;
+			font-weight: bold;
+			font-size: 1.5em;
+		}
+		
+		
+		/* 우측에 입력된 값의 단위들 */
+		.unit{
+			font-size: 0.5em; 
+			font-weight: normal;
+		}
+		
+		
+		/* 적립 포인트 */
+		#get_point{
+			margin-left: 40%;
+		}
+		
+		/* 사용할 포인트 입력란 */
+		#use_point{
+			max-width: 5em;
+			max-height: 1.2em;
+			text-align: center;
+			font-weight: normal;
+		}
+		
+		
+		
+		/* 버튼에 효과적용 */
+		#btns {
+		margin-top: 3%;
+		padding-left: 15%;
+	}
+	
+	/* 버튼 */
+	.btn {
+		box-sizing: border-box;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-color: transparent;
+		border: 2px solid #e74c3c;
+		border-radius: 0em;
+		color: #e74c3c;
+		cursor: pointer;
+		align-self: center;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1;
+		margin: 1%;
+		padding: 0.5em 4em;
+		text-decoration: none;
+		text-align: center;
+		text-transform: uppercase;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 700;
+	}
+	
+	.btn:hover, .btn:focus {
+		color: #fff;
+		outline: 0;
+	}
+	
+	.fourth {
+		border-color: #f1c40f;
+		color: #3d2a26;
+		background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+		background-position: 100%;
+		background-size: 400%;
+		transition: background 300ms ease-in-out;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 900;
+	}
+	
+	.fourth:hover {
+		background-position: 0;
+	}
+	
+	/* 버튼 아이디 */
+	#buy {
+		font-size: 20pt;
+		width: 332px;
+    	height: 78px;
+		margin-top: 20px;
+	}
 		
 		
 		
