@@ -48,6 +48,12 @@ $(function(){
 		});
 		
 		
+		var send_array;
+		
+		$("input[name='chk']:checked").each(function(i, element){
+			<%System.out.println("안녕22211");%>
+		}); 
+		
 		/* 체크 박스 */
 <%-- 		$(function(){
 
@@ -66,6 +72,7 @@ $(function(){
 BookDAO dao = new BookDAO();
 BookDTO Bdto = new BookDTO();
 CartDAO db = new CartDAO();
+
 %>
 
 <!-- 가격 자릿수 콤마, 총가격 -->
@@ -84,18 +91,18 @@ function tot(num,price,i) {
 }
 
 
+
 function sel(i,book_id, book_ea){
 	
 	if($("input:checkbox[id='chk"+i+"']").is(":checked")==true){
-		<%System.out.println("안녕1");%>
+		console.log(i);
+		console.log(book_id);
+		console.log(book_ea);	
+		
+		/* 전체 카트 리스트 자바스크립트로 어레이선언 */
+		
 	}
 }
-	
-	/* for(var i = 0; i < document.getElementsByTagName('chk').length; i++){
-        if($("input:checkbox[name=chk]").is(":checked")==true){
-           console.log("안녕하세요");
-        }
-    } */
 </script>
 <body>
 
@@ -149,7 +156,7 @@ function sel(i,book_id, book_ea){
 				<tr>
 					<!-- 체크박스 , 상품명, 총가격, 수량, 삭제 td -->
 					<td><input type="checkbox" name="chk" id="chk<%=(i)%>"
-						value="<%=dto.getBook_id()%>" onclick="sel(<%=i %>,<%=dto.getBook_id()%>, <%=dto.getEa() %>)" style="padding-top: 50px;"></td>
+						value="<%=dto.getBook_id()%>,<%=dto.getEa() %>" onclick="sel(<%=i %>,<%=dto.getBook_id()%>, <%=dto.getEa() %>)" style="padding-top: 50px;"></td>
 					<td><%=Bdto.getBook_name()%></td>
 					<td><span id="print_totP<%=(i)%>"><%=df.format(Bdto.getBookPrice() * dto.getEa())%></span>원</td>
 					<td><input type="number" class="ea" id="ea<%=(i)%>"
