@@ -46,7 +46,18 @@ $(function(){
 				}
 			});
 		});
+		
+		
+		/* 체크 박스 */
+<%-- 		$(function(){
+
+			$("input[name='chk']:checked").each(function(i, element){
+				<%System.out.println("안녕");%>
+			}); 
+
+		}); --%>
 	});
+	
 </script>
 </head>
 
@@ -66,23 +77,27 @@ function tot(num,price,i) {
 	console.log(num);
 	console.log(price);
 	console.log(i);
-	console.log(a);
+	console.log(a); 
 	
 	document.getElementById(i).innerText=a;
 	
 }
 
-/* 체크 박스 */
-window.onload = function(){
-    for(var i = 0; i < document.getElementsByTagName('chk').length; i++){
-        if(document.getElementsByTagName('chk')[i].getAttribute('chk') == 'checkbox'){
-            document.getElementsByTagName('chk')[i].checked = true;
+
+function sel(i,book_id, book_ea){
+	
+	if($("input:checkbox[id='chk"+i+"']").is(":checked")==true){
+		<%System.out.println("안녕1");%>
+	}
+}
+	
+	/* for(var i = 0; i < document.getElementsByTagName('chk').length; i++){
+        if($("input:checkbox[name=chk]").is(":checked")==true){
+           console.log("안녕하세요");
         }
-    }
-};
+    } */
 </script>
 <body>
-
 
 	<%
 	String user_id = (String)session.getAttribute("myid");
@@ -95,7 +110,7 @@ window.onload = function(){
 
 	/* 예시 */
 	int val = 34567;
-	System.out.println(df.format(val));
+	/* System.out.println(df.format(val)); */
 	%>
 
 	<!-- 전체 div -->
@@ -134,7 +149,7 @@ window.onload = function(){
 				<tr>
 					<!-- 체크박스 , 상품명, 총가격, 수량, 삭제 td -->
 					<td><input type="checkbox" name="chk" id="chk<%=(i)%>"
-						value="<%=dto.getBook_id()%>" onclick="" style="padding-top: 50px;"></td>
+						value="<%=dto.getBook_id()%>" onclick="sel(<%=i %>,<%=dto.getBook_id()%>, <%=dto.getEa() %>)" style="padding-top: 50px;"></td>
 					<td><%=Bdto.getBook_name()%></td>
 					<td><span id="print_totP<%=(i)%>"><%=df.format(Bdto.getBookPrice() * dto.getEa())%></span>원</td>
 					<td><input type="number" class="ea" id="ea<%=(i)%>"
@@ -158,9 +173,9 @@ window.onload = function(){
 		</div>
 
 		<%
-		/* String []chk=request.getParameterValues("chk"); */
+		/* String []chk=request.getParameterValues("chk");
 
-		/* 	if(chk==null || chk.length<=0)
+			if(chk==null || chk.length<=0)
 			{
 				 out.println("<script>alert(''선택한 항목이 없습니다.'');history.back();</script>");
 				 return;
