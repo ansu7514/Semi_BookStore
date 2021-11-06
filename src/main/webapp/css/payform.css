@@ -294,8 +294,9 @@
 		
 		/* 버튼에 효과적용 */
 		#btns {
+		display: flex;
+		justify-content: center;
 		margin-top: 3%;
-		padding-left: 15%;
 	}
 	
 	/* 버튼 */

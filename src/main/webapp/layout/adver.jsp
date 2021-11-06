@@ -30,6 +30,6 @@
 <title>Advertisement</title>
 </head>
 <body onload="slide_show()">
-	<img id="adver_img" src="">
+	<img id="adver_img" src="image/adver_1.png">
 </body>
 </html>

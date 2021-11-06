@@ -54,6 +54,7 @@ function check_pw(){
 
 </script>
 
+
 </head>
 <body>
 	<form action="login/member_add.jsp" method="post">
