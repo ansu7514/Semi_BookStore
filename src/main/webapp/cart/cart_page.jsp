@@ -79,7 +79,7 @@ System.out.println(df.format(val));
 <!-- 제목 div -->
 <div class="title">
 	<h2>장바구니
-		<img src="cart_img.png" class="img">
+		<img src="../image/cart_img.png" class="img">
 	</h2>
 	
 <!-- 점선 -->
