@@ -25,19 +25,16 @@
 
 <title>Insert title here</title>
 </head>
-
-
 	<!-- 기본틀 -->
 
 	<%
-	
 		request.setCharacterEncoding("utf-8");
 
 		//파라미터값 가져오기 - book_id
 		String book_id = request.getParameter("book_id");
 		
 		//파라미터값 가져오기 - user_id
-		String user_id = request.getParameter("user_id");
+		String user_id = (String)session.getAttribute("user_id");
 	
 		//DAO 객체선언
 		BookDAO dao = new BookDAO();
@@ -59,7 +56,7 @@
 
 	window.onload=function(){
 		
-		slide_show();
+		localStorage.setItem("book_id", <%=dto.getBook_id()%>);
 		
 		/* 실행시 상품 기본가격 출력 */
 		var a = (String)($("#ea").val()*<%=dto.getBookPrice()%>);
@@ -125,7 +122,25 @@
 			const target2 = document.getElementById('buy');
 			  target2.disabled = false;
 		}
+
 	}	 
+	$(function(){
+		<!-------------------------->
+		//리뷰
+		$(".input-comment").hide();
+
+		//댓글보기 버튼
+		var triger = true;
+		$(".show-comment").on("click",function(){
+			if(triger){ //true
+				$(".input-comment").show();
+				triger = false;
+			} else { //false
+				$(".input-comment").hide();
+				triger = true;
+			}	
+		});
+	});
 </script>	
 	
 <body style="background-color: #FAF7EB">
@@ -173,7 +188,7 @@
 						
 							판매가 :&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
 							
-							포인트 :&nbsp; <%=dto.getBookPrice()/10 %> point <br>
+							포인트 :&nbsp; <%=dto.getBookPrice()/2 %> point <br>
 							
 							재고량 :&nbsp; <%=dto.getEa() %> 권 <br>
 							
@@ -188,7 +203,7 @@
 		
 						<div id="btns">
 							<button id="buy" class="btn fourth" onclick="location.href=''">바로구매</button>
-							<button id="goCart" class="btn fourth" onclick="location.href='book_to_cart.jsp'">장바구니</button>
+							<button id="goCart" class="btn fourth" onclick="location.href='book/book_to_cart.jsp'">장바구니</button>
 						</div>
 						
 				</div>
