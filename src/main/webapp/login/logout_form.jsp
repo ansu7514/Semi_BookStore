@@ -56,7 +56,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 						</li>
 						
 						<li style="float: left; margin-right: 3%; cursor: pointer;">
-							<a href="" style="color: #55661c; font-size: 16pt;"><b>🛒 장바구니</b></a>
+							<a href="index.jsp?main=cart/cart_page.jsp?my_id=<%= user_dto.getUser_id() %>" style="color: #55661c; font-size: 16pt;"><b>🛒 장바구니</b></a>
 						</li>
 					</ul>
 				</td>

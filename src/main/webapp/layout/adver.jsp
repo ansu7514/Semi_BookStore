@@ -30,6 +30,9 @@
 <title>Advertisement</title>
 </head>
 <body onload="slide_show()">
-	<img id="adver_img" src="">
+	<%
+	int i = Math.random() * 3 + 1;
+	%>
+	<img id="adver_img" src="image/adver_1.png">
 </body>
 </html>
