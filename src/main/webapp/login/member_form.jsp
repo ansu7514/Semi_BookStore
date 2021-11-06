@@ -166,7 +166,7 @@ function check_pw(){
 				<div id="google_recaptha" style="display: flex; justify-content: center;">
 					<script src='https://www.google.com/recaptcha/api.js'></script>
 					<div class="g-recaptcha"
-						data-sitekey="6LfQugsdAAAAAMsc4blU0sNU9CBZdnflfGNKYveI"></div>
+						data-sitekey="6LfQugsdAAAAAFPygUEIJdCFfOm5OSAkRZzeSCQp"></div>
 				</div>
 
 				<div style="display: flex; justify-content: center; margin-top: 35px; margin-bottom: 30px;">
