@@ -55,4 +55,47 @@ $(function(){
 			triger = true;
 		}	
 	});
+	
+	//리뷰작성
+	$(document).on("click", ".submit-review", function(){
+		
+		var user_id = localStorage.getItem("user_id");
+		var book_id = localStorage.getItem("book_id");
+		var rating = $(".rating-value-box").text();
+		var content = $('#review-content').val();
+		content = content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+		
+		//공백체크
+		if(content == null || content == ""){
+			console.log(content.length);
+			return;
+		}
+		
+		var review = {
+			book_id : book_id,
+			content : content,
+			rating : rating,
+			user_id : user_id
+		};
+		
+		console.log(review.content);
+		console.log(review.book_id);
+		console.log(review.rating);
+		console.log(review.user_id);
+		
+		$.ajax({
+			url:"review/reviewAction.jsp",
+			type:"post",
+			dataType:"html",
+			data:{
+				"book_id" : review.book_id,
+				"content" : review.content,
+				"rating" : review.rating,
+				"user_id" : review.user_id
+			},
+			success:function(){
+				location.reload();
+			}
+		});
+	});
 });

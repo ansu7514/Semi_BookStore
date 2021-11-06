@@ -16,7 +16,7 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		
 		//작성자, 책아이디, 별점, 작성일, 좋아요, 리뷰내용
-		String sql = "insert into REVIEW values(?,?,?,now(),null,?)";
+		String sql = "insert into REVIEW values(?,?,?,now(),?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

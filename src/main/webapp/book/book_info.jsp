@@ -56,6 +56,7 @@
 
 	window.onload=function(){
 		
+		localStorage.setItem("user_id", "<%=(String)session.getAttribute("myid")%>");
 		localStorage.setItem("book_id", <%=dto.getBook_id()%>);
 		
 		/* 실행시 상품 기본가격 출력 */
@@ -237,7 +238,9 @@
 		</div>
 		
 		<!-- 리뷰 -->
-		<jsp:include page="../review/review.jsp"/>
+		<jsp:include page="../review/review.jsp">
+			<jsp:param value="book_id" name="book_id"/>
+		</jsp:include>
 		
 	</div>
 </body>

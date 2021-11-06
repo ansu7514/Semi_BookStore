@@ -5,7 +5,11 @@
 	width: 100%;
 }
 
-.rating-box{
+.review > .review-box{
+	
+}
+
+.review > .rating-box{
 	display: flex;
 	height: 100%;
 	margin-bottom: 5px;
