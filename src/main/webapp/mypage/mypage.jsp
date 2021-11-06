@@ -71,7 +71,13 @@ UserDTO user_dto = user_dao.getUser(myid);
 					
 					<tr>
 						<td class="table_sub_td">
-							<span class="table_sub" id="my_mem">-  회원 정보 수정 / 탈퇴</span>
+							<span class="table_sub" id="my_mem_up">-  회원 정보 수정</span>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="table_sub_td">
+							<span class="table_sub" id="my_mem_del">-  회원 탈퇴</span>
 						</td>
 					</tr>
 				</table>

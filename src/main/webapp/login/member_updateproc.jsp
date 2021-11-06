@@ -23,7 +23,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 //dto선언 , 이후에 dto에 담기
 request.setCharacterEncoding("utf-8"); 
 	
-	String user_id=request.getParameter("user_id");
+	String user_id=request.getParameter("myid");
 	String user_pass=request.getParameter("user_pass1");
 	String user_name=request.getParameter("user_name");
 	String addr=request.getParameter("addr");
@@ -36,13 +36,6 @@ request.setCharacterEncoding("utf-8");
 	
 	UserDTO dto=new UserDTO();
 	
-	out.println(user_id);
-	out.println(user_pass);
-	out.println(user_name);
-	out.println(addr);
-	out.println(birth);
-	out.println(hp);
-	
 	dto.setUser_id(user_id);
 	dto.setUser_pass(user_pass);
 	dto.setUser_name(user_name);
@@ -54,8 +47,8 @@ request.setCharacterEncoding("utf-8");
 UserDAO dao=new UserDAO();
 dao.updateUser(dto);
 
-//response -> 회원정보 설정화면으로 이동하기 : member_updateform ?으로 ??
-/* response.sendRedirect("../index.jsp?main=login/member_updateform.jsp"); */
+//response -> 회원정보 설정화면으로 이동하기
+response.sendRedirect("../login/member_update_end.jsp");
 %>
 </body>
 </html>

@@ -76,80 +76,122 @@ UserDTO dto = dao.getUser(myid);
 
 <!-- 수정할 부분 : 사용자이름, 비밀번호, 생년월일, 주소, 전화번호 => 회원정보 설정화면으로 돌아감 -->
 
-<form action="login/member_updateproc.jsp" method="post"
+<form action="member_updateproc.jsp" method="post"
 	id="member_update_form" style="width: 100%;">
 
 	<!-- hidden -->
-	<input type="hidden" name="myid" value="<%=myid%>">
+	<input type="hidden" name="myid" value="<%= myid %>">
 
 	<div>
-		<!-- 아이디 -->
-		<div class="form-group" style="width: 200px; margin-bottom: 20px;">
-			<label style="font-size: 25px;">아이디 : <%= dto.getUser_id() %></label>
+		<!-- 타이틀 -->
+		<div>
+			<%
+			String user_gender = dto.getGender();
+			
+			if(user_gender.equals("남자")) {
+			%>
+			
+			<label style="display: flex; justify-content: center; font-size: 40px; margin-bottom: 30px;">
+				<b>🧑 회원정보 수정 🧑</b>
+			</label>
+				
+			<%
+			} else {
+			%>
+			
+			<label style="display: flex; justify-content: center; font-size: 40px; margin-bottom: 30px;">
+				<b>👧 회원정보 수정 👧</b>
+			</label>
+			
+			<%
+			}
+			%>
 		</div>
 
-		<!-- 비밀번호 -->
-		<div class="form-group"
-			style="display: inline-flex; margin-bottom: 20px;">
-			<table id="pw_table" class="form-inline">
-				<tr>
-					<td><label style="font-size: 15pt;">비밀번호</label></td>
-					<td width="20px;"></td>
-					<td><label style="font-size: 15pt;">비밀번호 재확인</label></td>
-				</tr>
+		<div style="padding: 50px 20% 50px 20%; border: 2px solid #6d3b1c; border-radius: 5%;">
+			<!-- 비밀번호 -->
+			<div class="form-group"
+				style="display: inline-flex; margin-bottom: 20px;">
+				<table id="pw_table" class="form-inline">
+					<tr>
+						<td><label style="font-size: 15pt;">비밀번호</label></td>
+						<td width="20px;"></td>
+						<td><label style="font-size: 15pt;">비밀번호 재확인</label></td>
+					</tr>
 
-				<tr>
-					<td><input type="password" name="user_pass1"
-						style="width: 200px;" id="pw" class="form-control"
-						onchange="check_pw()" required="required" placeholder="비밀번호 입력">
-					</td>
+					<tr>
+						<td><input type="password" name="user_pass1"
+							style="width: 200px;" id="pw" class="form-control"
+							onchange="check_pw()" required="required" placeholder="비밀번호 입력">
+						</td>
 
-					<td width="20px;"></td>
+						<td width="20px;"></td>
 
-					<td><input type="password" name="user_pass2" id="pw2"
-						style="width: 200px;" class="form-control" onchange="check_pw()"
-						required="required" placeholder="비밀번호 재입력"></td>
-				</tr>
+						<td><input type="password" name="user_pass2" id="pw2"
+							style="width: 200px;" class="form-control" onchange="check_pw()"
+							required="required" placeholder="비밀번호 재입력"></td>
+					</tr>
 
-				<tr>
-					<td><span id="check" style="font-weight: bold"></span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="form-group" style="width: 180px;">
-			<label>이름</label> <input type="text" name="user_name"
-				class="form-control" required="required"
-				value="<%=dto.getUser_name()%>">
-		</div>
+					<tr>
+						<td><span id="check" style="font-weight: bold"></span></td>
+					</tr>
+				</table>
+			</div>
 
-		<div class="form-group" style="width: 180px;">
-			<label>주소</label> <input type="text" name="addr" class="form-control"
-				required="required" value="<%=dto.getAddr()%>">
-		</div>
+			<!-- 이름 -->
+			<div class="form-group" style="width: 200px; margin-bottom: 20px;">
+				<label>이름</label> <input type="text" name="user_name"
+					class="form-control" required="required"
+					value="<%=dto.getUser_name()%>">
+			</div>
 
-		<div class="form-group" style="width: 180px;">
-			<label>생년월일</label> <br> <input type="text" name="birthday1"
-				class="form-inline" style="width: 50px; height: 20px;"
-				placeholder="년(4자)"> <b>-</b> <select name="birthday2"
-				id="birthday2" class="form-inline"
-				style="width: 50px; height: 20px;">
-				<option value="">월</option>
-				<c:forEach var="i" begin="1" end="12">
-					<option value="${i}">${i}</option>
-				</c:forEach>
-			</select> <b>-</b> <input type="text" name="birthday3" class="form-inline"
-				style="width: 50px; height: 20px;" placeholder="일">
-		</div>
+			<!-- 주소 -->
+			<div class="form-group" style="width: 425px; margin-bottom: 20px;">
+				<label>주소</label> <input type="text" name="addr"
+					class="form-control" required="required" value="<%=dto.getAddr()%>">
+			</div>
+
+			<!-- 생년월일 -->
+			<div class="form-group" style="margin-bottom: 20px;">
+				<table>
+					<tr>
+						<td><label style="font-size: 15pt;">생년월일</label></td>
+					</tr>
+
+					<tr>
+						<td class="form-inline"><input type="text" name="birthday1"
+							class="form-control" style="width: 100px;" placeholder="년(4자)">
+						</td>
+
+						<td width="30px;" style="text-align: center;"><b>-</b></td>
+
+						<td class="form-inline"><select name="birthday2"
+							id="birthday2" class="form-control" style="width: 100px;">
+								<option value="">월</option>
+								<c:forEach var="i" begin="1" end="12">
+									<option value="${i}">${i}</option>
+								</c:forEach>
+						</select></td>
+
+						<td width="30px;" style="text-align: center;"><b>-</b></td>
+
+						<td class="form-inline"><input type="text" name="birthday3"
+							class="form-control" style="width: 100px;" placeholder="일">
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<!-- hp -->
+			<div class="form-group" style="width: 200px; margin-bottom: 20px;">
+				<label>휴대전화</label> <input type="text" name="hp"
+					class="form-control" required="required" value="<%=dto.getHp()%>">
+			</div>
 
 
-		<div class="form-group" style="width: 180px;">
-			<label>휴대전화</label> <input type="text" name="hp" class="form-control"
-				required="required" value="<%=dto.getHp()%>">
-		</div>
-
-
-		<div style="margin-left: 50px;">
-			<button type="submit" class="btn btn-warning">수정하기</button>
+			<div style="display: flex; justify-content: center; margin-top: 50px;">
+				<button type="submit" class="btn btn-warning">수정하기</button>
+			</div>
 		</div>
 	</div>
 </form>
