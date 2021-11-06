@@ -19,11 +19,35 @@
   <link href="https://fonts.googleapis.com/css2?
 family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
-
+<script type="text/javascript">
+$(function(){
+		
+		/* 삭제 이벤트 */
+		$(".delbtn").click(function () {
+			
+			var user_id="apple";// 세션 아이디
+			var book_id=$(this).attr("book_id");
+			
+			console.log(book_id);
+			
+			$.ajax({
+				
+				type:"post",
+				dataType:"html",
+				url:"cart_delete.jsp",
+				data:{"user_id":user_id,"book_id":book_id},
+				success:function(){
+					location.reload();
+					/* window.location.href="cart/cart_page.jsp"; */
+				}
+			});
+		});
+	});
+</script>
 </head>
 
 <%
-//1) db 선언
+//db 선언
 BookDAO dao=new BookDAO();
 BookDTO Bdto=new BookDTO();
 CartDAO db=new CartDAO();
@@ -62,10 +86,10 @@ String user_id=request.getParameter("user_id");
 user_id="apple"; //검사용도
 
 
-//	2) dao에서 list 가져오기
+//dao에서 list 가져오기
 ArrayList<CartDTO>list=db.selectCart(user_id);  
 
-//	돈 자릿수포맷
+//돈 자릿수포맷
 DecimalFormat df = new DecimalFormat("###,###"); 
 
 /* 예시 */
@@ -122,11 +146,8 @@ for(int i=0; i<list.size(); i++){
 		
 		<!-- 삭제 버튼 -->
 		<td>
-			<button type="submit" class="delbtn" 
-      		 onclick="location.href='cart_delete.jsp?user_id=<%=dto.getUser_id() %>&book_id=<%=dto.getBook_id()%>'">
+			<button class="delbtn" id="del" book_id="<%=dto.getBook_id() %>" onclick="return false">
       		 삭제</button>
-      		 <%-- <button type="button" class="delbtn"
-      		 onclick="delfunc(<%=dto.getUser_id() %>, <%=dto.getBook_id()%>)">삭제</button> --%>
 		</td>
 	</tr>
 	
@@ -135,52 +156,6 @@ for(int i=0; i<list.size(); i++){
 </table>
 
 </div>
-
-<!-- 삭제하시겠습니까? 모달창 -->
-<!-- <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
-
-    Modal content
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">삭제확인</h4>
-      </div>
-      
-      <div class="modal-body form-inline">
-      <input type="hidden" id="deluser_id">
-        <b>삭제 하시겠습니까?</b>
-        <input type="hidden" id="delbook_id">
-      </div>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">삭제</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script type="text/javascript">
-function delfunc(user_id, book_id) {
-    
-    alert(user_id);
-    $("#deluser_id").val(user_id);
-    $("#delbook_id").val(book_id);
-    $("#myModal").modal();
-    
-    //모달삭제버튼이벤트
-    $("button.delbtn").click(function(){
-            
-    //num,pass읽기
-    var user_id=$("#deluser_id").val();
-    var book_id=$("#delbook_id").val();
-    
-    //삭제파일 호출
-    location.href="cart/cart_delete.jsp?user_id="+user_id+"&book_id="+book_id;
-});
-}
-</script> -->
 
 <%
 /* String []chk=request.getParameterValues("chk"); */

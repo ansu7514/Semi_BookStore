@@ -16,7 +16,8 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 </head>
 <body>
 <%
-//user_id , book_id 읽기 ??
+request.setCharacterEncoding("utf-8");
+//user_id , book_id
 String user_id=(String)request.getParameter("user_id");
 String book_id=(String)request.getParameter("book_id");
 
@@ -32,8 +33,6 @@ dto.setUser_id(user_id);
 //삭제 메소드 호출
 dao.deleteCart(dto);
 
-//삭제후 다시 장바구니로 이동
-response.sendRedirect("cart_page.jsp");
 %>
 
 
