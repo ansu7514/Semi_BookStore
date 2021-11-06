@@ -119,3 +119,11 @@ td{
 	width: 60px;
 	height: 60px;
 }
+
+.ea{
+	
+	text-transform: uppercase;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}

@@ -140,7 +140,7 @@ for(int i=0; i<list.size(); i++){
 		<td><%=Bdto.getBook_name() %></td>
 		<td><span id="print_totP<%=(i) %>"><%=df.format(Bdto.getBookPrice() * dto.getEa()) %></span>원</td>
 		<td>
-			<input type="number" id="ea<%=(i) %>" style="width: 70px; height: 40px; text-align: center;" 
+			<input type="number" class="ea" id="ea<%=(i) %>" style="width: 70px; height: 40px; text-align: center;" 
 			min="1" value="<%=dto.getEa() %>" onchange="tot(this.value, <%=Bdto.getBookPrice()%>,'print_totP<%=(i)%>')">
 		</td>
 		
