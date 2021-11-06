@@ -122,11 +122,11 @@ for(int i=0; i<list.size(); i++){
 		
 		<!-- 삭제 버튼 -->
 		<td>
-			<%-- <button type="submit" class="delbtn" 
-      		 onclick="location.href=cart_delete.jsp?user_id=?<%=dto.getUser_id() %>&book_id=?<%=dto.getBook_id()%>'">
-      		 삭제</button> --%>
-      		 <button type="button" class="delbtn"
-      		 onclick="delfunc(<%=dto.getUser_id() %>, <%=dto.getBook_id()%>)">삭제</button>
+			<button type="submit" class="delbtn" 
+      		 onclick="location.href='cart_delete.jsp?user_id=<%=dto.getUser_id() %>&book_id=<%=dto.getBook_id()%>'">
+      		 삭제</button>
+      		 <%-- <button type="button" class="delbtn"
+      		 onclick="delfunc(<%=dto.getUser_id() %>, <%=dto.getBook_id()%>)">삭제</button> --%>
 		</td>
 	</tr>
 	
@@ -137,10 +137,10 @@ for(int i=0; i<list.size(); i++){
 </div>
 
 <!-- 삭제하시겠습니까? 모달창 -->
-<div id="myModal" class="modal fade" role="dialog">
+<!-- <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-sm">
 
-    <!-- Modal content-->
+    Modal content
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -180,7 +180,7 @@ function delfunc(user_id, book_id) {
     location.href="cart/cart_delete.jsp?user_id="+user_id+"&book_id="+book_id;
 });
 }
-</script>
+</script> -->
 
 <%
 /* String []chk=request.getParameterValues("chk"); */
