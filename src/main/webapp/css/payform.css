@@ -54,30 +54,90 @@
 		#transport_info{
 			width: 100%;
 			margin-bottom: 5%;
+			
 			/* background-color: blue; */
 		}
 		
 		
-		#transport_form>td{
-			width: 30%;
+		
+		/* 모든 테이블 행에 적용 */
+		tr{
+			text-indent: 2em;
 		}
 		
 		
-		/* 배송지 선택,  */
+		/* 모든 테이블 th에 적용 */
+		th{
+			padding-left: 10px;
+		}
+		
+				
+		/* 배송지 선택 */
 		.captions{
 			font-size: 20px;
 			font-family: "Montserrat", sans-serif;
 			color: black;
 			font-weight: bold;
-			padding-left: 7%;
+			padding-left: 4%;
 			margin-bottom: 4%;
 		}
 		
 		
+		/* 회원정보와 동일 */
+		#same_as{
+			font-size: 0.9em;
+			font-weight: normal;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
 		
-		/* 배송지적는 테이블 div */
+		
+		/* 수령인 입력행 */
+		#input_recipient{
+			/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
+			padding-top: 13px;
+			padding-bottom: 13px;
+		}
+
+
+		/* 배송지 입력행 */
+		#input_addr{
+			/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
+			padding-top: 13px;
+			padding-bottom: 13px;
+		}
+		
+		
+		/* 배송지적는 란 */
+		#addr2{
+			margin-left: 28px;
+			margin-top: 10px;
+		}
+		
+		
+		/* placeholder */
+		input::placeholder{
+			opacity: 0.5;
+		}
+		
+		
+		/* 전화번호 입력행 */
+		#input_hp{
+			/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
+			padding-top: 13px;
+			padding-bottom: 13px;
+		}
+		
+		/* 전화번호적는 테이블 div */
 		.hp{
-			width: 100px;
+			width: 70px;
+		}
+		
+		
+		/* 전화번호 앞자리 선택란 */
+		#select_hp1{
+			width: 50px;
+			height: 25px; 
 		}
 		
 		

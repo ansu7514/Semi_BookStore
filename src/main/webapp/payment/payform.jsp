@@ -1,3 +1,5 @@
+<%@page import="db.UserDTO"%>
+<%@page import="db.UserDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="db.BookDTO"%>
 <%@page import="db.BookDAO"%>
@@ -72,7 +74,7 @@
 		String user_id = request.getParameter("user_id");
 		
 		/* 임시값 */
-		user_id= "apple";
+		user_id= "iam";
 				
 		/* user_id에 따른 Cart 정보를 받을 list를 선언합니다. */
 		ArrayList<CartDTO> cart_list = Cdao.selectCart(user_id);
@@ -85,8 +87,55 @@
 		/* 금액에 , 표시를 할 포맷 선언 */
 		DecimalFormat df = new DecimalFormat("###,###");
 		
-		/* 이제 div prouct_info로 이동합니다 */
+		
+		/* 회원정보와 동일 체크할 경우, 가져올 user DAO, DTO 정보 */
+		UserDAO Udao = new UserDAO();
+		UserDTO Udto = Udao.getUser(user_id);
+		
+		
+		/* 전화번호를 나누기 위해 전화번호를 변수로 저장합니다 */
+		String hp = Udto.getHp();
 	%>
+
+
+	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
+	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
+	<script type="text/javascript">
+		function same_info(){
+			
+				/* 체크여부 확인 - check된 경우 */
+				if($("input:checkbox[name=chk_info]").is(":checked")==true){
+				
+				$("#orderer").val("<%=Udto.getUser_name()%>");
+				$("#addr1").val("<%=Udto.getAddr()%>");
+				
+				
+				if(<%=hp.substring(0,3).equals("010")%>){
+					$("#select_hp1").val("010").prop("selected", true);					
+				} else if(<%=hp.substring(0,3).equals("012")%>){
+					$("#select_hp1").val("012").prop("selected", true);										
+				} else if(<%=hp.substring(0,3).equals("016")%>){
+					$("#select_hp1").val("016").prop("selected", true);										
+				} else if(<%=hp.substring(0,3).equals("017")%>){
+					$("#select_hp1").val("017").prop("selected", true);										
+				}
+				
+				
+				$("#hp2").val("<%=hp.substring(4,8)%>");
+				$("#hp3").val("<%=hp.substring(8)%>");
+				
+			/* check안 된 경우 */	
+			}else{
+				
+				$("#orderer").val("");
+				$("#addr1").val("");
+				$("#select_hp1").val("010").prop("selected", true);	;
+				$("#hp2").val("");
+				$("#hp3").val("");
+			}
+		}
+	</script>
+
 
 <body>
 
@@ -112,26 +161,39 @@
 					<table class="table table-hover" id="transport_form">
 						<caption class="captions">배송지 선택</caption>
 							<tr>
-								<th colspan="2" style="text-align: left;">회원정보와 동일 &nbsp;<input type="checkbox"></th>
+								<th colspan="2" style="text-align: left;" id="same_as">회원정보와 동일 &nbsp;&nbsp;
+									<input type="checkbox" name="chk_info" onclick="same_info()">
+								</th>
 								<td></td>
 							</tr>
 						
 							<tr>
-								<th>주문자 정보</th>
-								<td><input type="text" id="orderer"></td>
+								<th id="input_recipient">수령인</th>
+								<td id="input_recipient"><input type="text" name="name" id="orderer" style="width: 150px;"></td>
 							</tr>
 							
 							<tr>
-								<th>주소</th>
-								<td><input type="text" id="addr"></td>
+								<th id="input_addr">배송지</th>
+								<td id="input_addr">
+									<input type="text" name="addr1" id="addr1" style="width: 300px;"><br>
+									<input type="text" name="addr2" id="addr2" style="width: 300px;" placeholder="상세주소를 입력해주세요" >
+								</td>
 							</tr>
 
 							<tr>
-								<th>연락처</th>
-								<td>
-									<input type="text" id="hp1" class="hp">&nbsp;-&nbsp;
-									<input type="text" id="hp2" class="hp">&nbsp;-&nbsp;
-									<input type="text" id="hp3" class="hp">
+								<th id="input_hp">연락처</th>
+								<td id="input_hp">
+									<!-- 전화번호 앞자리 -->
+									<select id="select_hp1">
+										<option value="010" selected="selected">010</option>
+										<option value="012">012</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+									</select>
+									-
+									<input type="text" name="hp2" id="hp2" class="hp">
+									-
+									<input type="text" name="hp3" id="hp3" class="hp">
 								</td>
 							</tr>
 					</table>	
@@ -178,7 +240,7 @@
 										<li class="img_div">
 											<h5 class="img_name"><%=Bdto.getBook_name() %></h5>
 											<img class="img" src="../image/book/<%=Bdto.getBook_image()%>">
-											<h6 class="totP_ea"><%=df.format(Bdto.getBookPrice()*Cdto.getEa()) %>원 &nbsp;/ &nbsp;<%=Cdto.getEa() %>개</h6>
+											<h6 class="totP_ea"><%=df.format(Bdto.getBookPrice()*Cdto.getEa()) %> 원 &nbsp;/ &nbsp;<%=Cdto.getEa() %> 권</h6>
 										</li>
 										
 									<%}
@@ -192,7 +254,7 @@
 			
 			<!-- 결제정보 div -->
 			<div id="payment_info">
-				div payment_info
+				여기에는 결제창이 나옵니다
 			</div>	
 					
 		</div>
