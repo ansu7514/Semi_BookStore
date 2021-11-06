@@ -39,7 +39,7 @@ public class CartDAO {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "delete from CART where user_id=?, book_id=?";
+		String sql = "delete from CART where user_id=? and book_id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

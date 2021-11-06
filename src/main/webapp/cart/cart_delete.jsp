@@ -15,7 +15,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 
 </head>
 <body>
-삭제
 <%
 //user_id , book_id 읽기 ??
 String user_id=(String)request.getParameter("user_id");
@@ -25,7 +24,10 @@ String book_id=(String)request.getParameter("book_id");
 CartDAO dao=new CartDAO();
 
 //dto선언
-CartDTO dto=new CartDTO();
+CartDTO dto= new CartDTO();
+
+dto.setBook_id(book_id);
+dto.setUser_id(user_id);
 
 //삭제 메소드 호출
 dao.deleteCart(dto);
