@@ -3,20 +3,24 @@ $(function(){
 	$(".input-comment").hide();
 	
 	//리뷰작성
-	$("#submit-review").click(function(){
+	$("#submit-review").on("click", function(){
 		
-		if($('input[name="review-content"]').val() == ""){
+		if($('#comment-content').val() == ""){
 			return;
 		}
 		
-		var content = $('input[name="review-content"]').val();
+		var user_id = "apple";//localStorage.getItem("user_id");
+		var book_id = localStorage.getItem("book_id");
+		var rating = $(".rating-value-box").val();
+		var content = $('#comment-content').val();
 		content = content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 		
+				
 		var review = {
-			book_id : "<%=book_id%>",
+			book_id : book_id,
 			content : content,
-			rating : $(".my-rating-4").getRating(),
-			user_id : "<$=user_id$>"
+			rating : rating,
+			user_id : user_id
 		};
 		
 		console.log(review.content);
@@ -25,7 +29,7 @@ $(function(){
 		console.log(review.user_id);
 		
 		$.ajax({
-			url:"reviewAction.jsp",
+			url:"review/reviewAction.jsp",
 			type:"post",
 			dataType:"html",
 			data:{
