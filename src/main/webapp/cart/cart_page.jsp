@@ -55,10 +55,10 @@ function tot(num,price,i) {
 var row_book_id = new Array();
 var row_book_ea = new Array();
 
-function sel(i,book_id, book_ea){
+ function sel(i,book_id, book_ea){
 	
 	if($("input:checkbox[id='chk"+i+"']").is(":checked")==true){
-				 
+				
 		
 		/* 
 			*** 제이슨으로 배열 넘기기 ***
@@ -72,24 +72,24 @@ function sel(i,book_id, book_ea){
 		/* book_id, book_ea값 배열에 추가 */
 		row_book_id.push(book_id);
 		row_book_ea.push(book_ea);
-		 
+		
 		
 		/* 배열에 잘 저장됐는지 검산 */
-		console.log("book_id 단순배열 저장:" + row_book_id); 
-	
+		console.log("book_id 단순배열 저장:" + row_book_id);
+		
 		/* 로컬스토리지에 배열을 JSON 오브젝트로 값 저장 */
 		localStorage.setItem("book_id", JSON.stringify(row_book_id));
-		localStorage.setItem("book_ea", JSON.stringify(row_book_ea)); 
+		localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
 		
 		/* 출력용 선언 */
 		var output_id = localStorage.getItem("book_id");
-		var output_book_id = JSON.parse(output_id); 
+		var output_book_id = JSON.parse(output_id);
 		
 		/* 검산값 */
 		console.log("book_id 제이슨배열 저장:" + output_book_id);
 		
 		var output_ea = localStorage.getItem("book_ea");
-		var output_book_ea = JSON.parse(output_ea); 
+		var output_book_ea = JSON.parse(output_ea);
 		
 		/* 검산값 */
 		console.log("book_ea 제이슨배열 저장:" + output_book_ea);
@@ -97,7 +97,7 @@ function sel(i,book_id, book_ea){
 		
 
 		/* 체크박스 해제 할 경우 */
-	 } else{
+	} else{
 		
 		/* 체크해제할 경우, 특정값 체크해서 배열에서 book_id 삭제  */
 		for(let i = 0; i < row_book_id.length; i++) {
@@ -112,7 +112,7 @@ function sel(i,book_id, book_ea){
 			  if(row_book_ea[i] === book_ea)  {
 				  row_book_ea.splice(i, book_ea);
 				    i--;
-				 }
+				  }
 				}
 
 		
