@@ -44,10 +44,6 @@
 		
 		//돈 자릿수포맷
 		DecimalFormat df = new DecimalFormat("###,###");
-			
-		/* 예시 */
-		int val = 1234567;
-		System.out.println(df.format(val));
 	%>
 	
 
@@ -165,8 +161,6 @@
 			<div id="content">
 		
 				<div id="img">
-					<!-- 검산용 -->
-					<% System.out.println("image/book/"+dto.getBook_image()); %>
 					<img src="image/book/<%=dto.getBook_name()%>.jpg" id="bookImg">
 				</div>
 			
