@@ -3,14 +3,13 @@
 #order_wrapper{
 	
 	font-family: 'Noto Serif KR', serif;
-	
 }
 
-.order_table_all{
+.order_table_list{
 	
+	margin-left: 150px;
 	width: 80%;
-	margin-top: 20px;
-	
+	margin-top: 10px;
 }
 
 .order_title{
@@ -24,7 +23,7 @@
 
 #order_table{
 	
-	border: 2px solid lightgray;
+	border: 3px solid lightgray;
 }
 
 .order_th{
@@ -32,10 +31,26 @@
 	text-align: center;
 	background-color: #A27855;
 	color: white;
-	
+	height: 50px;
+	border: 2px solid lightgray;
 }
 
 #order_table td{
 	
 	text-align: center;
+	border: 2px solid lightgray;
 }
+
+.order_table_date{
+	
+	padding: 10px;
+	width: 30%;
+	border: 2px solid lightgray;
+}
+
+.container{
+	
+	text-align: center;	
+
+}
+

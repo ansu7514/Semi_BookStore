@@ -1,4 +1,4 @@
-
+<%@page import="java.util.List"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="db.OrderDTO"%>
@@ -31,22 +31,19 @@ OrderDAO db=new OrderDAO();
 String user_id=request.getParameter("user_id");
 //검산용 
 user_id="apple";
-ArrayList<OrderDTO>orderList=db.orderList(user_id);
+//ArrayList<OrderDTO>list=db.orderList(user_id);
 
 //나중에 바꿔놓을것
 /* String user_id = (String)session.getAttribute("myid"); */
 
 
-
-/* 
---- 페이징 처리 ---
-
+/* --- 페이징 처리 --- */
 int totalCount; //총글수
 int totalPage;  //총페이지수
 int startPage;  //각블럭의 시작페이지
 int endPage;    //각블럭의 끝페이지
 int start;      //각페이지의 시작번호
-int perPage=5;  //한페이지의 보여질 글의 갯수
+int perPage=3;  //한페이지의 보여질 글의 갯수
 int perBlock=5; //한페이지의 보여질 페이지 갯수
 int currentPage;//현재 페이지
 int no;         //모두 다 구한 후에 넘버값을 구할수 있음
@@ -87,13 +84,32 @@ List<OrderDTO>list=db.getList(start, perPage);
 //총글이 20개일경우 1페이지 20, 2페이지 15부터
 //출력해서 1씩 감소하며 출력
 no=totalCount-(currentPage-1)*perPage;
-*/
 
 %>
+<script type="text/javascript">
+<!-- 지정한 날짜 조회하기 (스크립트) -->
+
+/* function input(){
+	
+	const dday=document.querySelector("#input_date").value;
+	const ddday=document.querySelector("#input_date2").value;
+	console.log(dday,ddday);
+} */
+
+</script>
+
 
 <div id="order_wrapper">
 
-<div class="order_table_all">
+<!-- 지정한 날짜 조회하기 -->
+<!-- <div class="order_table_date">
+	<input id="input_date" type="date">
+	<b>~</b>
+	<input id="input_date2" type="date">
+	<input id="input_submit" type="submit" onclick="input()" value="조회">
+</div> --> 
+
+<div class="order_table_list">
 
 <div class="order_title">주문 내역</div>
 <br>
@@ -116,7 +132,7 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 //00,000 자릿수
 DecimalFormat df = new DecimalFormat("###,###");
 
-for(OrderDTO dto:orderList)
+for(OrderDTO dto:list)
 {
 	%>
 	<tr>
@@ -144,17 +160,16 @@ for(OrderDTO dto:orderList)
 %>
 </table>
 </div>
-</div>
 
 <!-- 페이징 처리 -->
-<%-- <div class="container">
+<div class="container">
 	<ul class="pagination">
 <%
 	//이전
 	if(startPage>1)
 {%>
 	<li>
-		<a href="order_form.jsp?currentPage=<%=startPage-1%>">이전</a>
+		<a href="order_form.jsp?currentPage=<%=startPage-1%>">◀</a>
 	</li>  
 <%}
    
@@ -176,13 +191,15 @@ for(OrderDTO dto:orderList)
 	if(endPage<totalPage)
 {%>
 	<li>
-		<a href="order_form.jsp?currentPage=<%=endPage+1%>">다음</a>
+		<a href="order_form.jsp?currentPage=<%=endPage+1%>">▶</a>
 	</li>
 <%}
    
 %>
 	</ul>
-</div> --%>
+</div> 
+
+</div>
 
 
 </body>

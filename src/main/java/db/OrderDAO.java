@@ -174,7 +174,7 @@ public class OrderDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	
-	String sql="select * from ORDERED order by order_id desc limit ?,?";
+	String sql="select * from ORDERED order by order_id limit ?,?";
 	
 	try {
 		pstmt=conn.prepareStatement(sql);
