@@ -1,5 +1,5 @@
 var rating = 0;
-$("rating-box.rateyo-readonly-widg").rateYo({
+$(".rating-box .rateyo-readonly-widg").rateYo({
 
   rating: rating,
   numStars: 5,
@@ -7,5 +7,5 @@ $("rating-box.rateyo-readonly-widg").rateYo({
   minValue: 1,
   maxValue: 5
 }).on("rateyo.change", function (e, data) {
-  $(".rating-value-box").text(data.rating);
+  $(".rating-box .rating-value-box").text(data.rating);
 });	

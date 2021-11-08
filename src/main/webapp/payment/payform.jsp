@@ -12,13 +12,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/payform.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -26,35 +23,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css?after">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
+	
 <title>Insert title here</title>
 
 	<!-- bx 슬라이더용 추가 -->
 	<!-- 가능하면 나중에 js로 따로 만들어서 뺄것 -->
 	<script>
 	
-		$(document).onload(function(){
+		$(document).ready(function(){
 		
 			$('.slider').bxSlider();
 			
 		    $('.bxslider').bxSlider({ // 클래스명 주의!
-
 		        auto: false, // 자동으로 애니메이션 시작
-
 		        speed: 500,  // 애니메이션 속도
-
 		        pause: 5000,  // 애니메이션 유지 시간 (1000은 1초)
-
 		        mode: 'horizontal', // 슬라이드 모드 ('fade', 'horizontal', 'vertical' 이 있음)
-
 		        autoControls: true, // 시작 및 중지버튼 보여짐
-
 		        pager: true, // 페이지 표시 보여짐
-
 		        captions: true, // 이미지 위에 텍스트를 넣을 수 있음
-
 		    });
-		
 		});
 	
 	</script>
@@ -170,7 +158,7 @@
 					<h4 class="captions">주문 정보</h4>
 					
 						<!-- bxSlider 조건에 맞춰 class명 부여 -->
-						<div id="slider">
+						<div class="slider">
 						
 							<ul class="bxslider">
 							
@@ -344,5 +332,6 @@
 		}
 		
 	</script>
+
 </body>
 </html>

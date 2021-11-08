@@ -6,7 +6,7 @@ public class ReviewDTO {
 	private String user_id;
 	private String book_id;
 	private double rating;
-	private Date wrtieday;
+	private Date writeday;
 	private String content;
 	
 	public String getUser_id() {
@@ -27,11 +27,11 @@ public class ReviewDTO {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public Date getWrtieday() {
-		return wrtieday;
+	public Date getWriteday() {
+		return writeday;
 	}
-	public void setWrtieday(Date wrtieday) {
-		this.wrtieday = wrtieday;
+	public void setWriteday(Date writeday) {
+		this.writeday = writeday;
 	}
 	public String getContent() {
 		return content;
