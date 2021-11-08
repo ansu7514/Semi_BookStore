@@ -126,7 +126,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	}
 	
 	/* 버튼 */
-	.btn {
+	.btns {
 		box-sizing: border-box;
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -149,7 +149,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		font-weight: 700;
 	}
 	
-	.btn:hover, .btn:focus {
+	.btns:hover, .btns:focus {
 		color: #fff;
 		outline: 0;
 	}

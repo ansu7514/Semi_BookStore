@@ -203,8 +203,8 @@
 							<!-- 장바구니, 바로구매 버튼 -->
 		
 						<div id="btns">
-							<button id="buy" class="btn fourth" onclick="location.href=''">바로구매</button>
-							<button id="goCart" class="btn fourth" onclick="location.href='book/book_to_cart.jsp'">장바구니</button>
+							<button id="buy" class="btns fourth" onclick="location.href=''">바로구매</button>
+							<button id="goCart" class="btns fourth" onclick="location.href='book/book_to_cart.jsp'">장바구니</button>
 						</div>
 						
 				</div>
