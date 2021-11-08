@@ -26,47 +26,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap"
 	rel="stylesheet">
 <script type="text/javascript">
-$(function(){
-		/* 삭제 이벤트 */
-		$(".delbtn").click(function () {
-			
-			var user_id = (String)session.getAttribute("myid");
-			var book_id=$(this).attr("book_id");
-			
-			
-			$.ajax({
-				
-				type:"post",
-				dataType:"html",
-				url:"cart/cart_delete.jsp",
-				data:{"user_id":user_id, "book_id":book_id},
-				success:function(){
-					location.reload();
-				}
-			});
-		});
-		
-		
-		var send_array;
-		
-		$("input[name='chk']:checked").each(function(i, element){
-			<%System.out.println("안녕22211");%>
-		}); 
-		
-		/* 체크 박스 */
-<%-- 		$(function(){
 
-			$("input[name='chk']:checked").each(function(i, element){
-				<%System.out.println("안녕");%>
-			}); 
-
-		}); --%>
-	});
 	
 </script>
 </head>
 
 <%
+
 //db 선언
 BookDAO dao = new BookDAO();
 BookDTO Bdto = new BookDTO();
@@ -92,7 +58,7 @@ var row_book_ea = new Array();
 function sel(i,book_id, book_ea){
 	
 	if($("input:checkbox[id='chk"+i+"']").is(":checked")==true){
-				
+				 
 		
 		/* 
 			*** 제이슨으로 배열 넘기기 ***
@@ -106,24 +72,24 @@ function sel(i,book_id, book_ea){
 		/* book_id, book_ea값 배열에 추가 */
 		row_book_id.push(book_id);
 		row_book_ea.push(book_ea);
-		
+		 
 		
 		/* 배열에 잘 저장됐는지 검산 */
-		console.log("book_id 단순배열 저장:" + row_book_id);
-		
+		console.log("book_id 단순배열 저장:" + row_book_id); 
+	
 		/* 로컬스토리지에 배열을 JSON 오브젝트로 값 저장 */
 		localStorage.setItem("book_id", JSON.stringify(row_book_id));
-		localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
+		localStorage.setItem("book_ea", JSON.stringify(row_book_ea)); 
 		
 		/* 출력용 선언 */
 		var output_id = localStorage.getItem("book_id");
-		var output_book_id = JSON.parse(output_id);
+		var output_book_id = JSON.parse(output_id); 
 		
 		/* 검산값 */
 		console.log("book_id 제이슨배열 저장:" + output_book_id);
 		
 		var output_ea = localStorage.getItem("book_ea");
-		var output_book_ea = JSON.parse(output_ea);
+		var output_book_ea = JSON.parse(output_ea); 
 		
 		/* 검산값 */
 		console.log("book_ea 제이슨배열 저장:" + output_book_ea);
@@ -131,7 +97,7 @@ function sel(i,book_id, book_ea){
 		
 
 		/* 체크박스 해제 할 경우 */
-	} else{
+	 } else{
 		
 		/* 체크해제할 경우, 특정값 체크해서 배열에서 book_id 삭제  */
 		for(let i = 0; i < row_book_id.length; i++) {
@@ -146,7 +112,7 @@ function sel(i,book_id, book_ea){
 			  if(row_book_ea[i] === book_ea)  {
 				  row_book_ea.splice(i, book_ea);
 				    i--;
-				  }
+				 }
 				}
 
 		
@@ -181,6 +147,10 @@ function sel(i,book_id, book_ea){
 
 	}
 }
+
+
+
+
 </script>
 <body>
 
@@ -197,6 +167,26 @@ function sel(i,book_id, book_ea){
 	int val = 34567;
 	/* System.out.println(df.format(val)); */
 	%>
+
+
+<script type="text/javascript">
+
+	function del_data(user_id,book_id) {
+		
+		$.ajax({
+			type:"post",
+			dataType:"html",
+			url:"cart/cart_delete.jsp",
+			data:{"user_id":user_id, "book_id":book_id},
+			success:function(){
+				location.reload();
+			}
+		});
+	}
+
+</script>
+
+
 
 	<!-- 전체 div -->
 	<div class="wrapper">
@@ -246,7 +236,7 @@ function sel(i,book_id, book_ea){
 					<!-- 삭제 버튼 -->
 					<td>
 						<button class="delbtn" id="del" book_id="<%=dto.getBook_id()%>"
-							onclick="return false">삭제</button>
+							onclick="del_data('<%=user_id %>','<%=dto.getBook_id()%>')">삭제</button>
 					</td>
 				</tr>
 

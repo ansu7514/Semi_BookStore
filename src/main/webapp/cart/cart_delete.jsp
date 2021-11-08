@@ -19,6 +19,8 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 request.setCharacterEncoding("utf-8");
 //user_id , book_id
 String user_id=(String)request.getParameter("user_id");
+//myid로 고쳐야할깡?..
+
 String book_id=(String)request.getParameter("book_id");
 
 //dao선언

@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+#order_wrapper{
+	
+	font-family: 'Noto Serif KR', serif;
+	
+}
+
+.order_table_all{
+	
+	width: 80%;
+	margin-top: 20px;
+	
+}
+
+.order_title{
+	
+	width: 80%;
+	font-size: 20pt;
+	height: 20px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+#order_table{
+	
+	border: 2px solid lightgray;
+}
+
+.order_th{
+	
+	text-align: center;
+	background-color: #A27855;
+	color: white;
+	
+}
+
+#order_table td{
+	
+	text-align: center;
+}
