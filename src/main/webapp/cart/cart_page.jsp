@@ -249,7 +249,7 @@ var row_book_ea = new Array();
 		
 		<!-- 선택상품주문, 이전 페이지 클릭하는 버튼 div -->
 		<div class="btndiv">
-			<button type="button" class="btn1" onclick="location.href='index.jsp?main=payment/payform.jsp?user_id=<%=user_id%>'">선택 상품 주문</button>
+			<button type="button" class="btn1" onclick="location.href='index.jsp?main=payment/payform.jsp'">선택 상품 주문</button>
 
 			<!-- 쇼핑 계속하기 클릭시 메인으로 이동하기 ? -->
 			<button type="button" class="btn2"

@@ -22,7 +22,7 @@
 <title>Insert title here</title>
 </head>
 	<%
-	
+		
 		/* 리스트값 출력 - 카트에 있는 값을 출력하기위한 DAO선언 */
 		CartDAO Cdao = new CartDAO(); 
 
@@ -30,7 +30,7 @@
 		CartDTO Cdto = new CartDTO();
 	
 		/* CartDb에서 데이터를 출력하기 위해 user_id값 받아오기 */
-		String user_id = request.getParameter("user_id");
+		String user_id = (String)session.getAttribute("myid");
 				
 		/* user_id에 따른 Cart 정보를 받을 list를 선언합니다. */
 		ArrayList<CartDTO> cart_list = Cdao.selectCart(user_id);

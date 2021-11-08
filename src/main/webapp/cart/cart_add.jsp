@@ -35,7 +35,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	dao.insertCart(dto);
 %>
 <script>
-location.href='index.jsp?main=cart/cart_page.jsp?user_id=<%= user_id %>';
+location.href='index.jsp?main=cart/cart_page.jsp';
 </script>
 </body>
 </html>

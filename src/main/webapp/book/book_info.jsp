@@ -213,7 +213,7 @@
 								if(myid == "null" || myid == ""){
 									alert("로그인 후 결제가 가능합니다 😊");
 								} else {
-									location.href='index.jsp?main=cart/cart_add.jsp?user_id=<%=myid%>&book_id=<%= dto.getBook_id() %>&ea=' + document.getElementById("ea").value;
+									location.href='index.jsp?main=cart/cart_add.jsp?book_id=<%= dto.getBook_id() %>&ea=' + document.getElementById("ea").value;
 								}
 							}
 							</script>
