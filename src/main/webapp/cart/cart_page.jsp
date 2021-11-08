@@ -33,7 +33,6 @@ $(function(){
 			var user_id = (String)session.getAttribute("myid");
 			var book_id=$(this).attr("book_id");
 			
-			console.log(book_id);
 			
 			$.ajax({
 				
@@ -80,27 +79,106 @@ CartDAO db = new CartDAO();
 function tot(num,price,i) {
 	var a=(String)(num*price);
 	a=a.replace(/\B(?=(\d{3})+(?!\d))/g,",");
-	
-	console.log(num);
-	console.log(price);
-	console.log(i);
-	console.log(a); 
+
 	
 	document.getElementById(i).innerText=a;
 	
 }
 
-var rowData = new Array();
+/* 배열 저장을 위한 객체선언 */
+var row_book_id = new Array();
+var row_book_ea = new Array();
 
 function sel(i,book_id, book_ea){
 	
 	if($("input:checkbox[id='chk"+i+"']").is(":checked")==true){
-		console.log(i);
-		console.log(book_id);
-		console.log(book_ea);	
+				
 		
-		/* 전체 카트 리스트 자바스크립트로 어레이선언 */
+		/* 
+			*** 제이슨으로 배열 넘기기 ***
+			1. 배열을 선언하고 배열안에 checkbox 선택에 따른 값추가
+			2. 정리된 배열을 제이슨 형태로 변환하여 로컬저장소에 입력
+			3. 출력, 검산을 위해 2차례의 변환
+		*/
 		
+		
+		/* 배열에 우선적으로 저장 */
+		/* book_id, book_ea값 배열에 추가 */
+		row_book_id.push(book_id);
+		row_book_ea.push(book_ea);
+		
+		
+		/* 배열에 잘 저장됐는지 검산 */
+		console.log("book_id 단순배열 저장:" + row_book_id);
+		
+		/* 로컬스토리지에 배열을 JSON 오브젝트로 값 저장 */
+		localStorage.setItem("book_id", JSON.stringify(row_book_id));
+		localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
+		
+		/* 출력용 선언 */
+		var output_id = localStorage.getItem("book_id");
+		var output_book_id = JSON.parse(output_id);
+		
+		/* 검산값 */
+		console.log("book_id 제이슨배열 저장:" + output_book_id);
+		
+		var output_ea = localStorage.getItem("book_ea");
+		var output_book_ea = JSON.parse(output_ea);
+		
+		/* 검산값 */
+		console.log("book_ea 제이슨배열 저장:" + output_book_ea);
+		
+		
+
+		/* 체크박스 해제 할 경우 */
+	} else{
+		
+		/* 체크해제할 경우, 특정값 체크해서 배열에서 book_id 삭제  */
+		for(let i = 0; i < row_book_id.length; i++) {
+			  if(row_book_id[i] === book_id)  {
+				  row_book_id.splice(i, book_id);
+				    i--;
+				  }
+				}
+
+		/* 체크해제할 경우, 특정값 체크해서 배열에서 book_ea 삭제  */
+		for(let i = 0; i < row_book_ea.length; i++) {
+			  if(row_book_ea[i] === book_ea)  {
+				  row_book_ea.splice(i, book_ea);
+				    i--;
+				  }
+				}
+
+		
+		/* 배열에서 잘 제거 됐는지 검산 */
+		console.log("단순 배열에서 book_id 잘 제거되었는지: " + row_book_id);
+		console.log("단순 배열에서 book_ea 잘 제거되었는지: " + row_book_ea);
+		
+		
+		/* 체크박스 해제할 경우, 단순 배열에서 삭제 */
+		/* !!!이 경우, 위에서처럼 다시 제이슨 오브젝트를 정의해줘야함!!! */
+		/* 1. 수정된 배열을 제이슨 형태로 전환 */
+		localStorage.setItem("book_id", JSON.stringify(row_book_id));
+		localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
+		
+		/* 2. 검산을 위해 오브젝트를 로컬저장소에 저장 */
+		/* 3. 제이슨 오브젝트로 변환 */
+		var output_id = localStorage.getItem("book_id");
+		var output_book_id = JSON.parse(output_id);
+				
+		var output_ea = localStorage.getItem("book_ea");
+		var output_book_ea = JSON.parse(output_ea);
+		
+		
+		/* 제이슨에서 잘 제거 됐는지 확인 - 최종확인은 제이슨 오브젝트 */
+		console.log("제이슨 오브젝트에서 남은 book_id:" + output_book_id);		
+		console.log("제이슨 오브젝트에서 남은 book_ea:" + output_book_ea);
+
+		
+		/* localStorage.removeItem("book_id", book_id);
+		localStorage.removeItem("book_ea", book_ea);	
+ */
+
 	}
 }
 </script>
