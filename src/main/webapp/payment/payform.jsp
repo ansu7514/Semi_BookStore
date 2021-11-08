@@ -19,21 +19,8 @@
 <link rel="stylesheet" href="css/payform.css">
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!-- bx 슬라이더용 추가 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>	
 <title>Insert title here</title>
-
-
-
 </head>
-
-	<!-- bx 슬라이더용 추가 -->
-	<!-- 가능하면 나중에 js로 따로 만들어서 뺄것 -->
-	<script src="JS/payform.js"></script>
-
 	<%
 	
 		/* 리스트값 출력 - 카트에 있는 값을 출력하기위한 DAO선언 */
@@ -141,36 +128,52 @@
 					
 						<!-- bxSlider 조건에 맞춰 class명 부여 -->
 						<div class="slider">
-						
-							<ul class="bxslider">
 							
-								<!-- list이기 때문에 for문 출력을 합니다 -->
+							<!-- list이기 때문에 for문 출력을 합니다 -->
+							<table class="table table-bordered">
+									<tr>
+										<th style="background-color: rgb(85, 102, 28, 0.5); width: 350px; text-align: center;">상품 정보</th>
+										<th style="background-color: rgb(85, 102, 28, 0.5); width: 150px; padding-left: 5%;">판매가</th>
+										<th style="background-color: rgb(85, 102, 28, 0.5); width: 100px; padding-left: -0.5px	;">수량</th>
+									</tr>
+									
+							<%
+								for(int i=0; i < cart_list.size(); i++){
+									
+									/* 각 i값마다 list에서 dto 가져옴 */
+									Cdto = cart_list.get(i);
+									
+									/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
+									Bdto = Bdao.getBook(Cdto.getBook_id());										
+									
+									/* for문 마다 앞서 선언한 변수에 더해줍니다 */
+									/* 후에 돈자리 , 계산을 위해 포멧을 넣어줍니다 */
+									payment_totP += (Bdto.getBookPrice()*Cdto.getEa());
+		
+									%>
+									
+									<!-- 회전판에 책 img 목록들 추가 -->
+										<tr>
+											<td>
+												<img src="image/book/<%= Bdto.getBook_image() %>" style="width: 70px;">
+											
+												<b style="margin-left: 5%;"><%= Bdto.getBook_name() %></b> | <%= Bdto.getWriter() %>
+											</td>
+											
+											<td>
+												<h4 style="display: flex; justify-content: center; text-align: center; margin-top: 40px;">
+													<b><%= df.format(Bdto.getBookPrice()) %> 원</b>
+												</h4>
+											</td>
+											
+											<td>
+												<h5 style="margin-top: 40px;"><%= Cdto.getEa() %> 권</h5>
+											</td>
+										</tr>
 								<%
-									for(int i=0; i < cart_list.size(); i++){
-										
-										/* 각 i값마다 list에서 dto 가져옴 */
-										Cdto = cart_list.get(i);
-										
-										/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
-										Bdto = Bdao.getBook(Cdto.getBook_id());										
-										
-										/* for문 마다 앞서 선언한 변수에 더해줍니다 */
-										/* 후에 돈자리 , 계산을 위해 포멧을 넣어줍니다 */
-										payment_totP += (Bdto.getBookPrice()*Cdto.getEa());
-			
-										%>
-										
-										<!-- 회전판에 책 img 목록들 추가 -->
-										<li class="img_div">
-											<h5 class="img_name"><%=Bdto.getBook_name() %></h5>
-											<img class="img" src="image/book/<%=Bdto.getBook_image()%>">
-											<h6 class="totP_ea"><%=df.format(Bdto.getBookPrice()*Cdto.getEa()) %> 원 &nbsp;/ &nbsp;<%=Cdto.getEa() %> 권</h6>
-										</li>
-										
-									<%}
+								}
 								%>
-							
-							</ul>
+							</table>
 						</div>
 					</div>			
 				</div>

@@ -115,9 +115,9 @@
 						<div class="order_form">
 							<table class="table table-bordered">
 								<tr>
-									<th style="background-color: rgb(85, 102, 28, 0.5); width: 350px;">상품 정보</th>
-									<th style="background-color: rgb(85, 102, 28, 0.5);">판매가</th>
-									<th style="background-color: rgb(85, 102, 28, 0.5);">수량</th>
+									<th style="background-color: rgb(85, 102, 28, 0.5); width: 350px; text-align: center;">상품 정보</th>
+									<th style="background-color: rgb(85, 102, 28, 0.5); padding-left: 5%;">판매가</th>
+									<th style="background-color: rgb(85, 102, 28, 0.5); width: 100px; padding-left: -0.5px	;">수량</th>
 								</tr>
 								
 								<tr>
@@ -129,7 +129,7 @@
 									
 									<td>
 										<h4 style="display: flex; justify-content: center; text-align: center; margin-top: 40px;">
-											<b><%= df.format(payment_totP) %> 원</b>
+											<b><%= df.format(Bdto.getBookPrice()) %> 원</b>
 										</h4>
 									</td>
 									
