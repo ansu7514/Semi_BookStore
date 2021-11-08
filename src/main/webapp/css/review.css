@@ -9,6 +9,19 @@
 	
 }
 
+.review-box > .review-name-rating{
+	display: inline-flex;
+}
+
+.review-name-rating > span.review-name{
+	width: 20%;
+}
+
+.review-name-rating > .review-rate{
+	width: 30%;
+}
+
+
 .review > .rating-box{
 	display: flex;
 	height: 100%;

@@ -17,18 +17,19 @@ public class OrderDAO {
 		PreparedStatement pstmt = null;
 		boolean isOrder = false;
 		
-		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getUser_id());
 			pstmt.setString(2, dto.getBook_id());
-			pstmt.setString(3, dto.getRecipent());
+			pstmt.setString(3, dto.getRecipient());
 			pstmt.setString(4, dto.getLocation());
-			pstmt.setDate(5, dto.getPayDay());
-			pstmt.setInt(6, dto.getEa());
-			pstmt.setString(7, dto.getPay_method());
+			pstmt.setInt(5, dto.getBook_price());
+			pstmt.setDate(6, dto.getPayDay());
+			pstmt.setInt(7, dto.getEa());
+			pstmt.setString(8, dto.getPay_method());
 			
 			pstmt.executeUpdate();
 			isOrder = true;
@@ -72,8 +73,9 @@ public class OrderDAO {
 				dto.setOrder_id(rs.getString("order_id"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setBook_id(rs.getString("book_id"));
-				dto.setRecipent(rs.getString("recipient"));
+				dto.setRecipient(rs.getString("recipient"));
 				dto.setLocation(rs.getString("location"));
+				dto.setBook_id(rs.getString("book_price"));
 				dto.setPayDay(rs.getDate("pay_day"));
 				dto.setEa(rs.getInt("ea"));
 				dto.setPay_method(rs.getString("pay_method"));
@@ -113,8 +115,9 @@ public class OrderDAO {
 				dto.setOrder_id(rs.getString("order_id"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setBook_id(rs.getString("book_id"));
-				dto.setRecipent(rs.getString("recipient"));
+				dto.setRecipient(rs.getString("recipient"));
 				dto.setLocation(rs.getString("location"));
+				dto.setBook_id(rs.getString("book_price"));
 				dto.setPayDay(rs.getDate("pay_day"));
 				dto.setEa(rs.getInt("ea"));
 				dto.setPay_method(rs.getString("pay_method"));

@@ -9,6 +9,7 @@ public class OrderDTO {
 	private String book_id;
 	private String recipient;
 	private String location;
+	private int book_price;
 	private Date payDay;
 	private int ea;
 	private String pay_method;
@@ -37,23 +38,17 @@ public class OrderDTO {
 	public void setRecipient(String recipient) {
 		this.recipient = recipient;
 	}
-	public String getPay_method() {
-		return pay_method;
-	}
-	public void setPay_method(String pay_method) {
-		this.pay_method = pay_method;
-	}
-	public String getRecipent() {
-		return recipient;
-	}
-	public void setRecipent(String recipient) {
-		this.recipient = recipient;
-	}
 	public String getLocation() {
 		return location;
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public int getBook_price() {
+		return book_price;
+	}
+	public void setBook_price(int book_price) {
+		this.book_price = book_price;
 	}
 	public Date getPayDay() {
 		return payDay;
@@ -66,6 +61,12 @@ public class OrderDTO {
 	}
 	public void setEa(int ea) {
 		this.ea = ea;
+	}
+	public String getPay_method() {
+		return pay_method;
+	}
+	public void setPay_method(String pay_method) {
+		this.pay_method = pay_method;
 	}
 	
 }

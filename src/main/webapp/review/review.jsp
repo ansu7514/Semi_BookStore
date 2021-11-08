@@ -29,9 +29,26 @@
 
 		<!-- 리뷰 출력 -->
 		<div class="review-box">
-			<c:forEach var="dto" items="${list }">
-				${dto.book_id }
+			<c:forEach items="${list }" var="dto">
+				<div class="review-name-rating">
+					<span class="review-name">${dto.user_id }</span>
+					<div class="review-rate">
+						<div class="rateyo-readonly-widg" style="padding:0;"></div>
+					</div>
+				</div>
 			</c:forEach>
+		</div>
+		      
+		<!-- 댓글 -->
+		<div class="comment">
+			<div class="show-box">
+				<span id="show-comment" class="show-comment">댓글보기</span>
+			</div>
+		      	
+			<div class="input-comment">
+				<textarea id="comment-content" name="comment-content" placeholder="댓글을 입력해주세요"></textarea>
+				<button id="submit-comment" class="submit-comment" onclick="return false">입력</button>
+			</div>
 		</div>
 		
 		<!-- 별점 및 리뷰-->
@@ -49,18 +66,7 @@
 			<textarea name="review-content" id="review-content" placeholder="리뷰를 입력해주세요"></textarea>
 			<button class="submit-review" id="submit-review" onclick="return false">입력</button>
 		</div>
-      
-		<!-- 댓글 -->
-		<div class="comment">
-			<div class="show-box">
-				<span id="show-comment" class="show-comment">댓글보기</span>
-			</div>
-		      	
-			<div class="input-comment">
-				<textarea id="comment-content" name="comment-content" placeholder="댓글을 입력해주세요"></textarea>
-				<button id="submit-comment" class="submit-comment" onclick="return false">입력</button>
-			</div>
-		</div>
+
 		<script src="JS/review.js?after"></script>
 	</div>
 </body>
