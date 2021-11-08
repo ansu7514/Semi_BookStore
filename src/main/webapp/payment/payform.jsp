@@ -16,14 +16,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/payform.css?after">
+<link rel="stylesheet" href="css/payform.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- bx 슬라이더용 추가 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css?after">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
@@ -33,7 +33,7 @@
 	<!-- 가능하면 나중에 js로 따로 만들어서 뺄것 -->
 	<script>
 	
-		$(document).ready(function(){
+		$(document).onload(function(){
 		
 			$('.slider').bxSlider();
 			
@@ -164,7 +164,7 @@
 				</div>
 				
 				
-				<!-- 삼품정보 div -->
+				<!-- 상품정보 div -->
 				<div id="product_info">
 				
 					<h4 class="captions">주문 정보</h4>
@@ -193,7 +193,7 @@
 										<!-- 회전판에 책 img 목록들 추가 -->
 										<li class="img_div">
 											<h5 class="img_name"><%=Bdto.getBook_name() %></h5>
-											<img class="img" src="../image/book/<%=Bdto.getBook_image()%>">
+											<img class="img" src="image/book/<%=Bdto.getBook_image()%>">
 											<h6 class="totP_ea"><%=df.format(Bdto.getBookPrice()*Cdto.getEa()) %> 원 &nbsp;/ &nbsp;<%=Cdto.getEa() %> 권</h6>
 										</li>
 										
@@ -289,8 +289,8 @@
 				}
 				
 				
-				$("#hp2").val("<%=hp.substring(4,8)%>");
-				$("#hp3").val("<%=hp.substring(8)%>");
+				$("#hp2").val("<%=hp.substring(3,7)%>");
+				$("#hp3").val("<%=hp.substring(7)%>");
 				
 			/* check안 된 경우 */	
 			}else{

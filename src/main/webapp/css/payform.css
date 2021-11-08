@@ -1,359 +1,304 @@
 @charset "utf-8";
 
-		/* 전체 div */
-		#wrapper{
-			width: 80%;
-			margin-left: 10%;
-			margin-top: 2%;
-			
-			/* background-color: yellow;	 */
-		}
-		
-		/* font: 주문결제 */
-		#title{
-			font-size: 38px;
-			font-family: "Montserrat", sans-serif;
-			font-weight: bold;
-			color: black;
-			padding-left: 7%;
-		}
-		
-		/* 맨위의 선 */
-		#top_hr{
-			margin-top: 2%;
-			background-color:gray;
-		}
-		
-		
-		/* 세 div를 담는 div */
-		#container{
-			width: 100%;
-			margin-top: 2%;
-			display: flex;
-			
-			/* background-color: red; */
-		}
-		
-		
-		/* 왼쪽 - 배송지선택 div & 주문정보 div */
-		#left_info{
-			width: 50%;
-			margin-right: 4%;
-		}
-		
-		
-		/* 테이블 전체적용 */
-		table{
-			font-family: dotum, "돋움";
-			width: 100%;
-			margin-left: 3%;
-		}
-		
-		
-		/* 배송지 정보 div */
-		#transport_info{
-			width: 100%;
-			margin-bottom: 5%;
-			
-			/* background-color: blue; */
-		}
-		
-		
-		
-		/* 모든 테이블 행에 적용 */
-		tr{
-			text-indent: 2em;
-		}
-		
-		
-		/* 모든 테이블 th에 적용 */
-		th{
-			padding-left: 10px;
-		}
-		
-				
-		/* 배송지 선택 */
-		.captions{
-			font-size: 20px;
-			font-family: "Montserrat", sans-serif;
-			color: black;
-			font-weight: bold;
-			padding-left: 4%;
-			margin-bottom: 4%;
-		}
-		
-		
-		/* 회원정보와 동일 */
-		#same_as{
-			font-size: 0.9em;
-			font-weight: normal;
-			padding-top: 15px;
-			padding-bottom: 15px;
-		}
-		
-		
-		/* 수령인 입력행 */
-		#input_recipient{
-			/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
-			padding-top: 13px;
-			padding-bottom: 13px;
-		}
+/* 전체 div */
+#wrapper {
+	margin-top: 50px;
+}
 
+/* font: 주문결제 */
+#title {
+	font-size: 38px;
+	font-weight: bold;
+	color: black;
+	padding-left: 7%;
+}
 
-		/* 배송지 입력행 */
-		#input_addr{
-			/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
-			padding-top: 13px;
-			padding-bottom: 13px;
-		}
-		
-		
-		/* 배송지적는 란 */
-		#addr2{
-			margin-left: 28px;
-			margin-top: 10px;
-		}
-		
-		
-		/* placeholder */
-		input::placeholder{
-			opacity: 0.5;
-		}
-		
-		
-		/* 전화번호 입력행 */
-		#input_hp{
-			/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
-			padding-top: 13px;
-			padding-bottom: 13px;
-		}
-		
-		/* 전화번호적는 테이블 div */
-		.hp{
-			width: 70px;
-		}
-		
-		
-		/* 전화번호 앞자리 선택란 */
-		#select_hp1{
-			width: 50px;
-			height: 25px; 
-		}
-		
-		
-		/* 주문 정보 div */
-		#product_info{
-			width: 100%;
-			padding-top: 4%;
-			margin-left: 3%;
-			/* background-color: green; */
-		}
-		
-		
-		/* 슬라이드 안의 이미지 */
-		img{
-			/* margin-top: 1%; */
-			width: 50%;
-			height: 50%;
-		}
-		
-		/* 슬라이더를 담고있는 div */
-		div.bx-wrapper{
-			background-image: url(../image/frame.png);
-			/* background-color: #ffffde; */
-			background-repeat: no-repeat;
-			background-size: 100% 100%;
-		}
-		
-		/* 이미지를 담고있는 div */
-		.img_div{
-			text-align: center;
-			align-self: center;
-			/* background-color: #ffdca1; */
-			/* background-image: url(../image/frame.png);
+/* 맨위의 선 */
+#top_hr {
+	margin-top: 2%;
+	background-color: gray;
+}
+
+/* 세 div를 담는 div */
+#container {
+	width: 100%;
+	margin-top: 2%;
+	display: flex;
+
+	/* background-color: red; */
+}
+
+/* 왼쪽 - 배송지선택 div & 주문정보 div */
+#left_info {
+	width: 50%;
+	margin-right: 4%;
+}
+
+/* 테이블 전체적용 */
+table {
+	width: 100%;
+	margin-left: 3%;
+}
+
+/* 배송지 정보 div */
+#transport_info {
+	width: 100%;
+	margin-bottom: 5%;
+
+	/* background-color: blue; */
+}
+
+/* 모든 테이블 행에 적용 */
+tr {
+	text-indent: 2em;
+}
+
+/* 모든 테이블 th에 적용 */
+th {
+	padding-left: 10px;
+}
+
+/* 배송지 선택 */
+.captions {
+	font-size: 20px;
+	color: black;
+	font-weight: bold;
+	padding-left: 4%;
+	margin-bottom: 4%;
+}
+
+/* 회원정보와 동일 */
+#same_as {
+	font-size: 0.9em;
+	font-weight: normal;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+/* 수령인 입력행 */
+#input_recipient {
+	/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+/* 배송지 입력행 */
+#input_addr {
+	/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+/* 배송지적는 란 */
+#addr2 {
+	margin-left: 28px;
+	margin-top: 10px;
+}
+
+/* placeholder */
+input::placeholder {
+	opacity: 0.5;
+}
+
+/* 전화번호 입력행 */
+#input_hp {
+	/* tr에 줄경우 안먹는다 - th랑 td에 넣어야한다 */
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+/* 전화번호적는 테이블 div */
+.hp {
+	width: 70px;
+}
+
+/* 전화번호 앞자리 선택란 */
+#select_hp1 {
+	width: 50px;
+	height: 25px;
+}
+
+/* 주문 정보 div */
+#product_info {
+	width: 100%;
+	padding-top: 4%;
+	margin-left: 3%;
+	/* background-color: green; */
+}
+
+/* 슬라이드 안의 이미지 */
+img {
+	/* margin-top: 1%; */
+	width: 50%;
+	height: 50%;
+}
+
+/* 슬라이더를 담고있는 div */
+div.bx-wrapper {
+	background-image: url(../image/frame.png);
+	/* background-color: #ffffde; */
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 이미지를 담고있는 div */
+.img_div {
+	text-align: center;
+	align-self: center;
+	/* background-color: #ffdca1; */
+	/* background-image: url(../image/frame.png);
 			background-color: #ffffde;
 			background-repeat: no-repeat;
 			background-size: 100% 100%; */
-		}
-		
-		
-		/* 슬라이드 안의 이미지 */
-		.img{
-			/* padding: 30px 0px 100px 185px; */
-			margin: auto;
-			/* 그림자 */
-			box-shadow: 7px 7px 7px gray;
-		}
-		
-		
-		/* 책이름 */
-		.img_name{
-			padding-top: 9%;
-			padding-bottom: 3%;
-			font-family: "Noto Serif KR";
-			font-size: 1.7em;
-			font-weight: bold;
-		}
-		
-		
-		/* 책 총가격, 갯수 */
-		.totP_ea{
-			padding-top: 3%;
-			padding-bottom: 6%;
-			font-family: 'Tahoma';
-			font-size: 1.2em;
-			font-weight: bold;
-		}
-		
-		
-		/* 결제 정보 div */
-		#payment_info{
-			width: 40%;
-			/* max-height: 720px; */
-			float: right;
-			margin-left: 5%;
-			/* background-color: yellow; */
-		}
-		
-		
-		/* 최종결제 정보 div */
-		#final_payment_info{
-			margin-top: 5%;
-			position: sticky;
- 			top: 10px;
-			height: 50%;
-			border: 7px	solid #faab3c;
-		}
-		
-		
-		#final_payment_hr{
-			height: 3px;
-			color: black;
-			width: 100%;
-		}
-		
-		
-		/* ul li의 디테일 css */
-		#final_payment_ul{
-			margin-top: 5%;
-			line-height: 4em;
-			font-family: 'Tahoma';
-			padding-left: 12%;
-			font-size: 1.2em; 
-			/*font-weight: bold;  */
-		}
-		
-		
-		/* 좌측 결제정보 naming된 것들 */
-		.naming{
-			font-family: "Montserrat", sans-serif;
-			font-size: 0.9em;
-		}
-		
-		
-		/* 좌측 결제금액 폰트 */
-		.naming_pay{
-			font-family: "Montserrat", sans-serif;
-			font-size: 1.3em;
-			font-weight: bold;
-		}
-		
-		
-		
-		/* 우측에 동적으로 입력될 값들 */
-		.payment_detail{
-			float: right;
-			margin-bottom: -5%;
-			margin-right: 8%;
-			font-weight: bold;
-			font-size: 1.5em;
-		}
-		
-		
-		/* 우측에 입력된 값의 단위들 */
-		.unit{
-			font-size: 0.5em; 
-			font-weight: normal;
-		}
-		
-		
-		/* 적립 포인트 */
-		#get_point{
-			margin-left: 40%;
-		}
-		
-		/* 사용할 포인트 입력란 */
-		#use_point{
-			max-width: 5em;
-			max-height: 1.2em;
-			text-align: center;
-			font-weight: normal;
-		}
-		
-		
-		
-		/* 버튼에 효과적용 */
-		#btns {
-		display: flex;
-		justify-content: center;
-		margin-top: 3%;
-	}
-	
-	/* 버튼 */
-	.btn {
-		box-sizing: border-box;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		background-color: transparent;
-		border: 2px solid #e74c3c;
-		border-radius: 0em;
-		color: #e74c3c;
-		cursor: pointer;
-		align-self: center;
-		font-size: 1rem;
-		font-weight: 400;
-		line-height: 1;
-		margin: 1%;
-		padding: 0.5em 4em;
-		text-decoration: none;
-		text-align: center;
-		text-transform: uppercase;
-		font-family: "Montserrat", sans-serif;
-		font-weight: 700;
-	}
-	
-	.btn:hover, .btn:focus {
-		color: #fff;
-		outline: 0;
-	}
-	
-	.fourth {
-		border-color: #f1c40f;
-		color: #3d2a26;
-		background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
-		background-position: 100%;
-		background-size: 400%;
-		transition: background 300ms ease-in-out;
-		font-family: "Montserrat", sans-serif;
-		font-weight: 900;
-	}
-	
-	.fourth:hover {
-		background-position: 0;
-	}
-	
-	/* 버튼 아이디 */
-	#buy {
-		font-size: 20pt;
-		width: 332px;
-    	height: 78px;
-		margin-top: 20px;
-	}
-		
-		
-		
-		
-		
-		
-		
+}
+
+/* 슬라이드 안의 이미지 */
+.img {
+	/* padding: 30px 0px 100px 185px; */
+	margin: auto;
+	/* 그림자 */
+	box-shadow: 7px 7px 7px gray;
+}
+
+/* 책이름 */
+.img_name {
+	padding-top: 9%;
+	padding-bottom: 3%;
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+/* 책 총가격, 갯수 */
+.totP_ea {
+	padding-top: 3%;
+	padding-bottom: 6%;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+/* 결제 정보 div */
+#payment_info {
+	width: 40%;
+	/* max-height: 720px; */
+	float: right;
+	margin-left: 5%;
+	/* background-color: yellow; */
+}
+
+/* 최종결제 정보 div */
+#final_payment_info {
+	margin-top: 5%;
+	position: sticky;
+	top: 10px;
+	height: 50%;
+	border: 7px solid #faab3c;
+}
+
+#final_payment_hr {
+	height: 3px;
+	color: black;
+	width: 100%;
+}
+
+/* ul li의 디테일 css */
+#final_payment_ul {
+	margin-top: 5%;
+	line-height: 4em;
+	padding-left: 12%;
+	font-size: 1.2em;
+	/*font-weight: bold;  */
+}
+
+/* 좌측 결제정보 naming된 것들 */
+.naming {
+	font-size: 0.9em;
+}
+
+/* 좌측 결제금액 폰트 */
+.naming_pay {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+/* 우측에 동적으로 입력될 값들 */
+.payment_detail {
+	float: right;
+	margin-bottom: -5%;
+	margin-right: 8%;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+/* 우측에 입력된 값의 단위들 */
+.unit {
+	font-size: 0.5em;
+	font-weight: normal;
+}
+
+/* 적립 포인트 */
+#get_point {
+	margin-left: 40%;
+}
+
+/* 사용할 포인트 입력란 */
+#use_point {
+	max-width: 5em;
+	max-height: 1.2em;
+	text-align: center;
+	font-weight: normal;
+}
+
+/* 버튼에 효과적용 */
+#btns {
+	display: flex;
+	justify-content: center;
+	margin-top: 3%;
+}
+
+/* 버튼 */
+#buy {
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	border: 2px solid #e74c3c;
+	border-radius: 0em;
+	color: #e74c3c;
+	cursor: pointer;
+	align-self: center;
+	font-size: 1rem;
+	line-height: 1;
+	margin: 1%;
+	padding: 0.5em 4em;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+#buy:hover, #buy:focus {
+	outline: 0;
+}
+
+.fourth {
+	border-color: #f1c40f;
+	color: #3d2a26;
+	background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+	background-position: 100%;
+	background-size: 400%;
+	transition: background 300ms ease-in-out;
+	font-weight: 900;
+}
+
+.fourth:hover {
+	background-position: 0;
+}
+
+/* 버튼 아이디 */
+#buy {
+	font-size: 20pt;
+	width: 332px;
+	height: 78px;
+	margin-top: 20px;
+}
