@@ -75,7 +75,7 @@ public class OrderDAO {
 				dto.setBook_id(rs.getString("book_id"));
 				dto.setRecipient(rs.getString("recipient"));
 				dto.setLocation(rs.getString("location"));
-				dto.setBook_id(rs.getString("book_price"));
+				dto.setBook_price(Integer.parseInt(rs.getString("book_price")));
 				dto.setPayDay(rs.getDate("pay_day"));
 				dto.setEa(rs.getInt("ea"));
 				dto.setPay_method(rs.getString("pay_method"));
@@ -117,7 +117,7 @@ public class OrderDAO {
 				dto.setBook_id(rs.getString("book_id"));
 				dto.setRecipient(rs.getString("recipient"));
 				dto.setLocation(rs.getString("location"));
-				dto.setBook_id(rs.getString("book_price"));
+				dto.setBook_price(Integer.parseInt(rs.getString("book_price")));
 				dto.setPayDay(rs.getDate("pay_day"));
 				dto.setEa(rs.getInt("ea"));
 				dto.setPay_method(rs.getString("pay_method"));

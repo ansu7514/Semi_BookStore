@@ -50,7 +50,7 @@
 				<button id="submit-comment" class="submit-comment" onclick="return false">입력</button>
 			</div>
 		</div>
-		
+
 		<!-- 별점 및 리뷰-->
 		<div class="rating-box">
 			<div class="rateyo-readonly-widg" style="padding:0;"></div>

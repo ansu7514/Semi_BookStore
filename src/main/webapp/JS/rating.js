@@ -1,5 +1,5 @@
 var rating = 0;
-$(".rating-box.rateyo-readonly-widg").rateYo({
+$("rating-box.rateyo-readonly-widg").rateYo({
 
   rating: rating,
   numStars: 5,
