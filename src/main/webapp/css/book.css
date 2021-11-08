@@ -122,6 +122,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 /* 버튼에 효과적용 */
 #btns {
+
+	
 	margin-top: 3%;
 }
 
@@ -144,7 +146,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	font-weight: 700;
 }
 
-.btns:hover, .btns:focus {
+.btn:hover, .btn:focus {
 	color: #fff;
 	outline: 0;
 }
@@ -170,6 +172,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	height: 78px;
 	margin-top: 20px;
 }
+
 
 /* 슬라이드 광고 */
 #adver_img {

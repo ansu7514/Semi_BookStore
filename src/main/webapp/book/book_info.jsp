@@ -188,7 +188,7 @@
 						
 							판매가 :&nbsp; <%=df.format(dto.getBookPrice()) %> 원 <br>
 							
-							포인트 :&nbsp; <%=dto.getBookPrice()/2 %> point <br>
+							포인트 :&nbsp; <%=dto.getBookPrice()*2/100 %> point <br>
 							
 							재고량 :&nbsp; <%=dto.getEa() %> 권 <br>
 							
@@ -224,8 +224,10 @@
 							}
 							</script>
 							
-							<button id="buy" class="btns fourth" onclick="buyclick()">바로구매</button>
-							<button id="goCart" class="btns fourth" onclick="cartclick()">장바구니</button>
+							
+							<button id="buy" class="btns fourth" onclick="buyclick()" style="background-color: transparent;">바로구매</button>
+							
+							<button id="goCart" class="btns fourth" onclick="cartclick()" style="background-color: transparent; margin-left: 2%;">장바구니</button>
 						</div>
 						
 				</div>
