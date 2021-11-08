@@ -184,6 +184,7 @@ function sel(i,book_id, book_ea){
 </script>
 <body>
 
+
 	<%
 	String user_id = (String)session.getAttribute("myid");
 
