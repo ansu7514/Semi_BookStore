@@ -32,7 +32,7 @@
 }
 
 #img {
-	width: 50%;
+	width: 45%;
 	padding-left: 14%;
 }
 
@@ -45,7 +45,6 @@
 
 #selInfo {
 	width: 50%;
-	margin-right: 14%;
 }
 
 .title {
@@ -122,9 +121,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 /* 버튼에 효과적용 */
 #btns {
-
-	
+	width: 100%;
 	margin-top: 3%;
+	display: flex;
+	justify-content: center;
 }
 
 /* 버튼 */
@@ -140,7 +140,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	font-size: 1rem;
 	line-height: 1;
 	margin: 1%;
-	padding: 0.5em 4em;
+	padding: 0.5em 3em;
 	text-decoration: none;
 	text-align: center;
 	font-weight: 700;
@@ -168,7 +168,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 /* 버튼 아이디 */
 #buy, #goCart {
 	font-size: 20pt;
-	width: 332px;
 	height: 78px;
 	margin-top: 20px;
 }

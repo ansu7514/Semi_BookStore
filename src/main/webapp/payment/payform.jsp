@@ -20,7 +20,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- bx 슬라이더용 추가 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css?after">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	
@@ -228,7 +228,7 @@
 						<font class="payment_detail" id="left_point"><%=Udto.getPoint() %>
 							<font class="unit"> Point</font>
 						</font>
-						<li class="naming">남은 포인트</li>
+						<li class="naming">사용 가능한 포인트</li>
 					</ul>
 					
 					<hr id="final_payment_hr">
