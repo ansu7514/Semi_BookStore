@@ -90,7 +90,7 @@ function tot(num,price,i) {
 	
 }
 
-
+var rowData = new Array();
 
 function sel(i,book_id, book_ea){
 	

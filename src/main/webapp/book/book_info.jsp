@@ -239,7 +239,7 @@
 		
 		<!-- 리뷰 -->
 		<jsp:include page="../review/review.jsp">
-			<jsp:param value="book_id" name="book_id"/>
+			<jsp:param value="<%=book_id %>" name="book_id"/>
 		</jsp:include>
 		
 	</div>
