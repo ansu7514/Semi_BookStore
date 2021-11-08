@@ -21,43 +21,55 @@ body {
 </style>
 <script type="text/javascript">
 /* 비밀번호 입력조건 , 일치여부 확인 */
-function check_pw(){
-	 
-    var pw = document.getElementById('pw').value;
-    var SC = ["!","@","#","$","%"];
-    var check_SC = 0;
-
-    if(pw.length < 6 || pw.length>16){
-        window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
-        document.getElementById('pw').value='';
-    }
-    for(var i=0;i<SC.length;i++){
-        if(pw.indexOf(SC[i]) != -1){
-            check_SC = 1;
-        }
-    }
-    if(check_SC == 0){
-        window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
-        document.getElementById('pw').value='';
-    }
-    if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
-        if(document.getElementById('pw').value==document.getElementById('pw2').value){
-            document.getElementById('check').innerHTML='일치합니다.'
-            document.getElementById('check').style.color='blue';
-        }
-        else{
-            document.getElementById('check').innerHTML='일치하지 않습니다.';
-            document.getElementById('check').style.color='red';
-        }
-    }
-}
-
+	function check_pw(){
+		 
+	    var pw = document.getElementById('pw').value;
+	    var SC = ["!","@","#","$","%"];
+	    var check_SC = 0;
+	
+	    if(pw.length < 6 || pw.length>16){
+	        window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+	        document.getElementById('pw').value='';
+	    }
+	    for(var i=0;i<SC.length;i++){
+	        if(pw.indexOf(SC[i]) != -1){
+	            check_SC = 1;
+	        }
+	    }
+	    if(check_SC == 0){
+	        window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+	        document.getElementById('pw').value='';
+	    }
+	    if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
+	        if(document.getElementById('pw').value==document.getElementById('pw2').value){
+	            document.getElementById('check').innerHTML='일치합니다.'
+	            document.getElementById('check').style.color='blue';
+	        }
+	        else{
+	            document.getElementById('check').innerHTML='일치하지 않습니다.';
+	            document.getElementById('check').style.color='red';
+	        }
+	    }
+	}
+	
+	function check_recaptcha(){
+		var v = grecaptcha.getResponse();
+		
+		if (v.length == 0) {
+			alert ("'로봇이 아닙니다.'를 체크해주세요.");
+			return false;
+		} else {
+			location.href='login/member_add.jsp';
+			
+			return true;
+		}
+	}
 </script>
 
 
 </head>
 <body>
-	<form action="login/member_add.jsp" method="post">
+	<form action="login/member_add.jsp" method="post" id="frm">
 		<div class="member_form" style="display: flex; justify-content: center;">
 			<div class="member_form_de" style="padding-top: 50px;">
 				<div class="member_form_de_center">
@@ -165,13 +177,13 @@ function check_pw(){
 
 				<!-- 캡챠 -->
 				<div id="google_recaptha" style="display: flex; justify-content: center;">
-					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback' async defer></script>
 					<div class="g-recaptcha"
-						data-sitekey="6LfQugsdAAAAAFPygUEIJdCFfOm5OSAkRZzeSCQp"></div>
+						data-sitekey="6LcZ5R4dAAAAAGu3UuaIaftofKjy1mapuGf9Jr0L"></div>
 				</div>
 
 				<div style="display: flex; justify-content: center; margin-top: 35px; margin-bottom: 30px;">
-					<button type="submit" class="btn btn-warning">회원가입</button>
+					<button id="sub" onclick="return check_recaptcha();" class="btn btn-warning">회원가입</button>
 				</div>
 			</div>
 		</div>
