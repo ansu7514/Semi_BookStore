@@ -89,28 +89,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	//출력해서 1씩 감소하며 출력
 	no = totalCount - (currentPage - 1) * perPage;
 	%>
-	<script type="text/javascript">
-	<!-- 지정한 날짜 조회하기 (스크립트) -->
-	function input(){
-		const dday = document.querySelector("#input_start").value;
-		const ddday =document.querySelector("#input_end").value;
-		
-		var dday_month = dday.substring(5, 6);
-		var ddday_month = ddday.substring(5, 6);
-		
-		var dday_day = dday.substring(8, 9);
-		var ddday_day = ddday.substring(8, 9);
-		
-		if(dday_month > ddday_month || (dday_month = ddday_month && dday_day > ddday_day)) {
-			alert("날짜를 다시 선택해주세요");
-		} else if(dday_month < ddday_month || (dday_month = ddday_month && dday_day <= ddday_day)) {
-			
-		} else if(dday == "null" || dday == "" || ddday == "null" || ddday == "") {
-			alert("날짜를 입력해주세요");
-		}
-	}
-	</script>
-
 
 	<div id="order_wrapper">
 
@@ -208,9 +186,28 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				%>
 			</ul>
 		</div>
-
 	</div>
-
-
+	
+	<script type="text/javascript">
+	<!-- 지정한 날짜 조회하기 (스크립트) -->
+	function input(){
+		const dday = document.querySelector("#input_start").value;
+		const ddday =document.querySelector("#input_end").value;
+		
+		var dday_month = dday.substring(5, 6);
+		var ddday_month = ddday.substring(5, 6);
+		
+		var dday_day = dday.substring(8, 9);
+		var ddday_day = ddday.substring(8, 9);
+		
+		if(dday_month > ddday_month || (dday_month = ddday_month && dday_day > ddday_day)) {
+			alert("날짜를 다시 선택해주세요");
+		} else if(dday_month < ddday_month || (dday_month = ddday_month && dday_day <= ddday_day)) {
+			
+		} else if(dday == "null" || dday == "" || ddday == "null" || ddday == "") {
+			alert("날짜를 입력해주세요");
+		}
+	}
+	</script>
 </body>
 </html>

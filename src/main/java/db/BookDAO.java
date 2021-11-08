@@ -172,4 +172,24 @@ public class BookDAO {
 			db.dbClose(pstmt, conn);
 		}
 	}
+	
+	// 평점 계산
+	public void averageStar(String book_id) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "select AVG(rating) from REVIEW where book_id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, book_id);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
 }
