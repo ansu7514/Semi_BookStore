@@ -72,9 +72,6 @@
 	
 		/* CartDb에서 데이터를 출력하기 위해 user_id값 받아오기 */
 		String user_id = request.getParameter("user_id");
-		
-		/* 임시값 */
-		user_id= "apple";
 				
 		/* user_id에 따른 Cart 정보를 받을 list를 선언합니다. */
 		ArrayList<CartDTO> cart_list = Cdao.selectCart(user_id);

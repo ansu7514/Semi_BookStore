@@ -59,7 +59,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	dao.insertUser(dto);
 	
 	//가입 완료 페이지로 이동하기 -> member_success
-	/* response.sendRedirect("../index.jsp?main=login/member_success.jsp?user_id="+user_id); */
 	response.sendRedirect("../index.jsp");	
 	
 %>

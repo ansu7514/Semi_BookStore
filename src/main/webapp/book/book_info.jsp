@@ -34,14 +34,13 @@
 		String book_id = request.getParameter("book_id");
 		
 		//파라미터값 가져오기 - user_id
-		String user_id = (String)session.getAttribute("user_id");
+		String myid = (String)session.getAttribute("myid");
 	
 		//DAO 객체선언
 		BookDAO dao = new BookDAO();
 	
 		//해당 book_id에 해당하는 dto 가져오기
 		BookDTO dto = dao.getBook(book_id);
-		
 		
 		//돈 자릿수포맷
 		DecimalFormat df = new DecimalFormat("###,###");
@@ -194,7 +193,7 @@
 							재고량 :&nbsp; <%=dto.getEa() %> 권 <br>
 							
 							<!-- 재고가 수량보다 적어 음수가 될 경우, 구매불가 메시지 출력-->
-							주문량 :&nbsp; <input type="number" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
+							주문량 :&nbsp; <input type="number" name="ea" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
 					
 							총금액 :&nbsp; <font id="totP"></font> 원
 						
@@ -203,8 +202,30 @@
 							<!-- 장바구니, 바로구매 버튼 -->
 		
 						<div id="btns">
-							<button id="buy" class="btns fourth" onclick="location.href=''">바로구매</button>
-							<button id="goCart" class="btns fourth" onclick="location.href='book/book_to_cart.jsp'">장바구니</button>
+							<script type="text/javascript">
+							function buyclick() {
+								var myid = "<%= myid %>";
+								
+								if(myid == "null" || myid == ""){
+									alert("로그인 후 결제가 가능합니다 😊");
+								} else {
+									location.href='index.jsp?main=payment/payform.jsp?book_id=<%= dto.getBook_id() %>';
+								}
+							}
+							
+							function cartclick() {
+								var myid = "<%= myid %>";
+								
+								if(myid == "null" || myid == ""){
+									alert("로그인 후 결제가 가능합니다 😊");
+								} else {
+									location.href='index.jsp?main=cart/cart_add.jsp?user_id=<%=myid%>&book_id=<%= dto.getBook_id() %>&ea=' + document.getElementById("ea").value;
+								}
+							}
+							</script>
+							
+							<button id="buy" class="btns fourth" onclick="buyclick()">바로구매</button>
+							<button id="goCart" class="btns fourth" onclick="cartclick()">장바구니</button>
 						</div>
 						
 				</div>

@@ -22,7 +22,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	//dto 에 담기
 	CartDTO dto=new CartDTO();
 	
-	String user_id=request.getParameter("user_id");
+	String user_id = (String)session.getAttribute("myid");
 	String book_id=request.getParameter("book_id");
 	int ea=Integer.parseInt(request.getParameter("ea"));
 	
@@ -34,9 +34,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	CartDAO dao=new CartDAO();
 	dao.insertCart(dto);
 	
-	//페이지 이동 : 장바구니담기 버튼이 눌렸을때 -> cart_page(list)로 이동
-	response.sendRedirect("");
+	response.sendRedirect("../index.jsp?main=book/book_info.jsp?book_id=" + book_id);
 %>
-
 </body>
 </html>
