@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../css/order_form.css?after">
+<link rel="stylesheet" href="../css/order_form.css">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -21,16 +21,18 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 </head>
 <body>
 
-<!-- 주문 내역 리스트 -->
+<!-- 주문 내역 리스트 jsp -->
 
 <%
 //dao 선언
 OrderDAO db=new OrderDAO();
 
-//전체 주문 조회
+//전체 주문 조회 -> 세션 !! 바꾸기 !!
 String user_id=request.getParameter("user_id");
 //검산용 
 user_id="apple";
+
+//페이징 처리시 주석처리 해놓기
 //ArrayList<OrderDTO>list=db.orderList(user_id);
 
 //나중에 바꿔놓을것
@@ -43,8 +45,8 @@ int totalPage;  //총페이지수
 int startPage;  //각블럭의 시작페이지
 int endPage;    //각블럭의 끝페이지
 int start;      //각페이지의 시작번호
-int perPage=3;  //한페이지의 보여질 글의 갯수
-int perBlock=5; //한페이지의 보여질 페이지 갯수
+int perPage=2;  //한페이지의 보여질 글의 갯수
+int perBlock=3; //한페이지의 보여질 페이지 갯수
 int currentPage;//현재 페이지
 int no;         //모두 다 구한 후에 넘버값을 구할수 있음
 
@@ -89,30 +91,31 @@ no=totalCount-(currentPage-1)*perPage;
 <script type="text/javascript">
 <!-- 지정한 날짜 조회하기 (스크립트) -->
 
-/* function input(){
+ function input(){
 	
 	const dday=document.querySelector("#input_date").value;
 	const ddday=document.querySelector("#input_date2").value;
 	console.log(dday,ddday);
-} */
-
+}
 </script>
 
 
 <div id="order_wrapper">
 
+<div class="order_title">주문 내역</div>
+<br>
+
 <!-- 지정한 날짜 조회하기 -->
-<!-- <div class="order_table_date">
+<div class="order_table_date">
 	<input id="input_date" type="date">
 	<b>~</b>
-	<input id="input_date2" type="date">
+	<input id="input_date2" type="date" min="" max="" value="">&nbsp;&nbsp;
 	<input id="input_submit" type="submit" onclick="input()" value="조회">
-</div> --> 
+</div> 
+<br>
 
 <div class="order_table_list">
 
-<div class="order_title">주문 내역</div>
-<br>
 <!-- 주문 내역이 출력될 테이블 -->
 <table class="table table-bordered" id="order_table">
 		<tr>
@@ -197,7 +200,7 @@ for(OrderDTO dto:list)
    
 %>
 	</ul>
-</div> 
+</div>
 
 </div>
 
