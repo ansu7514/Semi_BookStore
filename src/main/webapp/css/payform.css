@@ -135,7 +135,7 @@ img {
 
 /* 슬라이더를 담고있는 div */
 div.bx-wrapper {
-	background-image: url(../image/frame.png);
+	background-image: url(image/frame.png);
 	/* background-color: #ffffde; */
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
