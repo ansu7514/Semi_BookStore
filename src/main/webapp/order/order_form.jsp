@@ -91,12 +91,15 @@ no=totalCount-(currentPage-1)*perPage;
 <script type="text/javascript">
 <!-- 지정한 날짜 조회하기 (스크립트) -->
 
- function input(){
+/*  function input(){
 	
-	const dday=document.querySelector("#input_date").value;
-	const ddday=document.querySelector("#input_date2").value;
+	const dday=document.querySelector("#input_start").value;
+	const ddday=document.querySelector("#input_end").value;
 	console.log(dday,ddday);
-}
+} */
+
+
+
 </script>
 
 
@@ -106,12 +109,12 @@ no=totalCount-(currentPage-1)*perPage;
 <br>
 
 <!-- 지정한 날짜 조회하기 -->
-<div class="order_table_date">
-	<input id="input_date" type="date">
+<!-- <div class="order_table_date">
+	<input id="input_start" type="date">
 	<b>~</b>
-	<input id="input_date2" type="date" min="" max="" value="">&nbsp;&nbsp;
+	<input id="input_end" type="date" min="" max="" value="">&nbsp;&nbsp;
 	<input id="input_submit" type="submit" onclick="input()" value="조회">
-</div> 
+</div>  -->
 <br>
 
 <div class="order_table_list">
