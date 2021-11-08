@@ -46,19 +46,15 @@
 }
 
 .btndiv{
-	margin-top: 50px;;
-	width: 40%;
+	margin-top: 50px;
 	height: 100px;
-	margin-left: 370px;
 	margin-bottom: 35px;
+	display: flex;
+	justify-content: center;
 }
 
 
 .btn1{
-	
-	margin-bottom: 10%;
-	margin-top: 5%;
-	margin-left: 17%;
 	background-color:#679467;
     color:white;
     font-size: 15px;
@@ -68,13 +64,12 @@
     padding: 10px 20px;
     text-decoration: none;
     box-shadow: 3px 3px 0px 0px rgb(85, 30, 32);
+    height: 50px;
+    margin-right: 100px;
 }
 
 
 .btn2{
-	margin-top: 5%;
-	margin-left: 10%;
-	margin-right: 10%;
 	background-color: #679467;
     color:white;
     font-size: 15px;
@@ -84,6 +79,7 @@
     padding: 10px 20px;
     text-decoration: none;
     box-shadow: 3px 3px 0px 0px rgb(85, 30, 32);
+    height: 50px;
 }
 
 
