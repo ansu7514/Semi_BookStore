@@ -209,7 +209,7 @@
 								if(myid == "null" || myid == ""){
 									alert("로그인 후 결제가 가능합니다 😊");
 								} else {
-									location.href='index.jsp?main=payment/payform.jsp?book_id=<%= dto.getBook_id() %>';
+									location.href='index.jsp?main=payment/payform_direct.jsp?book_id=<%= dto.getBook_id() %>&ea=' + document.getElementById("ea").value;
 								}
 							}
 							

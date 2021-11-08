@@ -3,6 +3,7 @@
 /* 전체 div */
 #wrapper {
 	margin-top: 50px;
+	margin-bottom: 70px;
 }
 
 /* font: 주문결제 */
@@ -192,6 +193,7 @@ div.bx-wrapper {
 	top: 10px;
 	height: 50%;
 	border: 7px solid #faab3c;
+	height: 560px;
 }
 
 #final_payment_hr {
