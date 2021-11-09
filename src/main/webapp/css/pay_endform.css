@@ -8,6 +8,7 @@
 .pay_end_wrapper> .pay_end_table {
 	width: 90%;
 	margin-top: 40px;
+	border: 3px solid #E99885;
 }
 
 .pay_end_wrapper> .pay_end_table> caption {
@@ -15,4 +16,63 @@
 	font-size: 40px;
 	text-align: center;
 	color: #3D2A26;
+	margin-bottom: 10px;
+	margin-left: 90px;
+}
+
+.pay_img{
+	
+	width: 60px;
+	height: 50px;
+}
+
+.pay_end_th{
+	
+	padding: 40px;
+	text-align: center;
+	font-size: 20pt;
+	background-color: #E99885;
+}
+
+.pay_info1{
+	
+	padding: 20px;
+	font-size: 15pt;
+	border: 2px solid #E99885;
+	
+} 
+
+.pay_info2{
+	
+	padding: 20px;
+	font-size: 15pt;
+	
+} 
+
+b{
+	font-size: 15pt;
+}
+
+.b2{
+	color: #01A2AC;
+}
+
+.b4{
+	color: #FC6A03;
+}
+
+.listbtn{
+	
+    width: 200px;
+	padding: 20px;
+	background-color: #77af9c;
+    color: #d7fff1;
+    border-radius: 20px;
+	border: 3px solid #E99885;
+
+}
+
+.pay_list{
+	width: 100%;
+	margin-top: 20px;
 }
