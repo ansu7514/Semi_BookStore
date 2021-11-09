@@ -51,8 +51,8 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	List<OrderDTO> day_list = db.orderDateList(user_id, from, to); */
 
 	//페이징 처리시 주석처리 해놓기 , 전체주문 조회리스트
-	ArrayList<OrderDTO> order_list = db.orderList(user_id);
-
+	/* ArrayList<OrderDTO> order_list = db.orderList(user_id);*/
+	
 	/* --- 페이징 처리 --- */
 	int totalCount; //총글수
 	int totalPage; //총페이지수
@@ -60,7 +60,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	int endPage; //각블럭의 끝페이지
 	int start; //각페이지의 시작번호
 	int perPage = 3; //한페이지의 보여질 글의 갯수
-	int perBlock = 4; //한페이지의 보여질 페이지 갯수
+	int perBlock = 3; //한페이지의 보여질 페이지 갯수
 	int currentPage;//현재 페이지
 	int no; //모두 다 구한 후에 넘버값을 구할수 있음
 
@@ -94,7 +94,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	start = (currentPage - 1) * perPage;
 
 	//각 페이지에서 필요한 게시글 가져오기...dao에서 만들었음
-	List<OrderDTO> list = db.getList(start, perPage);
+	List<OrderDTO> list = db.getList(user_id,start, perPage);
 
 	//각 글 앞에 붙힐 시작번호 구하기
 	//총글이 20개일경우 1페이지 20, 2페이지 15부터
@@ -141,16 +141,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				//00,000 자릿수
 				DecimalFormat df = new DecimalFormat("###,###");
 			
-				for (int i = 0; i < order_list.size(); i++) {
-					
-					/* 주문들의 */
-					OrderDTO dto = order_list.get(i);
-					BookDAO book_dao = new BookDAO();
-				%>
-				<tr>
-					<!-- 책 명 -->
-					<%
-					BookDTO book_dto = book_dao.getBook(dto.getBook_id());
+				for (OrderDTO dto : list) {
+					%>
+					<tr>
+						<!-- 책 명 -->
+						<%
+						BookDAO book_dao = new BookDAO();
+						BookDTO book_dto = book_dao.getBook(dto.getBook_id());
 					%>
 					<td><%= book_dto.getBook_name() %></td>
 					<!-- 권수 -->
