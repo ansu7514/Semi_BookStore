@@ -19,7 +19,7 @@ public class OrderDAO {
 		PreparedStatement pstmt = null;
 		boolean isOrder = false;
 		
-		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, now(), ?, ?)";
+		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, now(), ?, ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -33,23 +33,44 @@ public class OrderDAO {
 			pstmt.setString(7, dto.getPay_method());
 			
 			pstmt.executeUpdate();
-			isOrder = true;
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			db.dbClose(pstmt, conn);
 		}
+		
+		sql ="delete from CART where user_id=? and book_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getBook_id());
+			
+			pstmt.executeUpdate();
+			isOrder = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return isOrder;
 	}
 	
 	//여러권 주문 (주문 성공하면 true)
 	public boolean insertOrders(ArrayList<OrderDTO> order_list) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
 		boolean isOrder = false;
 		
 		for(OrderDTO order : order_list) {
-			isOrder = insertOrder(order);
+			insertOrder(order);
 		}
+		isOrder = true;
+
 		return isOrder;
 	}
 	
