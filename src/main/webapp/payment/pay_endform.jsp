@@ -46,7 +46,7 @@ for(OrderDTO dto:list)
 	 		<tr>
 				<th class="pay_end_th">결제 정보</th>
 				<td class="pay_info1"> <b class="b1">결제 방법-  </b> <b class="b2"><%=dto.getPay_method() %></b><br><!-- 결제 방법 -->
-				<b class="b3">결제 가격-</b> <b class="b4"><%=df.format(dto.getBook_price() * dto.getEa()) %></b>원</td>	<!-- 결제 가격 -->
+				<b class="b3">결제 가격-</b> <b class="b4"><%=df.format(dto.getBook_price()) %></b>원</td>	<!-- 결제 가격 -->
 			</tr>
 	 
 	 		<tr>

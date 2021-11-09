@@ -195,7 +195,7 @@ public class OrderDAO {
 		ResultSet rs = null;
 		ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
 		
-		String sql = "select * from ORDERED wehre user_id=? and pay_day between ? and ?";
+		String sql = "select * from ORDERED where user_id=? and pay_day between ? and ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -259,7 +259,7 @@ public class OrderDAO {
 	}
 	
 	//페이징처리 _ 2) 페이징에 필요한 리스트만 보내기
-	public List<OrderDTO>getList(int start, int perpage)
+	public List<OrderDTO>getList(String user_id, int start, int perpage)
 	{
 		
 	List<OrderDTO>list=new Vector<OrderDTO>();
@@ -268,14 +268,15 @@ public class OrderDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	
-	String sql="select * from ORDERED order by order_id limit ?,?";
+	String sql="select * from ORDERED where user_id=? order by order_id limit ?,?";
 	
 	try {
 		pstmt=conn.prepareStatement(sql);
 		
 		//바인딩
-		pstmt.setInt(1, start);
-		pstmt.setInt(2, perpage);
+		pstmt.setString(1, user_id);
+		pstmt.setInt(2, start);
+		pstmt.setInt(3, perpage);
 		
 		//실행
 		rs=pstmt.executeQuery();
