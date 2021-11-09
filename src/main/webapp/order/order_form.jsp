@@ -51,7 +51,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	List<OrderDTO> day_list = db.orderDateList(user_id, from, to); */
 
 	//페이징 처리시 주석처리 해놓기 , 전체주문 조회리스트
-	//ArrayList<OrderDTO> list=db.orderList(user_id);
+	ArrayList<OrderDTO> order_list = db.orderList(user_id);
 
 	/* --- 페이징 처리 --- */
 	int totalCount; //총글수
@@ -141,15 +141,18 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				//00,000 자릿수
 				DecimalFormat df = new DecimalFormat("###,###");
 			
-				for (OrderDTO dto : list) {
+				for (int i = 0; i < order_list.size(); i++) {
+					
+					/* 주문들의 */
+					OrderDTO dto = order_list.get(i);
+					BookDAO book_dao = new BookDAO();
 				%>
 				<tr>
 					<!-- 책 명 -->
 					<%
-					BookDAO book_dao = new BookDAO();
 					BookDTO book_dto = book_dao.getBook(dto.getBook_id());
 					%>
-					<td><%= book_dto.getBook_name() %>
+					<td><%= book_dto.getBook_name() %></td>
 					<!-- 권수 -->
 					<td><%=dto.getEa()%></td>
 					<!-- 결제 가격 -->
