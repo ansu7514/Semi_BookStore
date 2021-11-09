@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ContentDAO {
+public class CommentDAO {
 
 	DBConnector db = new DBConnector();
 	
@@ -15,7 +15,7 @@ public class ContentDAO {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "insert into COMMENT values(?,?,?,?,now())";
+		String sql = "insert into COMMENT values(?,?,?,?,now(),?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -97,7 +97,7 @@ public class ContentDAO {
 				CommentDTO dto = new CommentDTO();
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setRe_user_id(rs.getString("re_user_id"));
-				dto.setBook_id(rs.getString(rs.getString("book_id")));
+				dto.setBook_id(rs.getString("book_id"));
 				dto.setContent(rs.getString("content"));
 				dto.setWriteday(rs.getDate("writeday"));
 				

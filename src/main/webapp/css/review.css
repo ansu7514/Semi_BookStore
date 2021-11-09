@@ -5,7 +5,12 @@
 	width: 100%;
 }
 
+.review-box{
+	border-bottom: 0.5px solid #EBECEF;
+}
+
 .review-box > .review-name-rating{
+	border-bottom: 0.5px solid black;
 	display: flex;
 }
 
@@ -26,11 +31,13 @@
 	width: 80%;
 }
 
-.review-box > .review-content{
-	border-top: 0.5px solid black;
+.review-box > .review-content, .comment > .print-comments{
+	padding: 20px;
+	height: 130px;
 }
 
 .review > .rating-box{
+	margin-top: 30px;
 	display: flex;
 	height: 100%;
 	margin-bottom: 5px;
@@ -50,6 +57,7 @@
 	display: flex;
 	width: 100%;
 	height: 100px;
+	margin-bottom: 20px;
 }
 
 .input-review > textarea{
@@ -76,15 +84,17 @@
 
 /* 댓글 */
 .comment{
-	width: 100%;
-	margin-bottom: 30px;
+	display:none;
+	margin-left: 10%;
+	width: 90%;
 }
 
-.comment > .show-box{
+.review-box > .show-box{
 	display: flex;
+	margin-bottom: 15px;
 }
 
-.show-box .show-comment{
+.show-box > .show-comment{
 	margin-top: 5px;
 	cursor: pointer;
 	margin-left: auto;
@@ -93,31 +103,24 @@
 	user-select:none;
 }
 
-hr.white-gray-hr{
-	border: 1px solid #EBECEF;
+.print-box{
+	display: flex;
 }
 
-.print-comments{
-	
-}
-
-
-
-.input-comment{
+.input-comment1{
 	margin-top: 20px;
 	display: flex;
 	width: 100%;
 	height: 50px;
 }
 
-.input-comment > #comment-content{
-	margin-left: 10%;
+.input-comment1 > #comment-content{
 	resize: none;
 	width: 90%;
 	height: 100%;
 }
 
-.input-comment > .submit-comment{
+.input-comment1 > .submit-comment{
 	border: none;
 	border-radius: 5px;
 	color: #FFF;
@@ -129,7 +132,7 @@ hr.white-gray-hr{
 	cursor: pointer;
 }
 
-.input-comment > .submit-comment:hover{
+.input-comment1 > .submit-comment:hover{
 	cursor: pointer;
 	background-color: #E09B3F;
 }

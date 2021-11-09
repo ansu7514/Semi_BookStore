@@ -28,9 +28,10 @@
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
+
+	BookDTO dto = new BookDTO();
+	
 	BookDAO dao = new BookDAO();
-	BookDTO dto = dao.getBook("17");
-	out.println(dto.getBook_image());
 %>
 
 </body>

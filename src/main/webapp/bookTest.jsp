@@ -26,7 +26,7 @@ $(function(){
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="bookTestProcess.jsp" method="post" id="frm">
+	<form action="bookTestProcess.jsp" method="post" id="frm" enctype="multipart/form-data">
 		책이름	<input type="text" name="bookName"><br>
 		책이미지	<input type="file" name="bookImage"><br>
 		저자	<input type="text" name="writer"><br>

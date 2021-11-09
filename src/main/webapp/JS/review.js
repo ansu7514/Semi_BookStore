@@ -1,11 +1,12 @@
 $(function(){
-	
-	$(".input-comment").hide();
-	
-	//리뷰작성
+/*	//리뷰작성
 	$("#submit-review").on("click", function(){
 		
 		if($('#comment-content').val() == ""){
+			return;
+		}
+		
+		if("<%=session.getAttribute('myid')%>" == "null"){
 			return;
 		}
 		
@@ -42,19 +43,7 @@ $(function(){
 				location.reload();
 			}
 		});
-	});
-	
-	//댓글보기 버튼
-	var triger = true;
-	$(".show-comment").on("click",function(){
-		if(triger){ //true
-			$(".input-comment").show();
-			triger = false;
-		} else { //false
-			$(".input-comment").hide();
-			triger = true;
-		}	
-	});
+	});*/
 	
 	//리뷰작성
 	$(document).on("click", ".submit-review", function(){
@@ -98,4 +87,9 @@ $(function(){
 			}
 		});
 	});
+	
+/*	//댓글보기
+	$(document).on("click", "#show-comment", function(){
+		showCon()
+	});*/
 });
