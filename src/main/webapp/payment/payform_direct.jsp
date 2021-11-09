@@ -89,7 +89,7 @@
 		/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
 				function point_input(point){
 					
-					var left_point = <%=Udto.getPoint()%> - $("#use_point").val();
+					var left_point = <%=Udto.getPoint()%> - $(".use_point").val();
 					
 					console.log(<%=Udto.getPoint()%>);
 					console.log(point);
@@ -277,7 +277,7 @@
 						
 							<!-- input에 입력 포인트가 바뀔때마다 함수호출 -->
 							<!-- 숫자만 입력되도록 변경 - type을 number로 안한것은 위아래 버튼이 거추장스럽기때문 -->
-							<input type="text" id="use_point" name="use_point" onchange="point_input(this.value)"
+							<input type="text" class="use_point" name="use_point" onchange="point_input(this.value)"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 							<font class="unit"> Point</font>
 						</font>
