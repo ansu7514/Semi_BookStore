@@ -61,21 +61,20 @@
 
 /* 별점 시이작*/
 .book-rate-box{
-	width: 350px !important;
+	width: 100%;
 	height: 100px;
-	display: inline-flex;
-	align-items: center;
-	margin-left: 22%;
+	display: flex;
+	justify-content: center;
 }
 
 #book-rate{
-	width: 100%;
+	width: 80%;
 	margin: 0px;
 }
 
-.book-rate-box svg{
-	width: 70px;
-	height: 70px;
+svg{
+	width: 100px;
+	height: 100px;
 }
 /* 별점 끄읏 */
 

@@ -1,6 +1,6 @@
 $(function(){
-	//리뷰작성
-	/*$("#submit-review").on("click", function(){
+/*	//리뷰작성
+	$("#submit-review").on("click", function(){
 		
 		if($('#comment-content').val() == ""){
 			return;
