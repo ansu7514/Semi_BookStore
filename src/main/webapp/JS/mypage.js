@@ -3,13 +3,8 @@ window.onload = function() {
 }
 
 function click_mem() {
-	var order_see = document.getElementById("order_see");
 	var my_mem_up = document.getElementById("my_mem_up");
 	var my_mem_del = document.getElementById("my_mem_del");
-	
-	order_see.onclick = function() {
-		document.getElementById("show_menu").src = "order/my_order_form.jsp";
-	}
 	
 	my_mem_up.onclick = function() {
 		document.getElementById("show_menu").src = "login/member_updatepass.jsp";

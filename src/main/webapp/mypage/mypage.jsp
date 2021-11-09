@@ -32,24 +32,7 @@ UserDTO user_dto = user_dao.getUser(myid);
 		<div class="mypage_main">
 			<!-- 메뉴 -->
 			<div class="mypage_menu">
-				<!-- 주문 관리 -->
 				<table class="mypage_menu_table">
-					<tr>
-						<td id="table_name_td"><label id="table_name">📦 주문 관리</label></td>
-					</tr>
-					
-					<tr>
-						<td class="table_sub_td">
-							<span class="table_sub" id="order_see">-  주문 배송 / 조회</span>
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="table_sub_td">
-							<span class="table_sub" id="order_del">-  취소 / 교환 / 반품 조회</span>
-						</td>
-					</tr>
-					
 					<!-- 회원 정보 관리 -->
 					<tr>
 						<td id="table_name_td">
