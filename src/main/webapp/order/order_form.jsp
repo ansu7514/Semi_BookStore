@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../css/order_form.css">
+<link rel="stylesheet" href="css/order_form.css">
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -59,8 +59,8 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	int startPage; //각블럭의 시작페이지
 	int endPage; //각블럭의 끝페이지
 	int start; //각페이지의 시작번호
-	int perPage = 2; //한페이지의 보여질 글의 갯수
-	int perBlock = 3; //한페이지의 보여질 페이지 갯수
+	int perPage = 3; //한페이지의 보여질 글의 갯수
+	int perBlock = 4; //한페이지의 보여질 페이지 갯수
 	int currentPage;//현재 페이지
 	int no; //모두 다 구한 후에 넘버값을 구할수 있음
 
@@ -104,8 +104,9 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 
 	<div id="order_wrapper">
 
-		<div class="order_title">주문 내역</div>
-		<br>
+		<div class="order_title">주문 내역
+			<img class="order_title_img" src="image/order_form_img.png">
+		</div>
 
 		<!-- 지정한 날짜 조회하기 -->
 		<div class="order_table_date">
@@ -120,7 +121,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		
 		</div>
 		
-		<br>
 
 		<div class="order_table_list">
 
@@ -177,7 +177,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				//이전
 				if (startPage > 1) {
 				%>
-				<li><a href="order_form.jsp?currentPage=<%=startPage - 1%>">◀</a>
+				<li><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=startPage - 1%>">◀</a>
 				</li>
 				<%
 				}
@@ -185,19 +185,19 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				for (int p = startPage; p <= endPage; p++) {
 				if (p == currentPage) {
 				%>
-				<li class="active"><a href="order_form.jsp?currentPage=<%=p%>"><%=p%></a>
+				<li class="active"><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=p%>"><%=p%></a>
 				</li>
 				<%
 				} else {
 				%>
-				<li><a href="order_form.jsp?currentPage=<%=p%>"><%=p%></a></li>
+				<li><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=p%>"><%=p%></a></li>
 				<%
 				}
 				}
 				//다음
 				if (endPage < totalPage) {
 				%>
-				<li><a href="order_form.jsp?currentPage=<%=endPage+1%>">▶</a></li>
+				<li><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=endPage+1%>">▶</a></li>
 				<%
 				}
 				%>

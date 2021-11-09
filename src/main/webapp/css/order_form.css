@@ -15,41 +15,49 @@ body {
 }
 
 .order_title {
-	font-size: 20pt;
+	font-size: 25pt;
 	height: 20px;
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 	font-weight: bold;
 	display: flex;
 	justify-content: center;
+	margin-top: 40px;
 }
 
 #order_table {
 	border: 3px solid lightgray;
+	background-color: #F5FEFD;
+	margin-top: 10px;
 }
 
 .order_th {
 	text-align: center;
-	background-color: #A27855;
+	background-color: #E28F63;
 	color: white;
-	height: 50px;
-	border: 2px solid lightgray;
+	height: 40px;
+	border: 3px solid lightgray;
 }
 
 #order_table td {
 	text-align: center;
-	border: 2px solid lightgray;
+	border: 3px solid lightgray;
 }
 
 .order_table_date {
-	padding: 10px;
+	
 	width: 400px;
-	border: 3px solid lightgray;
-	margin-top: 20px;
+	border: 1px solid #FAF7EB;
+	
 }
 
-#input_date {
-}
 
 .container {
-	text-align: center;
+	text-align: right;
 }
+
+.order_title_img{
+	
+	width: 50px;
+	height: 50px;
+}
+
