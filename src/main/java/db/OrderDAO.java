@@ -55,8 +55,21 @@ public class OrderDAO {
 		}
 		
 		//카트에서 삭제
-		new CartDAO().deleteCart(new CartDTO(dto.getUser_id(), dto.getBook_id()));
+		sql = "delete from CART where user_id=? and book_id=?";
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getBook_id());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
 	}
 	
 	//여러권 주문 (주문 성공하면 true)
