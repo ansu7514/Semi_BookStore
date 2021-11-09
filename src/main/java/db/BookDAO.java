@@ -192,7 +192,6 @@ public class BookDAO {
 				avg = rs.getDouble(1);
 			}
 			
-			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

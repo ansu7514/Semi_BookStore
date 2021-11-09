@@ -216,7 +216,7 @@
 					
 					<!-- 버튼 -->
 					<div id="btns">
-						<button id="buy" class="btn fourth" onclick="">결제하기</button>
+						<button id="buy" class="btn fourth" onclick="location.href='index.jsp?main=payment/pay_endform.jsp?book_id=<%= book_id %>&ea=<%= ea %>'">결제하기</button>
 					</div>
 				</div>
 			</div>	

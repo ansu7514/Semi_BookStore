@@ -20,7 +20,7 @@ public class OrderDAO {
 		boolean isOrder = false;
 		
 		//주문삽입
-		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, now(), ?, ?)";
+		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, now(), ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
