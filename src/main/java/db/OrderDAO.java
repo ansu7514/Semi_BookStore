@@ -19,7 +19,7 @@ public class OrderDAO {
 		PreparedStatement pstmt = null;
 		boolean isOrder = false;
 		
-		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, now(), ?, ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -29,9 +29,8 @@ public class OrderDAO {
 			pstmt.setString(3, dto.getRecipient());
 			pstmt.setString(4, dto.getLocation());
 			pstmt.setInt(5, dto.getBook_price());
-			pstmt.setDate(6, dto.getPayDay());
-			pstmt.setInt(7, dto.getEa());
-			pstmt.setString(8, dto.getPay_method());
+			pstmt.setInt(6, dto.getEa());
+			pstmt.setString(7, dto.getPay_method());
 			
 			pstmt.executeUpdate();
 			isOrder = true;

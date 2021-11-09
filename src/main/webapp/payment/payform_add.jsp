@@ -1,3 +1,4 @@
+<%@page import="db.OrderDAO"%>
 <%@page import="db.OrderDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -22,7 +23,22 @@
 	String book_id = request.getParameter("book_id");
 	String recipient = request.getParameter("name");
 	String location = request.getParameter("add1") + " " + request.getParameter("add2");
-	Integer book_price = Integer.parseInt(request.getParameter("book_price"));
+	int book_price = Integer.parseInt(request.getParameter("book_price"));
+	int ea = Integer.parseInt(request.getParameter("ea"));
+	String pay_method = request.getParameter("pay_radio");
+	
+	dto.setUser_id(user_id);
+	dto.setBook_id(book_id);
+	dto.setRecipient(recipient);
+	dto.setLocation(location);
+	dto.setBook_price(book_price);
+	dto.setEa(ea);
+	dto.setPay_method(pay_method);
+	
+	OrderDAO dao = new OrderDAO();
+	dao.insertOrder(dto);
+	
+	response.sendRedirect("../payment/pay_endform.jsp");
 %>
 </body>
 </html>
