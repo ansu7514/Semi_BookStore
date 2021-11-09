@@ -22,10 +22,18 @@
 	String user_id = (String)session.getAttribute("myid");
 	String book_id = request.getParameter("book_id");
 	String recipient = request.getParameter("name");
-	String location = request.getParameter("add1") + " " + request.getParameter("add2");
+	String location = request.getParameter("addr1") + " " + request.getParameter("addr2");
 	int book_price = Integer.parseInt(request.getParameter("book_price"));
 	int ea = Integer.parseInt(request.getParameter("ea"));
 	String pay_method = request.getParameter("pay_radio");
+	
+	out.println(user_id);
+	out.println(book_id);
+	out.println(recipient);
+	out.println(location);
+	out.println(book_price);
+	out.println(ea);
+	out.println(pay_method);
 	
 	dto.setUser_id(user_id);
 	dto.setBook_id(book_id);

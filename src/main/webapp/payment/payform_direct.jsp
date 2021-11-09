@@ -43,11 +43,12 @@
 		
 		/* 총 상품금액을 계산하기 위한 변수를 선언 */
 		int payment_totP = Bdto.getBookPrice() * Integer.parseInt(ea);
+		int book_price = Bdto.getBookPrice() * Integer.parseInt(ea);
 	%>
 	
 
 <body>
-
+<form action="payment/payform_add.jsp" method="post">
 	<!-- 전체 div -->
 	<div id="wrapper">
 		<span id="title">주문결제</span>
@@ -141,6 +142,10 @@
 								
 								<tr>
 									<td>
+										<!-- hidden -->
+										<input type="hidden" name="book_id" value="<%= book_id %>">
+										<input type="hidden" name="book_price" value="<%= book_price %>">
+										<input type="hidden" name="ea" value="<%= ea %>">
 										<img src="image/book/<%= Bdto.getBook_image() %>" style="width: 70px;">
 									
 										<b style="margin-left: 5%;"><%= Bdto.getBook_name() %></b> | <%= Bdto.getWriter() %>
@@ -219,7 +224,7 @@
 		</div>
 		
 	</div>
-
+</form>
 
 
 	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
