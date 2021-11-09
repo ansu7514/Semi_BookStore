@@ -31,6 +31,7 @@ public class OrderDAO {
 			pstmt.setInt(5, dto.getBook_price());
 			pstmt.setInt(6, dto.getEa());
 			pstmt.setString(7, dto.getPay_method());
+			pstmt.setInt(8, dto.getUse_point());
 			
 			pstmt.executeUpdate();
 			
@@ -40,12 +41,15 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		
-		//포인트 업데이트
-		sql = "update USER set point=?*0.02 where user_id=?";
+		//포인트 업데이트 point = (price-usepoint) * 0.02 + (point-usepoint)
+		sql = "update USER set point=(?-?)*0.02+((select point from USER where user_id=?)-?) where user_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getBook_price());
-			pstmt.setString(2, dto.getUser_id());
+			pstmt.setInt(2, dto.getUse_point());
+			pstmt.setString(3, dto.getUser_id());
+			pstmt.setInt(4, dto.getUse_point());
+			pstmt.setString(5, dto.getUser_id());
 			
 			pstmt.executeUpdate();
 			isOrder = true;

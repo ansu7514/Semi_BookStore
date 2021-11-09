@@ -13,6 +13,7 @@ public class OrderDTO {
 	private Date payDay;
 	private int ea;
 	private String pay_method;
+	private int use_point;
 	
 	public String getOrder_id() {
 		return order_id;
@@ -67,6 +68,12 @@ public class OrderDTO {
 	}
 	public void setPay_method(String pay_method) {
 		this.pay_method = pay_method;
+	}
+	public int getUse_point() {
+		return use_point;
+	}
+	public void setUse_point(int use_point) {
+		this.use_point = use_point;
 	}
 	
 }
