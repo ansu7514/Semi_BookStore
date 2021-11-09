@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="db.OrderDAO"%>
 <%@page import="db.OrderDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -19,14 +21,41 @@ String user_id = (String)session.getAttribute("myid");
 String book_id = request.getParameter("book_id");
 String ea = request.getParameter("ea");
 
+OrderDAO dao=new OrderDAO();
+
+String order_id=dao.getMaxnum();
+
+ArrayList<OrderDTO> list=dao.orderSelectList(order_id);
+
 %>
 <body>
 	<div class="pay_end_wrapper">
-		<table class="pay_end_table">
+		<table class="pay_end_table table-bordered">
 			<caption>주문 완료</caption>
 			<tr>
 				<th class="pay_end_th">결제 정보</th>
 			</tr>
+			<tr>
+				<th class="pay_end_th">결제 방법</th>
+			</tr>
+			<tr>
+				<th class="pay_end_th">결제 가격</th>
+			</tr>
+			<tr>
+				<th class="pay_end_th">수령인</th>
+			</tr>
+			<tr>
+				<th class="pay_end_th">배송지</th>
+			</tr>
+			
+<%
+for(OrderDTO dto:list)
+{
+	
+}
+
+%>
+			
 		</table>
 	</div>
 </body>

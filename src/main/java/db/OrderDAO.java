@@ -133,6 +133,38 @@ public class OrderDAO {
 			
 			return list;
 		}
+		
+		//최종 추가된 시퀀스 order_id값 리턴
+		public String getMaxnum()
+		{
+			OrderDTO dto=new OrderDTO();
+			String order_id="";
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select max(order_id) from ORDERED";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+				{
+					order_id=rs.getString(1);
+				}
+				
+			} catch (SQLException e) {
+				
+			} finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return order_id;
+		}
+		
 	
 	//특정기간 주문조회
 	public ArrayList<OrderDTO> orderDateList(String user_id, Date from, Date to){
