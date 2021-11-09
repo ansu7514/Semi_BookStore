@@ -156,7 +156,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 					<!-- 권수 -->
 					<td><%=dto.getEa()%></td>
 					<!-- 결제 가격 -->
-					<td><%=df.format(dto.getBook_price() * dto.getEa())%>원</td>
+					<td><%=df.format(dto.getBook_price())%>원</td>
 					<!-- 수령인 -->
 					<td><%=dto.getRecipient()%></td>
 					<!-- 배송지 -->
