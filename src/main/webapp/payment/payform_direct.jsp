@@ -46,6 +46,92 @@
 		int book_price = Bdto.getBookPrice() * Integer.parseInt(ea);
 	%>
 	
+	
+	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
+	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
+	<script type="text/javascript">
+	
+		function same_info(){
+			
+				/* 체크여부 확인 - check된 경우 */
+				if($("input:checkbox[name=chk_info]").is(":checked")==true){
+				
+				$("#orderer").val("<%=Udto.getUser_name()%>");
+				$("#addr1").val("<%=Udto.getAddr()%>");
+				
+				
+				if(<%=hp.substring(0,3).equals("010")%>){
+					$("#select_hp1").val("010").prop("selected", true);					
+				} else if(<%=hp.substring(0,3).equals("012")%>){
+					$("#select_hp1").val("012").prop("selected", true);										
+				} else if(<%=hp.substring(0,3).equals("016")%>){
+					$("#select_hp1").val("016").prop("selected", true);										
+				} else if(<%=hp.substring(0,3).equals("017")%>){
+					$("#select_hp1").val("017").prop("selected", true);										
+				}
+				
+				
+				$("#hp2").val("<%=hp.substring(3,7)%>");
+				$("#hp3").val("<%=hp.substring(7)%>");
+				
+			/* check안 된 경우 */	
+			}else{
+				
+				$("#orderer").val("");
+				$("#addr1").val("");
+				$("#select_hp1").val("010").prop("selected", true);	;
+				$("#hp2").val("");
+				$("#hp3").val("");
+			}
+		}
+		
+		/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
+		/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
+				function point_input(point){
+					
+					var left_point = <%=Udto.getPoint()%> - $("#use_point").val();
+					
+					console.log(<%=Udto.getPoint()%>);
+					console.log(point);
+					console.log(left_point);
+					console.log(<%=payment_totP%>);
+
+					
+					/* 남은 포인트 정보 산정 */
+					/* 단위 값은 폰트 사이즈 유지되도록 하기 */
+					$("#left_point").html(left_point + "<font class='unit'> Point</font>");
+					
+					
+					/* 남은 총 결제액 돈자릿수 포맷 포함 변수선언 */
+					var totP = (String)(<%=payment_totP%> - point);
+					
+					/* javascript 내부에서 돈자릿수 콤마 더하기 작업 */
+					totP = totP.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					
+					/* 금액변경시 총 결제액 변경 */
+					$("#totP").text(totP);
+					
+					/* 만약 포인트가 음수로 갈경우 */
+					if(left_point < 0){
+						
+						/* 포인트란에 경고메시지 */
+						$("#totP").html("<h3 style='color: red; font-weight: bold;'>포인트 부족으로 결제불가</h3>");
+						
+						/* 결제버튼 비활성화 */
+						const target1 = document.getElementById("pay");
+						target1.disabled = true;
+					
+					} else{
+						
+						/* 남은 포인트가 다시 양수로 돌아왔을 경우 */
+						/* 돈의 단위는 무조건 원래 폰트와 색을 유지하도록 설정했음 */
+						$("#totP").html(totP + "<font class='unit' style='color: black;'> 원</font>");
+					}
+					
+				}
+
+	</script>
+	
 
 <body>
 <form action="payment/payform_add.jsp" method="post">
@@ -191,7 +277,7 @@
 						
 							<!-- input에 입력 포인트가 바뀔때마다 함수호출 -->
 							<!-- 숫자만 입력되도록 변경 - type을 number로 안한것은 위아래 버튼이 거추장스럽기때문 -->
-							<input name="usepoint" type="text" id="use_point" onchange="use_point(this.value%>)"
+							<input type="text" id="use_point" onchange="point_input(this.value)"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 							<font class="unit"> Point</font>
 						</font>
@@ -225,82 +311,7 @@
 		
 	</div>
 </form>
-	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
-	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
-	<script type="text/javascript">
-		function same_info(){
-			
-				/* 체크여부 확인 - check된 경우 */
-				if($("input:checkbox[name=chk_info]").is(":checked")==true){
-				
-				$("#orderer").val("<%=Udto.getUser_name()%>");
-				$("#addr1").val("<%=Udto.getAddr()%>");
-				
-				
-				if(<%=hp.substring(0,3).equals("010")%>){
-					$("#select_hp1").val("010").prop("selected", true);					
-				} else if(<%=hp.substring(0,3).equals("012")%>){
-					$("#select_hp1").val("012").prop("selected", true);										
-				} else if(<%=hp.substring(0,3).equals("016")%>){
-					$("#select_hp1").val("016").prop("selected", true);										
-				} else if(<%=hp.substring(0,3).equals("017")%>){
-					$("#select_hp1").val("017").prop("selected", true);										
-				}
-				
-				
-				$("#hp2").val("<%=hp.substring(3,7)%>");
-				$("#hp3").val("<%=hp.substring(7)%>");
-				
-			/* check안 된 경우 */	
-			}else{
-				
-				$("#orderer").val("");
-				$("#addr1").val("");
-				$("#select_hp1").val("010").prop("selected", true);	;
-				$("#hp2").val("");
-				$("#hp3").val("");
-			}
-		}
-		
-		
-		/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
-		function use_point(point){
-			
-			var left_point = <%=Udto.getPoint()%> - $("#use_point").val();
 
-			
-			/* 남은 포인트 정보 산정 */
-			/* 단위 값은 폰트 사이즈 유지되도록 하기 */
-			$("#left_point").html(left_point + "<font class='unit'> Point</font>");
-			
-			
-			/* 남은 총 결제액 돈자릿수 포맷 포함 변수선언 */
-			var totP = (String)(<%=payment_totP%> - point);
-			
-			/* javascript 내부에서 돈자릿수 콤마 더하기 작업 */
-			totP = totP.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			
-			/* 금액변경시 총 결제액 변경 */
-			$("#totP").text(totP);
-			
-			/* 만약 포인트가 음수로 갈경우 */
-			if(left_point < 0){
-				
-				/* 포인트란에 경고메시지 */
-				$("#totP").html("<h3 style='color: red; font-weight: bold;'>포인트 부족으로 결제불가</h3>");
-				
-				/* 결제버튼 비활성화 */
-				const target1 = document.getElementById("pay");
-				target1.disabled = true;
-			
-			} else{
-				
-				/* 남은 포인트가 다시 양수로 돌아왔을 경우 */
-				/* 돈의 단위는 무조건 원래 폰트와 색을 유지하도록 설정했음 */
-				$("#totP").html(totP + "<font class='unit' style='color: black;'> 원</font>");
-			}
-			
-		}
-	</script>
+
 </body>
 </html>
