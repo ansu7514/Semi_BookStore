@@ -27,14 +27,6 @@
 	int ea = Integer.parseInt(request.getParameter("ea"));
 	String pay_method = request.getParameter("pay_radio");
 	
-	out.println(user_id);
-	out.println(book_id);
-	out.println(recipient);
-	out.println(location);
-	out.println(book_price);
-	out.println(ea);
-	out.println(pay_method);
-	
 	dto.setUser_id(user_id);
 	dto.setBook_id(book_id);
 	dto.setRecipient(recipient);
