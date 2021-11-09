@@ -41,6 +41,22 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		
+		//책 수량, 누적판매
+		sql = "update BOOK set accum+=?, ea-=? where book_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, dto.getEa());
+			pstmt.setInt(2, dto.getEa());
+			pstmt.setString(3, dto.getBook_id());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		//내 포인트 가져오기
 		sql = "select point from USER where user_id=?";
 		
