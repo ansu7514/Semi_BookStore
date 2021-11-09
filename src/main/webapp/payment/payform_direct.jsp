@@ -118,7 +118,7 @@
 						$("#totP").html("<h3 style='color: red; font-weight: bold;'>포인트 부족으로 결제불가</h3>");
 						
 						/* 결제버튼 비활성화 */
-						const target1 = document.getElementById("pay");
+						const target1 = document.getElementById("buy");
 						target1.disabled = true;
 					
 					} else{
