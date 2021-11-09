@@ -42,17 +42,16 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	String user_id = (String)session.getAttribute("myid");
 	
 	//특정기간 조회리스트
-	/* Date date=new Date();
-	
+/* 	Date date = new Date();
 	
 	SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 	Date from = from;
 	String to=format.format(to);
 	
-	List<OrderDTO>list=db.orderDateList(user_id, from, to); */
+	List<OrderDTO> day_list = db.orderDateList(user_id, from, to); */
 
 	//페이징 처리시 주석처리 해놓기 , 전체주문 조회리스트
-	//ArrayList<OrderDTO>list=db.orderList(user_id);
+	//ArrayList<OrderDTO> list=db.orderList(user_id);
 
 	/* --- 페이징 처리 --- */
 	int totalCount; //총글수
@@ -218,10 +217,10 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		var dday_day = dday.substring(8, 9);
 		var ddday_day = ddday.substring(8, 9);
 		
-		if(dday_month > ddday_month || (dday_month = ddday_month && dday_day > ddday_day)) {
+		if(dday_month > ddday_month || (dday_month = ddday_month) && (dday_day > ddday_day)) {
 			alert("날짜를 다시 선택해주세요");
 		} else if(dday_month < ddday_month || (dday_month = ddday_month && dday_day <= ddday_day)) {
-			
+			alert((dday, ddday));
 		} else if(dday == "null" || dday == "" || ddday == "null" || ddday == "") {
 			alert("날짜를 입력해주세요");
 		}

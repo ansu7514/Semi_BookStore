@@ -71,7 +71,6 @@
 			<!-- 문구가 있으면 div가 문구를 보여주기 위해 밀려서 보인다 -->
 			<!-- div container -->
 			
-			
 			<!-- 배송정보 & 상품정보 -->
 			<div id="left_info">
 			
@@ -155,6 +154,9 @@
 									<!-- 회전판에 책 img 목록들 추가 -->
 										<tr>
 											<td>
+												<!-- hidden -->
+												<input type="hidden" name="book_id" value="<%= Bdto.getBook_id() %>">
+												
 												<img src="image/book/<%= Bdto.getBook_image() %>" style="width: 70px;">
 											
 												<b style="margin-left: 5%;"><%= Bdto.getBook_name() %></b> | <%= Bdto.getWriter() %>
@@ -167,6 +169,8 @@
 											</td>
 											
 											<td>
+												<!-- hidden -->
+												<input tyn" name="ea" value="<%= Cdto.getEa() %>">
 												<h5 style="margin-top: 40px;"><%= Cdto.getEa() %> 권</h5>
 											</td>
 										</tr>
@@ -217,8 +221,10 @@
 					</ul>
 					
 					<hr id="final_payment_hr">
-						
-					<ul id="final_payment_ul">	
+					
+					<!-- hidden -->
+					<input type="hidden" name="book_price" value="<%= payment_totP %>">
+					<ul id="final_payment_ul">
 						<font class="payment_detail" id="totP" style="color: red;"><%=df.format((payment_totP)) %>
 							<font class="unit" style="color: black;"> 원</font>						
 						</font>
