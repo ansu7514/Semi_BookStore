@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
+
 <%@page import="db.BookDAO"%>
 <%@page import="db.BookDTO"%>
 <%@page import="java.util.List"%>
@@ -35,10 +38,20 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	//dao 선언
 	OrderDAO db = new OrderDAO();
 
-	//전체 주문 조회
+	//세션값
 	String user_id = (String)session.getAttribute("myid");
+	
+	//특정기간 조회리스트
+	/* Date date=new Date();
+	
+	
+	SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+	Date from = from;
+	String to=format.format(to);
+	
+	List<OrderDTO>list=db.orderDateList(user_id, from, to); */
 
-	//페이징 처리시 주석처리 해놓기
+	//페이징 처리시 주석처리 해놓기 , 전체주문 조회리스트
 	//ArrayList<OrderDTO>list=db.orderList(user_id);
 
 	/* --- 페이징 처리 --- */
@@ -97,10 +110,15 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 
 		<!-- 지정한 날짜 조회하기 -->
 		<div class="order_table_date">
-			<input id="input_start" type="date">
+			<!-- 시작점 , 최소시작일 : 2021-01-01 -->
+			<input id="input_start" type="date" min="2021-01-01">
+			
 			<b>~</b>
-			<input id="input_end" type="date" min="" max="" value="">&nbsp;&nbsp;
+			<!-- 마감시점 , 최대막날 : 2021-11-10 -->
+			<input id="input_end" type="date" max="2021-12-31" value="">&nbsp;&nbsp;
+			
 			<input id="input_submit" type="submit" onclick="input()" value="조회">
+		
 		</div>
 		
 		<br>
@@ -115,7 +133,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 					<th class="order_th">결제 가격</th>
 					<th class="order_th">수령인</th>
 					<th class="order_th">배송지</th>
-					<th class="order_th">결제 일</th>
+					<th class="order_th">결제일</th>
 					<th class="order_th">결제 방법</th>
 				</tr>
 				<%
