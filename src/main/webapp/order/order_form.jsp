@@ -57,24 +57,33 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	/* ArrayList<OrderDTO> order_list = db.orderList(user_id);*/
 	
 	/* --- 페이징 처리 --- */
-	int totalCount; //총글수
-	int totalPage; //총페이지수
-	int startPage; //각블럭의 시작페이지
-	int endPage; //각블럭의 끝페이지
-	int start; //각페이지의 시작번호
-	int perPage = 3; //한페이지의 보여질 글의 갯수
-	int perBlock = 3; //한페이지의 보여질 페이지 갯수
-	int currentPage;//현재 페이지
-	int no; //모두 다 구한 후에 넘버값을 구할수 있음
+	int totalCount;
+	// 총 페이지 수
+	int totalPage;
+	// 각 블럭의 시작 페이지
+	int startPage;
+	// 각 블럭의 끝 페이지
+	int endPage;
+	// 각 페이지의 시작 번호
+	int start;
+	
+	// 한 페이지에 보여질 글의 개수
+	int perPage = 10;
+	// 한 페이지에 보여지는 페이지 개수
+	int perBlock = 3;
+	// 현재 페이지
+	int currentPage;
+	int no;
 
 	//총갯수
-	totalCount = db.getTotalCount();
+	totalCount = db.getTotalCount(user_id);
 
 	//현재 페이지번호 읽기(null일경우는 1페이지 설정)
-	if (request.getParameter("currentPage") == null)
+	if (request.getParameter("currentPage") == null) {
 		currentPage = 1;
-	else
+	} else {
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	}
 
 	//총페이지갯수 구하기
 	totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
@@ -89,15 +98,16 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	//만약 총페이지 수가 8일경우
 	//2번째 블럭은 st:6 end:10이 되야 한다
 	//이땐 end를 8로 수정해주어야 한다
-	if (endPage > totalPage)
+	if (endPage > totalPage) {
 		endPage = totalPage;
+	}
 
 	//각 페이지에서 불러올 시작번호
 	//현재 페이지가 1일경우 st:1 , 2일경우 st:6
 	start = (currentPage - 1) * perPage;
 
 	//각 페이지에서 필요한 게시글 가져오기...dao에서 만들었음
-	List<OrderDTO> list = db.getList(user_id,start, perPage);
+	List<OrderDTO> list = db.orderList(user_id,start, perPage);
 
 	//각 글 앞에 붙힐 시작번호 구하기
 	//총글이 20개일경우 1페이지 20, 2페이지 15부터
@@ -120,7 +130,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 			<!-- 마감시점 , 최대막날 : 2021-11-10 -->
 			<input id="input_end" type="date" max="2021-12-31" value="">&nbsp;&nbsp;
 			
-			<input id="input_submit" type="submit" onclick="input(<%=user_id %>)" value="조회">
+			<input id="input_submit" type="submit" onclick="input(<%= user_id %>)" value="조회">
 		
 		</div>
 		
@@ -143,30 +153,36 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				//00,000 자릿수
 				DecimalFormat df = new DecimalFormat("###,###");
-			
-				for (OrderDTO dto : list) {
-					%>
+				
+				for(int i = 0; i < list.size(); i++ ) {
+					OrderDTO order_dto = list.get(i);
+				%>
 					<tr>
 						<!-- 책 명 -->
 						<%
 						BookDAO book_dao = new BookDAO();
-						BookDTO book_dto = book_dao.getBook(dto.getBook_id());
-					%>
-					<td><%= book_dto.getBook_name() %></td>
-					<!-- 권수 -->
-					<td><%=dto.getEa()%></td>
-					<!-- 결제 가격 -->
-					<td><%=df.format(dto.getBook_price())%>원</td>
-					<!-- 수령인 -->
-					<td><%=dto.getRecipient()%></td>
-					<!-- 배송지 -->
-					<td><%=dto.getLocation()%></td>
-					<!-- 결제일 -->
-					<td><%=sdf.format(dto.getPayDay())%></td>
-					<!-- 결제방법 -->
-					<td><%=dto.getPay_method()%></td>
-				</tr>
-
+						BookDTO book_dto = book_dao.getBook(order_dto.getBook_id());
+						%>
+						<td><%= book_dto.getBook_name() %></td>
+						
+						<!-- 권수 -->
+						<td><%= order_dto.getEa() %></td>
+						
+						<!-- 결제 가격 -->
+						<td><%=df.format(order_dto.getBook_price())%>원</td>
+						
+						<!-- 수령인 -->
+						<td><%=order_dto.getRecipient()%></td>
+						
+						<!-- 배송지 -->
+						<td><%=order_dto.getLocation()%></td>
+						
+						<!-- 결제일 -->
+						<td><%=sdf.format(order_dto.getPayDay())%></td>
+						
+						<!-- 결제방법 -->
+						<td><%=order_dto.getPay_method()%></td>
+					</tr>
 				<%
 				}
 				%>
@@ -174,33 +190,48 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		</div>
 
 		<!-- 페이징 처리 -->
-		<div class="container">
+		<div class="page_container">
 			<ul class="pagination">
 				<%
-				//이전
-				if (startPage > 1) {
+				// 이전
+				if(startPage > 1) {
 				%>
-				<li><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=startPage - 1%>">◀</a>
+				
+				<li>
+					<a href="index.jsp?main=order/order_form.jsp?currentPage=<%=startPage - 1%>">이전</a>
 				</li>
+				
 				<%
 				}
-
-				for (int p = startPage; p <= endPage; p++) {
-				if (p == currentPage) {
+				
+				for(int p = startPage; p <= endPage; p++) {
+					if(p == currentPage) {
 				%>
-				<li class="active"><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=p%>"><%=p%></a>
+				
+				<li class="active">
+					<a href="index.jsp?main=order/order_form.jsp?currentPage=<%=p%>"><%=p%></a>
 				</li>
+				
 				<%
-				} else {
+					} else {
 				%>
-				<li><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=p%>"><%=p%></a></li>
+				
+				<li>
+					<a href="index.jsp?main=order/order_form.jsp?currentPage=<%=p%>"><%=p%></a>
+				</li>
+				
 				<%
+					}
 				}
-				}
-				//다음
-				if (endPage < totalPage) {
+				
+				// 다음
+				if(endPage < totalPage) {
 				%>
-				<li><a href="index.jsp?main=order/order_form.jsp?currentPage=<%=endPage+1%>">▶</a></li>
+				
+				<li>
+					<a href="index.jsp?main=order/order_form.jsp?currentPage=<%=endPage+1%>">▶</a>
+				</li>
+				
 				<%
 				}
 				%>
