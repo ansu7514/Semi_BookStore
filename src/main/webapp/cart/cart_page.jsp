@@ -32,20 +32,20 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 </head>
 
 <%
-
-//db 선언
-BookDAO dao = new BookDAO();
-BookDTO Bdto = new BookDTO();
-CartDAO db = new CartDAO();
-
+	String user_id = (String)session.getAttribute("myid");
+	
+	CartDAO cart = new CartDAO();
+	ArrayList<CartDTO> list = cart.selectCart(user_id);
+	request.setAttribute("list", list);
+	
+	DecimalFormat df = new DecimalFormat("###,###");
 %>
 
 <!-- 가격 자릿수 콤마, 총가격 -->
 <script type="text/javascript">
-function tot(num,price,i) {
+function tot(num,price) {
 	var a=(String)(num*price);
 	a=a.replace(/\B(?=(\d{3})+(?!\d))/g,",");
-
 	
 	document.getElementById(i).innerText=a;
 	
@@ -55,11 +55,10 @@ function tot(num,price,i) {
 var row_book_id = new Array();
 var row_book_ea = new Array();
 
- function sel(i,book_id, book_ea){
+function sel(i,book_id, book_ea){
 	
-	if($("input:checkbox[id='chk"+i+"']").is(":checked")==true){
-				
-		
+	if($("input:checkbox[id=chk]:checked").each(function(){
+
 		/* 
 			*** 제이슨으로 배열 넘기기 ***
 			1. 배열을 선언하고 배열안에 checkbox 선택에 따른 값추가
@@ -67,12 +66,10 @@ var row_book_ea = new Array();
 			3. 출력, 검산을 위해 2차례의 변환
 		*/
 		
-		
 		/* 배열에 우선적으로 저장 */
 		/* book_id, book_ea값 배열에 추가 */
 		row_book_id.push(book_id);
 		row_book_ea.push(book_ea);
-		
 		
 		/* 배열에 잘 저장됐는지 검산 */
 		console.log("book_id 단순배열 저장:" + row_book_id);
@@ -93,80 +90,12 @@ var row_book_ea = new Array();
 		
 		/* 검산값 */
 		console.log("book_ea 제이슨배열 저장:" + output_book_ea);
-		
-		
-
-		/* 체크박스 해제 할 경우 */
-	} else{
-		
-		/* 체크해제할 경우, 특정값 체크해서 배열에서 book_id 삭제  */
-		for(let i = 0; i < row_book_id.length; i++) {
-			  if(row_book_id[i] === book_id)  {
-				  row_book_id.splice(i, book_id);
-				    i--;
-				  }
-				}
-
-		/* 체크해제할 경우, 특정값 체크해서 배열에서 book_ea 삭제  */
-		for(let i = 0; i < row_book_ea.length; i++) {
-			  if(row_book_ea[i] === book_ea)  {
-				  row_book_ea.splice(i, book_ea);
-				    i--;
-				  }
-				}
-
-		
-		/* 배열에서 잘 제거 됐는지 검산 */
-		console.log("단순 배열에서 book_id 잘 제거되었는지: " + row_book_id);
-		console.log("단순 배열에서 book_ea 잘 제거되었는지: " + row_book_ea);
-		
-		
-		/* 체크박스 해제할 경우, 단순 배열에서 삭제 */
-		/* !!!이 경우, 위에서처럼 다시 제이슨 오브젝트를 정의해줘야함!!! */
-		/* 1. 수정된 배열을 제이슨 형태로 전환 */
-		localStorage.setItem("book_id", JSON.stringify(row_book_id));
-		localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
-		
-		/* 2. 검산을 위해 오브젝트를 로컬저장소에 저장 */
-		/* 3. 제이슨 오브젝트로 변환 */
-		var output_id = localStorage.getItem("book_id");
-		var output_book_id = JSON.parse(output_id);
-				
-		var output_ea = localStorage.getItem("book_ea");
-		var output_book_ea = JSON.parse(output_ea);
-		
-		
-		/* 제이슨에서 잘 제거 됐는지 확인 - 최종확인은 제이슨 오브젝트 */
-		console.log("제이슨 오브젝트에서 남은 book_id:" + output_book_id);		
-		console.log("제이슨 오브젝트에서 남은 book_ea:" + output_book_ea);
-
-		
-		/* localStorage.removeItem("book_id", book_id);
-		localStorage.removeItem("book_ea", book_ea);	
- */
-
 	}
 }
-
-
-
 
 </script>
 <body>
 
-	<%
-	String user_id = (String)session.getAttribute("myid");
-
-	//dao에서 list 가져오기
-	ArrayList<CartDTO> list = db.selectCart(user_id);
-
-	//돈 자릿수포맷
-	DecimalFormat df = new DecimalFormat("###,###");
-
-	/* 예시 */
-	int val = 34567;
-	/* System.out.println(df.format(val)); */
-	%>
 
 
 <script type="text/javascript">
@@ -214,35 +143,29 @@ var row_book_ea = new Array();
 					<th class="th1" width="30px">삭제</th>
 				</tr>
 
-				<%
-				for (int i = 0; i < list.size(); i++) {
-
-					CartDTO dto = list.get(i);
-					Bdto = dao.getBook(dto.getBook_id());
-				%>
-
-				<tr>
-					<!-- 체크박스 , 상품명, 총가격, 수량, 삭제 td -->
-					<td><input type="checkbox" name="chk" id="chk<%=(i)%>"
-						value="<%=dto.getBook_id()%>,<%=dto.getEa() %>" onclick="sel(<%=i %>,<%=dto.getBook_id()%>, <%=dto.getEa() %>)" style="padding-top: 50px;"></td>
-					<td><%=Bdto.getBook_name()%></td>
-					<td><span id="print_totP<%=(i)%>"><%=df.format(Bdto.getBookPrice() * dto.getEa())%></span>원</td>
-					<td><input type="number" class="ea" id="ea<%=(i)%>"
-						style="width: 70px; height: 40px; text-align: center;" min="1"
-						value="<%=dto.getEa()%>"
-						onchange="tot(this.value, <%=Bdto.getBookPrice()%>,'print_totP<%=(i)%>')">
-					</td>
-
-					<!-- 삭제 버튼 -->
-					<td>
-						<button class="delbtn" id="del" book_id="<%=dto.getBook_id()%>"
-							onclick="del_data('<%=user_id %>','<%=dto.getBook_id()%>')">삭제</button>
-					</td>
-				</tr>
-
-				<%
-				}
-				%>
+				<c:forEach items="${list }" var="dto">
+					<tr>
+						<!-- 체크박스 , 상품명, 총가격, 수량, 삭제 td -->
+						<td>
+							<input type="checkbox" name="chk" book_id="${dto.book_id }" ea="${dto.ea }" style="padding-top: 50px;">
+						</td>
+						
+						<td>${dto.book_name }</td>
+						
+						<td>
+							${df.format(dto.book_price * dto.ea)}원
+						</td>
+						
+						<td>
+							<input type="number" class="ea" min="1" value="${dto.ea }" onchange="tot(this.value,${dto.book_price })">
+						</td>
+	
+						<!-- 삭제 버튼 -->
+						<td>
+							<button class="delbtn" id="del" onclick="del_data('${dto.user_id }','${dto.book_id }%>')">삭제</button>
+						</td>
+					</tr>
+				</c:forEach>
 			</table>
 
 		</div>

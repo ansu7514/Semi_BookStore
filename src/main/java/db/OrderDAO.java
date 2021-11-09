@@ -42,7 +42,7 @@ public class OrderDAO {
 		}
 		
 		//책 수량, 누적판매
-		sql = "update BOOK set accum+=?, ea-=? where book_id=?";
+		sql = "update BOOK set accum=accum+?, ea=ea-? where book_id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -167,7 +167,7 @@ public class OrderDAO {
 		return list;
 	}
 	
-	//구매내역 조회
+		//구매내역 조회
 		public ArrayList<OrderDTO> orderSelectList(String order_id){
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt = null;
