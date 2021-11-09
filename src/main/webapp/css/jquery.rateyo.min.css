@@ -32,7 +32,7 @@
 }
 
 .jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-normal-group {
-	width: 100% !important;
+	width: 100%;
 }
 
 .jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-rated-group {
