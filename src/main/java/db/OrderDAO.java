@@ -41,13 +41,33 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		
+		//내 포인트 가져오기
+		sql = "select point from USER where user_id=?";
+		
+		ResultSet rs = null;
+		int mypoint = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getUser_id());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mypoint = rs.getInt(1);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		//포인트 업데이트 point = (price-usepoint) * 0.02 + (point-usepoint)
-		sql = "update USER set point=(?-?)*0.02+((select point from USER where user_id=?)-?) where user_id=?";
+		sql = "update USER set point=(?-?)*0.02+(?-?) where user_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getBook_price());
 			pstmt.setInt(2, dto.getUse_point());
-			pstmt.setString(3, dto.getUser_id());
+			pstmt.setInt(3, mypoint);
 			pstmt.setInt(4, dto.getUse_point());
 			pstmt.setString(5, dto.getUser_id());
 			
