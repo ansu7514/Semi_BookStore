@@ -191,7 +191,7 @@
 						
 							<!-- input에 입력 포인트가 바뀔때마다 함수호출 -->
 							<!-- 숫자만 입력되도록 변경 - type을 number로 안한것은 위아래 버튼이 거추장스럽기때문 -->
-							<input type="text" id="use_point" onchange="use_point(this.value)"
+							<input name="usepoint" type="text" id="use_point" onchange="use_point(this.value%>)"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 							<font class="unit"> Point</font>
 						</font>
@@ -225,7 +225,6 @@
 		
 	</div>
 </form>
-
 
 	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
 	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
@@ -304,8 +303,5 @@
 			
 		}
 	</script>
-	
-	
-
 </body>
 </html>
