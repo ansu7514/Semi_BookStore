@@ -170,8 +170,8 @@
 				<div id="selInfo">
 				
 						<!-- 별점-얼마나 차있는지 위에 함수로 줘야함 -->
-						<div calss="book-rate-box">
-							<div id="book-rate" class="jq-ry-container" style="padding:0;" data-rateyo-read-only="true"></div>
+						<div class="book-rate-box">
+							<div id="book-rate" class="jq-ry-container" data-rateyo-read-only="true"></div>
 						</div>
 						<script type="text/javascript" src="JS/jquery.min.js"></script>
 						<script type="text/javascript" src="JS/jquery.rateyo.js"></script>	  
