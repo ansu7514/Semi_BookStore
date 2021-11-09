@@ -38,8 +38,6 @@ public class OrderDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			db.dbClose(pstmt, conn);
 		}
 		
 		//포인트 업데이트
