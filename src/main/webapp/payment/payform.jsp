@@ -1,3 +1,4 @@
+<%@page import="db.OrderDTO"%>
 <%@page import="db.UserDTO"%>
 <%@page import="db.UserDAO"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -22,7 +23,7 @@
 <title>Insert title here</title>
 </head>
 	<%
-		
+	ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
 		/* 리스트값 출력 - 카트에 있는 값을 출력하기위한 DAO선언 */
 		CartDAO Cdao = new CartDAO(); 
 
@@ -54,12 +55,11 @@
 		
 		/* 총 상품금액을 계산하기 위한 변수를 선언 */
 		int payment_totP = 0;
-		
 	%>
 	
 
 <body>
-
+<form action="payment/payform_add.jsp" method="post">
 	<!-- 전체 div -->
 	<div id="wrapper">
 		<span id="title">주문결제</span>
@@ -160,21 +160,36 @@
 									/* 각 i값마다 list에서 dto 가져옴 */
 									Cdto = cart_list.get(i);
 									
+									String book_id = Cdto.getBook_id();
+									
 									/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
-									Bdto = Bdao.getBook(Cdto.getBook_id());										
+									Bdto = Bdao.getBook(book_id);
+									
+									int book_price = Bdto.getBookPrice();
+									int ea = Cdto.getEa();
 									
 									/* for문 마다 앞서 선언한 변수에 더해줍니다 */
 									/* 후에 돈자리 , 계산을 위해 포멧을 넣어줍니다 */
 									payment_totP += (Bdto.getBookPrice()*Cdto.getEa());
-		
-									%>
+										
+									OrderDTO order = new OrderDTO();
+									order.setBook_id(book_id);
+									order.setBook_id(book_id);
+									order.setBook_id(book_id);
+									order.setBook_id(book_id);
+									order.setBook_id(book_id);
+
+									list.add(order);
 									
-									<!-- 회전판에 책 img 목록들 추가 -->
+									%>
+										<!-- 책 출력 -->
 										<tr>
 											<td>
 												<!-- hidden -->
-												<input type="hidden" name="book_id" value="<%= Bdto.getBook_id() %>">
-												
+												<input type="hidden" name="book_id" value="<%= book_id %>">
+												<input type="hidden" name="book_price" value="<%= book_price %>">
+												<input type="hidden" name="ea" value="<%= ea %>">
+									
 												<img src="image/book/<%= Bdto.getBook_image() %>" style="width: 70px;">
 											
 												<b style="margin-left: 5%;"><%= Bdto.getBook_name() %></b> | <%= Bdto.getWriter() %>
@@ -187,8 +202,6 @@
 											</td>
 											
 											<td>
-												<!-- hidden -->
-												<input type="hidden" name="ea" value="<%= Cdto.getEa() %>">
 												<h5 style="margin-top: 40px;"><%= Cdto.getEa() %> 권</h5>
 											</td>
 										</tr>
@@ -240,8 +253,6 @@
 					
 					<hr id="final_payment_hr">
 					
-					<!-- hidden -->
-					<input type="hidden" name="book_price" value="<%= payment_totP %>">
 					<ul id="final_payment_ul">
 						<font class="payment_detail" id="totP" style="color: red;"><%=df.format((payment_totP)) %>
 							<font class="unit" style="color: black;"> 원</font>						
@@ -252,7 +263,7 @@
 					
 					<!-- 버튼 -->
 					<div id="btns">
-						<button id="buy" class="btn fourth" onclick="location.href='index.jsp?main=payment/payform_add.jsp'">결제하기</button>
+						<button id="buy" class="btn fourth" onclick="return false">결제하기</button>
 					</div>
 				</div>
 			</div>	
@@ -260,8 +271,15 @@
 		</div>
 		
 	</div>
+</form>
 
 
+<script>
+	$("#buy").on("click", function(){
+		<%request.setAttribute("orders", list);%>
+		<%-- <%ArrayList list = request.getAttribute("orders");%> --%>
+	});
+</script>
 
 	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
 	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
