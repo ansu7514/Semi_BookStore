@@ -131,7 +131,7 @@
 								<div id="pay_radio_div">
 									<input type="radio" id="pay_radio" name="pay_radio" checked="checked" value="카드"><span class="pay_radio_val">카드</span>
 									<input type="radio" id="pay_radio" name="pay_radio" value="현금"><span class="pay_radio_val">현금</span>
-									<input type="radio" id="pay_radio" name="pay_radio" value="포인트"><span class="pay_radio_val">포인트</span>
+									<input type="radio" id="pay_radio" name="pay_radio" value="무통장입금"><span class="pay_radio_val">무통장입금</span>
 								</div>
 							</td>
 						</tr>
