@@ -20,6 +20,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
+<!-- 별점 -->
+<link rel="stylesheet" href="css/jquery.rateyo.min.css"/>
 
 <%@ page import="java.text.DecimalFormat"%>
 
@@ -44,6 +46,8 @@
 		
 		//돈 자릿수포맷
 		DecimalFormat df = new DecimalFormat("###,###");
+		
+		double avg = dao.averageStar(book_id);
 	%>
 	
 
@@ -57,8 +61,6 @@
 		/* 실행시 상품 기본가격 출력 */
 		var a = (String)($("#ea").val()*<%=dto.getBookPrice()%>);
 		a = a.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		
-		console.log(a);
 		
 		document.getElementById("totP").innerText= a;
 		
@@ -168,13 +170,23 @@
 				<div id="selInfo">
 				
 						<!-- 별점-얼마나 차있는지 위에 함수로 줘야함 -->
-						<div class="star-ratings-fill" id="star">
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
+						<div calss="book-rate-box">
+							<div id="book-rate" class="jq-ry-container" style="padding:0;" data-rateyo-read-only="true"></div>
 						</div>
+						<script type="text/javascript" src="JS/jquery.min.js"></script>
+						<script type="text/javascript" src="JS/jquery.rateyo.js"></script>	  
+		
+						<script type="text/javascript">
+							$("#book-rate").rateYo({rating: <%=avg%>});
+						</script>
+						
+<!-- 						<div class="star-ratings-fill" id="star">
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+							<span class="star">⭐</span>
+						</div> -->
 					
 						<div id="summary"></div>
 						

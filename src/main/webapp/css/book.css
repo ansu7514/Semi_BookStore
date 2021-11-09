@@ -59,7 +59,7 @@
 	padding-right: 4.8%;
 }
 
-.star-ratings {
+.star-ratings, .book-rate-box {
 	float: left;
 	color: #aaa9a9;
 	position: relative;
@@ -71,7 +71,7 @@
 	-webkit-text-stroke-color: #2b2a29;
 }
 
-.star-ratings-fill {
+.star-ratings-fill, #book-rate {
 	color: #fff58c;
 	padding: 0;
 	z-index: 1;

@@ -90,13 +90,13 @@ public class BookDAO {
 		return dto;
 	}
 	
-	//베스트셀러 10개
+	//베스트셀러 4개
 	public ArrayList<BookDTO> getBestSeller(){
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from BOOK where book_name in (select book_name from BOOK order by accum) limit 10";
+		String sql = "select * from BOOK where book_name in (select book_name from BOOK) order by accum limit 4";
 		
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
 		
@@ -174,16 +174,23 @@ public class BookDAO {
 	}
 	
 	// 평점 계산
-	public void averageStar(String book_id) {
+	public double averageStar(String book_id) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		double avg = 0.0;
 		
 		String sql = "select AVG(rating) from REVIEW where book_id = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, book_id);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				avg = rs.getDouble(1);
+			}
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -191,5 +198,7 @@ public class BookDAO {
 		} finally {
 			db.dbClose(pstmt, conn);
 		}
+		
+		return avg;
 	}
 }
