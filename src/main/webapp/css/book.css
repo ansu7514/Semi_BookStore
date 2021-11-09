@@ -59,7 +59,19 @@
 	padding-right: 4.8%;
 }
 
-.star-ratings, .book-rate-box {
+/* 별점 시이작*/
+.book-rate-box{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#book-rate{
+	margin: 0px;
+}
+/* 별점 끄읏 */
+
+.star-ratings {
 	float: left;
 	color: #aaa9a9;
 	position: relative;
@@ -71,7 +83,7 @@
 	-webkit-text-stroke-color: #2b2a29;
 }
 
-.star-ratings-fill, #book-rate {
+.star-ratings-fill {
 	color: #fff58c;
 	padding: 0;
 	z-index: 1;
