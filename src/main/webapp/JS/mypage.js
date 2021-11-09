@@ -8,7 +8,7 @@ function click_mem() {
 	var my_mem_del = document.getElementById("my_mem_del");
 	
 	order_see.onclick = function() {
-		document.getElementById("show_menu").src = "order/order_form.jsp";
+		document.getElementById("show_menu").src = "order/my_order_form.jsp";
 	}
 	
 	my_mem_up.onclick = function() {

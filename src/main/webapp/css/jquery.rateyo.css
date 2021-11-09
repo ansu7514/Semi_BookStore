@@ -26,7 +26,7 @@
   display: inline-block;
 }
 .jq-ry-container > .jq-ry-group-wrapper > .jq-ry-group.jq-ry-normal-group {
-  width: 100%;
+  width: 100% !important;
 }
 .jq-ry-container > .jq-ry-group-wrapper > .jq-ry-group.jq-ry-rated-group {
   width: 0;
