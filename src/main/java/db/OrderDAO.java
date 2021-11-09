@@ -94,6 +94,46 @@ public class OrderDAO {
 		return list;
 	}
 	
+	//구매내역 조회
+		public ArrayList<OrderDTO> orderSelectList(String order_id){
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
+			
+			String sql = "select * from ORDERED where order_id=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, order_id);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					OrderDTO dto = new OrderDTO();
+					dto.setOrder_id(rs.getString("order_id"));
+					dto.setUser_id(rs.getString("user_id"));
+					dto.setBook_id(rs.getString("book_id"));
+					dto.setRecipient(rs.getString("recipient"));
+					dto.setLocation(rs.getString("location"));
+					dto.setBook_price(Integer.parseInt(rs.getString("book_price")));
+					dto.setPayDay(rs.getDate("pay_day"));
+					dto.setEa(rs.getInt("ea"));
+					dto.setPay_method(rs.getString("pay_method"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return list;
+		}
+	
 	//특정기간 주문조회
 	public ArrayList<OrderDTO> orderDateList(String user_id, Date from, Date to){
 		Connection conn = db.getConnection();
