@@ -62,11 +62,8 @@
 		var a = (String)($("#ea").val()*<%=dto.getBookPrice()%>);
 		a = a.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		
-		document.getElementById("totP").innerText= a;
-		
-		document.getElementById("totP").innerText=	a;
-		
-		
+		document.getElementById("totP").innerText= a + " 원";
+				
 		/* 랜덤으로 문구 생성해서 배치하기 */
 		/* 랜덤배치 */
 		var mentArr = ["인생을 바꾸는 책 한 권의 선택",
@@ -96,12 +93,12 @@
 		var a = (String)($("#ea").val()*<%=dto.getBookPrice()%>);
 		a = a.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		
-		document.getElementById("totP").innerText= a;
+		document.getElementById("totP").innerText= a + " 원";
 		
 		
 		/* '구매수량 > 재고'일 경우, 장바구니 & 구매버튼 비활성화 */
 		if(num><%=dto.getEa()%>){
-			document.getElementById("totP").innerText= "재고가 부족합니다";
+			document.getElementById("totP").innerHTML= "<font style='color: red; font-weight: bold;'>재고량 이상 주문불가</font>";
 			
 			const target1 = document.getElementById('goCart');
 			  target1.disabled = true;
@@ -201,7 +198,7 @@
 							<!-- 재고가 수량보다 적어 음수가 될 경우, 구매불가 메시지 출력-->
 							주문량 :&nbsp; <input type="number" name="ea" id="ea" style="width: 70px; height: 40px; text-align: center;" min="1" max="100" value="1" onchange="tot(this.value)"> 권 <br>
 					
-							총금액 :&nbsp; <font id="totP"></font> 원
+							총금액 :&nbsp; <font id="totP"></font>
 						
 						</div>	
 		

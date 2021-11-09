@@ -26,7 +26,7 @@
 	int book_price = Integer.parseInt(request.getParameter("book_price"));
 	int ea = Integer.parseInt(request.getParameter("ea"));
 	String pay_method = request.getParameter("pay_radio");
-	int use_point = Integer.parseInt(request.getParameter("usepoint"));
+	int use_point = Integer.parseInt(request.getParameter("use_point"));
 	
 	dto.setUser_id(user_id);
 	dto.setBook_id(book_id);

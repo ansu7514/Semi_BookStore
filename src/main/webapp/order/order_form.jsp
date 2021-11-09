@@ -41,6 +41,9 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	//세션값
 	String user_id = (String)session.getAttribute("myid");
 	
+	//날짜 담을 리스트선언
+	ArrayList<OrderDTO> date_list = new ArrayList<OrderDTO>();
+	
 	//특정기간 조회리스트
 /* 	Date date = new Date();
 	
@@ -117,7 +120,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 			<!-- 마감시점 , 최대막날 : 2021-11-10 -->
 			<input id="input_end" type="date" max="2021-12-31" value="">&nbsp;&nbsp;
 			
-			<input id="input_submit" type="submit" onclick="input()" value="조회">
+			<input id="input_submit" type="submit" onclick="input(<%=user_id %>)" value="조회">
 		
 		</div>
 		
@@ -207,7 +210,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	
 	<script type="text/javascript">
 	<!-- 지정한 날짜 조회하기 (스크립트) -->
-	function input(){
+	function input(user_id){
 		const dday = document.querySelector("#input_start").value;
 		const ddday =document.querySelector("#input_end").value;
 		
