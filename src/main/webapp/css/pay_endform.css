@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.pay_end_wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.pay_end_wrapper> .pay_end_table {
+	width: 90%;
+	margin-top: 40px;
+}
+
+.pay_end_wrapper> .pay_end_table> caption {
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	color: #3D2A26;
+}

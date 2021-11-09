@@ -304,3 +304,12 @@ div.bx-wrapper {
 	height: 78px;
 	margin-top: 20px;
 }
+
+#pay_radio_div {
+	margin-top: 5.5px;
+}
+
+.pay_radio_val {
+	padding-left: 10px;
+	padding-right: 40px;
+}

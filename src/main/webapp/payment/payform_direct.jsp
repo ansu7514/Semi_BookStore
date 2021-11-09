@@ -109,6 +109,25 @@
 				</div>
 				
 				
+				<!-- 결제 방법 div -->
+				<div id="pay_way">
+					<table class="table table-hover" id="pay_table">
+						<caption class="captions">결제정보</caption>
+						
+						<tr>
+							<th id="input_recipient" style="width: 120px;">결제 방법</th>
+							
+							<td>
+								<div id="pay_radio_div">
+									<input type="radio" id="pay_radio" name="pay_radio" checked="checked" value="카드"><span class="pay_radio_val">카드</span>
+									<input type="radio" id="pay_radio" name="pay_radio" value="현금"><span class="pay_radio_val">현금</span>
+									<input type="radio" id="pay_radio" name="pay_radio" value="포인트"><span class="pay_radio_val">포인트</span>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
 				<!-- 상품정보 div -->
 				<div id="product_info">
 					<h4 class="captions">주문 정보</h4>
@@ -192,7 +211,7 @@
 					
 					<!-- 버튼 -->
 					<div id="btns">
-						<button id="buy" class="btn fourth" onclick="location.href=''">결제하기</button>
+						<button id="buy" class="btn fourth" onclick="location.href='index.jsp?main=payment/pay_endform.jsp?book_id=<%= book_id %>&ea=<%= ea %>'">결제하기</button>
 					</div>
 				</div>
 			</div>	
