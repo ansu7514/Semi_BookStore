@@ -1,3 +1,4 @@
+<%@page import="db.HeartDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.ReviewDAO"%>
@@ -21,6 +22,8 @@
 	ReviewDAO dao = new ReviewDAO();
 	ArrayList<ReviewDTO> list = dao.readReview(book_id);
 	request.setAttribute("list", list); //값 등록
+	
+	HeartDAO heart_dao = new HeartDAO();
 %>
 </head>
 
@@ -36,6 +39,31 @@
 					<div class="review-rate">
 						<div class="rateyo jq-ry-container" style="padding:0px;margin:0px;display:inline" data-rateyo-read-only="true" ></div>
 					</div>
+					
+					<div class="heart_div">
+						<span class="glyphicon glyphicon-heart" id="heart_tag" style="color: red; margin-top: 18px;"></span>
+						<span id="heart_tag" style="margin-top: 15px;" onclick="getLike('${dto.user_id }', ${dto.book_id })">Likes</span>
+						<span class="review-like" style="margin-left: 10px;"></span>			
+					</div>
+					
+					<script type="text/javascript">
+						// 좋아요 체크
+						function getLike(user_id, book_id) {
+							$.ajax({
+								url:"review/review_like.jsp",
+								type:"post",
+								dataType:"html",
+								data:{
+									"user_id" : user_id,
+									"book_id" : book_id
+								},
+								success:function(e){
+									$(".review-like").text(e);
+								}
+							});
+						}
+					</script>
+					
 					<span class="review-date">${dto.writeday }</span>
 				</div>
 				<div class="review-content">
@@ -45,7 +73,7 @@
 					<span id="show-comment" class="show-comment" onclick="showCon(this)" triger="false" book_id="${dto.book_id }" re_user_id="${dto.user_id }">댓글보기</span>
 				</div>
 			</div>
-		
+			
 			<!-- 댓글 -->
 			<div class="comment" id="re_user_id:${dto.user_id }">
 				<div class="print-comments"></div>

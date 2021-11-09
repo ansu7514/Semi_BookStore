@@ -63,7 +63,7 @@ public class HeartDAO {
 		
 		int cnt=0;
 		
-		String sql = "select count(*) from REVIEW where re_user_id=? and book_id=?";
+		String sql = "select count(*) from HEART where re_user_id=? and book_id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -80,6 +80,7 @@ public class HeartDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return cnt;
 	}
 }

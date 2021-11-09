@@ -28,7 +28,7 @@
 	margin:0px;
 	padding-top: 5px;
 	display:inline;
-	width: 80%;
+	width: 70%;
 }
 
 .review-box > .review-content, .comment > .print-comments{
@@ -135,4 +135,9 @@
 .input-comment1 > .submit-comment:hover{
 	cursor: pointer;
 	background-color: #E09B3F;
+}
+
+.heart_div {
+	width: 10%;
+	cursor: pointer;
 }

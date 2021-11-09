@@ -88,6 +88,8 @@ $(function(){
 		});
 	});
 	
+	
+	
 /*	//댓글보기
 	$(document).on("click", "#show-comment", function(){
 		showCon()
