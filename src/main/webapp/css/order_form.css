@@ -51,8 +51,11 @@ body {
 }
 
 
-.container {
-	text-align: right;
+.page_container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 30px 0px;
 }
 
 .order_title_img{
