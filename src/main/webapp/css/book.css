@@ -62,12 +62,19 @@
 /* 별점 시이작*/
 .book-rate-box{
 	width: 100%;
+	height: 100px;
 	display: flex;
 	justify-content: center;
 }
 
 #book-rate{
+	width: 80%;
 	margin: 0px;
+}
+
+svg{
+	width: 100px;
+	height: 100px;
 }
 /* 별점 끄읏 */
 
