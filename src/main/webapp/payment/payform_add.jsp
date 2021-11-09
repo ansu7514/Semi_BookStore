@@ -46,7 +46,7 @@
 	OrderDAO dao = new OrderDAO();
 	dao.insertOrder(dto);
 	
-	response.sendRedirect("../payment/pay_endform.jsp");
+	response.sendRedirect("../index.jsp?main=payment/pay_endform.jsp");
 %>
 </body>
 </html>
