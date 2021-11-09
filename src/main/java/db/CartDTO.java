@@ -8,6 +8,15 @@ public class CartDTO {
 	private int book_price;
 	private int ea;
 
+	public CartDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public CartDTO(String user_id, String book_id) {
+		this.user_id = user_id;
+		this.book_id = book_id;
+	}
+	
 	public String getUser_id() {
 		return user_id;
 	}

@@ -241,10 +241,6 @@ public class UserDAO {
 		} finally {
 			db.dbClose(pstmt, conn);
 		}
-		
-		
 	}
-	
-	
 	
 }

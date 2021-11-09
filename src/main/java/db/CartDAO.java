@@ -10,7 +10,6 @@ public class CartDAO {
 
 	DBConnector db = new DBConnector();
 	
-	//장바구니 추가
 	public void insertCart(CartDTO dto) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;

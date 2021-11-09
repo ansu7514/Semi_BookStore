@@ -14,13 +14,13 @@ public class OrderDAO {
 	DBConnector db = new DBConnector();
 	
 	//한권 주문 (주문 성공하면 true)
-	public boolean insertOrder(OrderDTO dto) {
+	public void insertOrder(OrderDTO dto) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		boolean isOrder = false;
 		
+		//주문삽입
 		String sql = "insert into ORDERED values(null, ?, ?, ?, ?, ?, now(), ?, ?)";
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -42,12 +42,12 @@ public class OrderDAO {
 			db.dbClose(pstmt, conn);
 		}
 		
-		sql ="delete from CART where user_id=? and book_id=?";
-		
+		//포인트 업데이트
+		sql = "update USER set point=?*0.02 where user_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getUser_id());
-			pstmt.setString(2, dto.getBook_id());
+			pstmt.setInt(1, dto.getBook_price());
+			pstmt.setString(2, dto.getUser_id());
 			
 			pstmt.executeUpdate();
 			isOrder = true;
@@ -56,7 +56,9 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		
-		return isOrder;
+		//카트에서 삭제
+		new CartDAO().deleteCart(new CartDTO(dto.getUser_id(), dto.getBook_id()));
+		
 	}
 	
 	//여러권 주문 (주문 성공하면 true)
