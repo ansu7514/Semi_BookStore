@@ -28,15 +28,15 @@ if(saveok!=null)
 
 <body>
 
-<div style="width:200px; margin: 4% 0px 10% 8%;">
-	<form action="login/login_action.jsp" method="post" name="frm"">
+<div style="width:100%; display: flex; justify-content: center; margin-top: 15px;">
+	<form action="login/login_action.jsp" method="post" name="frm">
 		<table>
     
      <tr height="3px"></tr>
     
 	<tr height="60px">
 		<td colspan="2" align="left">
-			<input type="checkbox" name="chsave" style="margin-right: 5px; margin-left: 20px;">
+			<input type="checkbox" name="chsave" style="margin-right: 5px;">
 			<b style="font-size: 1.2em;">아이디 저장</b>
 		</td>
 	</tr>
@@ -45,7 +45,7 @@ if(saveok!=null)
     
 	<tr height="50px">
 		<td>
-			<input type="text" name="user_id" class="form-control" style="width: 230px; height: 40px; margin-left: 20px;"
+			<input type="text" name="user_id" class="form-control" style="width: 230px; height: 40px;"
 			autofocus="autofocus" required="required" placeholder="Id">
 		</td>
 	</tr>
@@ -54,7 +54,7 @@ if(saveok!=null)
     
 	<tr height="50px">
 		<td>
-			<input type="password" name="user_pass" class="form-control" style="width: 230px; height: 40px; margin-left: 20px;"
+			<input type="password" name="user_pass" class="form-control" style="width: 230px; height: 40px;"
 			required="required" placeholder="PassWord">
 		</td>
 	</tr>
@@ -62,7 +62,7 @@ if(saveok!=null)
     <tr height="30px"></tr>
     
 	<tr>
-		<td colspan="2" style="padding-left: 20px;">
+		<td colspan="2">
 			<button type="submit" class="btn btn-warning" style="width: 230px;">로그인</button>
 		</td>
 	</tr>
@@ -70,7 +70,7 @@ if(saveok!=null)
 	<tr height="15px"></tr>
     
 	<tr>
-		<td colspan="2" style="padding-left: 20px;">
+		<td colspan="2">
 			<button type="button" class="btn btn-warning" style="width: 230px;"
 			onclick="location.href='index.jsp?main=login/member_form.jsp'">회원 가입</button>
 		</td>
