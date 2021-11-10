@@ -23,38 +23,16 @@
 <title>Insert title here</title>
 </head>
 	<%
-	ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
-		/* 리스트값 출력 - 카트에 있는 값을 출력하기위한 DAO선언 */
-		CartDAO Cdao = new CartDAO(); 
-
-		/* 이제 카트에 있는걸 가져와서 이미지 등을 출력하면 됩니다. - DAO 수정전*/
-		CartDTO Cdto = new CartDTO();
-	
-		/* CartDb에서 데이터를 출력하기 위해 user_id값 받아오기 */
-		String user_id = (String)session.getAttribute("myid");
-				
-		/* user_id에 따른 Cart 정보를 받을 list를 선언합니다. */
-		ArrayList<CartDTO> cart_list = Cdao.selectCart(user_id);
-		
-		/* 책이름과 가격, 이미지를 받아오기 위한 BookDAO, BookDTO 선언 */
-		BookDAO Bdao = new BookDAO();
-		BookDTO Bdto = new BookDTO();
-		
-		
-		/* 금액에 , 표시를 할 포맷 선언 */
-		DecimalFormat df = new DecimalFormat("###,###");
-		
-		
-		/* 회원정보와 동일 체크할 경우, 가져올 user DAO, DTO 정보 */
-		UserDAO Udao = new UserDAO();
-		UserDTO Udto = Udao.getUser(user_id);
-		
-		
-		/* 전화번호를 나누기 위해 전화번호를 변수로 저장합니다 */
-		String hp = Udto.getHp();
-		
+		//전화번호, 배송지를 가져와야함
 		/* 총 상품금액을 계산하기 위한 변수를 선언 */
 		int payment_totP = 0;
+	
+		String user_id = (String)session.getAttribute("myid");
+		
+		UserDAO user = new UserDAO();
+		UserDTO dto = user.getUser(user_id);
+		
+		String hp = dto.getHp();
 	%>
 	
 
@@ -148,66 +126,15 @@
 							
 							<!-- list이기 때문에 for문 출력을 합니다 -->
 							<table class="table table-bordered">
-									<tr>
-										<th style="background-color: rgb(85, 102, 28, 0.5); width: 350px; text-align: center;">상품 정보</th>
-										<th style="background-color: rgb(85, 102, 28, 0.5); width: 150px; padding-left: 5%;">판매가</th>
-										<th style="background-color: rgb(85, 102, 28, 0.5); width: 100px; padding-left: -0.5px	;">수량</th>
-									</tr>
-									
-							<%
-								for(int i=0; i < cart_list.size(); i++){
-									
-									/* 각 i값마다 list에서 dto 가져옴 */
-									Cdto = cart_list.get(i);
-									
-									String book_id = Cdto.getBook_id();
-									
-									/* book_id를 통해 BookDao에서 상세정보를 받을 DTO선언 */
-									Bdto = Bdao.getBook(book_id);
-									
-									int book_price = Bdto.getBookPrice();
-									int ea = Cdto.getEa();
-									
-									/* for문 마다 앞서 선언한 변수에 더해줍니다 */
-									/* 후에 돈자리 , 계산을 위해 포멧을 넣어줍니다 */
-									payment_totP += (Bdto.getBookPrice()*Cdto.getEa());
-										
-									OrderDTO order = new OrderDTO();
-									order.setBook_id(book_id);
-									order.setBook_id(book_id);
-									order.setBook_id(book_id);
-									order.setBook_id(book_id);
-									order.setBook_id(book_id);
+								<tr>
+									<th style="background-color: rgb(85, 102, 28, 0.5); width: 350px; text-align: center;">상품 정보</th>
+									<th style="background-color: rgb(85, 102, 28, 0.5); width: 150px; padding-left: 5%;">판매가</th>
+									<th style="background-color: rgb(85, 102, 28, 0.5); width: 100px; padding-left: -0.5px	;">수량</th>
+								</tr>
 
-									list.add(order);
-									
-									%>
-										<!-- 책 출력 -->
-										<tr>
-											<td>
-												<!-- hidden -->
-												<input type="hidden" name="book_id" value="<%= book_id %>">
-												<input type="hidden" name="book_price" value="<%= book_price %>">
-												<input type="hidden" name="ea" value="<%= ea %>">
-									
-												<img src="image/book/<%= Bdto.getBook_image() %>" style="width: 70px;">
-											
-												<b style="margin-left: 5%;"><%= Bdto.getBook_name() %></b> | <%= Bdto.getWriter() %>
-											</td>
-											
-											<td>
-												<h4 style="display: flex; justify-content: center; text-align: center; margin-top: 40px;">
-													<b><%= df.format(Bdto.getBookPrice()) %> 원</b>
-												</h4>
-											</td>
-											
-											<td>
-												<h5 style="margin-top: 40px;"><%= Cdto.getEa() %> 권</h5>
-											</td>
-										</tr>
-								<%
-								}
-								%>
+								<!-- 책 출력 -->
+								<div id="print-cart-books"></div>
+								<script src="JS/payform.js"></script>
 							</table>
 						</div>
 					</div>			
@@ -222,41 +149,36 @@
 					<ul id="final_payment_ul">
 						
 						<!-- 총 상품금액: 돈, 포멧을 적용합니다-->
-						<font class="payment_detail"><%=df.format((payment_totP)) %> 
-							<font class="unit"> 원</font>
-						</font>
+						<div class="payment_detail" id="payment-total"></div>
+						
 						<li class="naming">총 상품금액</li>
 
 						<!-- 적립 포인트 -->						
-						<font class="payment_detail" id="get_point"><%=payment_totP*2/100 %> 
-							<font class="unit"> Point</font>
-						</font>
+						<div class="payment_detail" id="get_point"></div>
+						
 						<li class="naming">적립 포인트</li>
 						
 						<!-- 사용 포인트 -->						
-						<font class="payment_detail">
-						
+						<div class="payment_detail">
 							<!-- input에 입력 포인트가 바뀔때마다 함수호출 -->
 							<!-- 숫자만 입력되도록 변경 - type을 number로 안한것은 위아래 버튼이 거추장스럽기때문 -->
-							<input type="text" name="use_point" onchange="point_input(this.value)"
+							<input type="text" id="use_point" name="use_point" onchange="point_input(this.value)"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 							<font class="unit"> Point</font>
-						</font>
+						</div>
+						
 						<li class="naming">사용 포인트</li>
 						
 						<!-- 남은 포인트 -->						
-						<font class="payment_detail" id="left_point"><%=Udto.getPoint() %>
-							<font class="unit"> Point</font>
-						</font>
+						<div class="payment_detail" id="left_point"></div>
+						
 						<li class="naming">사용 가능한 포인트</li>
 					</ul>
 					
 					<hr id="final_payment_hr">
 					
 					<ul id="final_payment_ul">
-						<font class="payment_detail" id="totP" style="color: red;"><%=df.format((payment_totP)) %>
-							<font class="unit" style="color: black;"> 원</font>						
-						</font>
+						<div class="payment_detail" id="totP" style="color: red;"></div>
 						<li class="naming_pay">결제금액</li>
 					</ul>
 					
@@ -274,96 +196,75 @@
 </form>
 
 
-<script>
-	$("#buy").on("click", function(){
-		<%request.setAttribute("orders", list);%>
-		<%-- <%ArrayList list = request.getAttribute("orders");%> --%>
-	});
+<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
+<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
+<script type="text/javascript">
+	function same_info(){
+		/* 체크여부 확인 - check된 경우 */
+		if($("input:checkbox[name=chk_info]").is(":checked")==true){
+			
+			$("#orderer").val("<%=dto.getUser_name()%>");
+			$("#addr1").val("<%=dto.getAddr()%>");
+			
+			
+			if(<%=hp.substring(0,3).equals("010")%>){
+				$("#select_hp1").val("010").prop("selected", true);					
+			} else if(<%=hp.substring(0,3).equals("012")%>){
+				$("#select_hp1").val("012").prop("selected", true);										
+			} else if(<%=hp.substring(0,3).equals("016")%>){
+				$("#select_hp1").val("016").prop("selected", true);										
+			} else if(<%=hp.substring(0,3).equals("017")%>){
+				$("#select_hp1").val("017").prop("selected", true);										
+			}
+			$("#hp2").val("<%=hp.substring(3,7)%>");
+			$("#hp3").val("<%=hp.substring(7)%>");
+		} else {
+			/* check안 된 경우 */
+			$("#orderer").val("");
+			$("#addr1").val("");
+			$("#select_hp1").val("010").prop("selected", true);	;
+			$("#hp2").val("");
+			$("#hp3").val("");
+		}
+	}
+	
+	
+	/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
+	function point_input(point){
+		var left_point = $("#total_price").val() - $("#use_point").val();
+
+		/* 남은 포인트 정보 산정 */
+		/* 단위 값은 폰트 사이즈 유지되도록 하기 */
+		$("#left_point").html(left_point + "<font class='unit'> Point</font>");
+		
+		
+		/* 남은 총 결제액 돈자릿수 포맷 포함 변수선언 */
+		var totP = (String)($("#total_point") - point);
+		
+		/* javascript 내부에서 돈자릿수 콤마 더하기 작업 */
+		totP = totP.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		
+		/* 금액변경시 총 결제액 변경 */
+		$("#totP").text(totP);
+		
+		/* 만약 포인트가 음수로 갈경우 */
+		if(left_point < 0){
+			
+			/* 포인트란에 경고메시지 */
+			$("#totP").html("<h3 style='color: red; font-weight: bold;'>포인트 부족으로 결제불가</h3>");
+			
+			/* 결제버튼 비활성화 */
+			const target1 = document.getElementById("pay");
+			target1.disabled = true;
+		
+		} else{
+			
+			/* 남은 포인트가 다시 양수로 돌아왔을 경우 */
+			/* 돈의 단위는 무조건 원래 폰트와 색을 유지하도록 설정했음 */
+			$("#totP").html(totP + "<font class='unit' style='color: black;'> 원</font>");
+		}
+		
+	}
 </script>
-
-	<!-- 회원정보와 동일 체크할 경우, 폼에 자동입력 -->
-	<!-- !!!대신 입력할 경우엔 다시 합쳐줘야 함!!! -->
-	<script type="text/javascript">
-		function same_info(){
-			
-				/* 체크여부 확인 - check된 경우 */
-				if($("input:checkbox[name=chk_info]").is(":checked")==true){
-				
-				$("#orderer").val("<%=Udto.getUser_name()%>");
-				$("#addr1").val("<%=Udto.getAddr()%>");
-				
-				
-				if(<%=hp.substring(0,3).equals("010")%>){
-					$("#select_hp1").val("010").prop("selected", true);					
-				} else if(<%=hp.substring(0,3).equals("012")%>){
-					$("#select_hp1").val("012").prop("selected", true);										
-				} else if(<%=hp.substring(0,3).equals("016")%>){
-					$("#select_hp1").val("016").prop("selected", true);										
-				} else if(<%=hp.substring(0,3).equals("017")%>){
-					$("#select_hp1").val("017").prop("selected", true);										
-				}
-				
-				
-				$("#hp2").val("<%=hp.substring(3,7)%>");
-				$("#hp3").val("<%=hp.substring(7)%>");
-				
-			/* check안 된 경우 */	
-			}else{
-				
-				$("#orderer").val("");
-				$("#addr1").val("");
-				$("#select_hp1").val("010").prop("selected", true);	;
-				$("#hp2").val("");
-				$("#hp3").val("");
-			}
-		}
-		
-		
-		/* 포인트 사용하기로하면 그만큼 빼주는 함수 정의 */
-		function point_input(point){
-			
-			var left_point = <%=Udto.getPoint()%> - $("#use_point").val();
-
-			
-			/* 남은 포인트 정보 산정 */
-			/* 단위 값은 폰트 사이즈 유지되도록 하기 */
-			$("#left_point").html(left_point + "<font class='unit'> Point</font>");
-			
-			
-			/* 남은 총 결제액 돈자릿수 포맷 포함 변수선언 */
-			var totP = (String)(<%=payment_totP%> - point);
-			
-			/* javascript 내부에서 돈자릿수 콤마 더하기 작업 */
-			totP = totP.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			
-			/* 금액변경시 총 결제액 변경 */
-			$("#totP").text(totP);
-			
-			/* 만약 포인트가 음수로 갈경우 */
-			if(left_point < 0){
-				
-				/* 포인트란에 경고메시지 */
-				$("#totP").html("<h3 style='color: red; font-weight: bold;'>포인트 부족으로 결제불가</h3>");
-				
-				/* 결제버튼 비활성화 */
-				const target1 = document.getElementById("pay");
-				target1.disabled = true;
-			
-			} else{
-				
-				/* 남은 포인트가 다시 양수로 돌아왔을 경우 */
-				/* 돈의 단위는 무조건 원래 폰트와 색을 유지하도록 설정했음 */
-				$("#totP").html(totP + "<font class='unit' style='color: black;'> 원</font>");
-			}
-			
-		}
-		
-		
-		
-		
-	</script>
-	
-	
-
 </body>
 </html>

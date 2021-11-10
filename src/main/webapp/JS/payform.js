@@ -1,4 +1,73 @@
 $(function(){
+
+	var book_id = JSON.parse(localStorage.getItem("book_id"));
+	var book_ea = JSON.parse(localStorage.getItem("book_ea"));
+	var book_price = JSON.parse(localStorage.getItem("book_price"));
+	var book_name = JSON.parse(localStorage.getItem("book_name"));
+	var book_image = JSON.parse(localStorage.getItem("book_image"));
+	
+	console.log(book_id);
+	console.log(book_ea);
+	console.log(book_price);
+	console.log(book_name);
+	console.log(book_image);
+	
+	var total_price = 0;
+	
+	for(var i=0; i<book_id.length; i++){
+		
+		total_price += book_ea[i]*book_price[i];
+		
+		var book_price = (String)(book_ea[i]*book_price[i]);
+		book_price = book_price.replace(/\B(?=(\d{3})+(?!\d))/g,",");
+		
+		var s='\
+			<tr>\
+				<td>\
+					<input type="hidden" name="book_id" value="' + book_id[i] + '">\
+					<input type="hidden" name="book_price" value="' + book_price[i] + '">\
+					<input type="hidden" name="ea" value="'+ book_ea[i] +'">\
+					<img src="image/book/' + book_image[i] + '" style="width: 70px;">\
+					<b style="margin-left: 5%;">' + book_name[i] + '</b> | <%= Bdto.getWriter() %>\
+				</td>\
+				\
+				<td>\
+					<h4 style="display: flex; justify-content: center; text-align: center; margin-top: 40px;">\
+						<b>' + book_price + ' 원</b>\
+					</h4>\
+				</td>\
+				\
+				<td>\
+					<h5 style="margin-top: 40px;">' + book_ea[i] + ' 권</h5>\
+				</td>\
+			</tr>\
+		';
+		
+		$(print-cart-books).append(s);
+	}
+	
+	$("#payment-total").html('\
+		<div id="total_price">' + total_price + '</div>\
+		<font class="unit">원</font>\
+	');
+	
+	$("#get_point").html('\
+		<div id="total_point">' + total_price*2/100 +'</div>\
+		<font class="unit"> Point</font>\
+	');
+
+	$("#left_point").html('\
+		<div id="left_point">' + total_point +'</div>\
+		<font class="unit"> Point</font>\
+	');
+
+	$("#totP").html('\
+		<div id="left_point">' + total_point +'</div>\
+		<font class="unit" style="color: black;"> 원</font>\
+	');
+	
+});
+
 	/*$(document).ready(function(){
 	
 		$('.slider').bxSlider();
@@ -13,4 +82,5 @@ $(function(){
 	        captions: true, // 이미지 위에 텍스트를 넣을 수 있음
 	    });
 	});*/
-});
+	
+

@@ -2,20 +2,6 @@
 <%@page import="db.CartDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Insert title here</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?
-family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-
-</head>
-<body>
-
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -33,9 +19,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	//dao 선언하고 insert 불러오기
 	CartDAO dao=new CartDAO();
 	dao.insertCart(dto);
+	
+	response.sendRedirect("index.jsp?main=cart/cart_page.jsp");
 %>
-<script>
-location.href='index.jsp?main=cart/cart_page.jsp';
-</script>
-</body>
-</html>

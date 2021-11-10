@@ -34,7 +34,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 
 <%
 	String user_id = (String)session.getAttribute("myid");
-	
+
 	CartDAO cart = new CartDAO();
 	ArrayList<CartDTO> list = cart.selectCart(user_id);
 	request.setAttribute("list", list);
@@ -55,13 +55,20 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 var row_book_id = new Array();
 var row_book_ea = new Array();
 var row_book_price = new Array();
+var row_book_name = new Array();
+var row_book_image = new Array();
 
-document.getElementById("btn1").click(function(){
+$("#btn1").click(function(){
 	$("input:checkbox[id=chk]:checked").each(function(){
 		
 		var book_id= $(this).attr("book_id");
-		var book_ea= $(this).attr("ea");
-		var book_price= $(this).attr("row_book_price");
+		var book_ea= $(this).parrent().parrent().children(".cart-ea").children().val();
+		var book_price= $(this).attr("book_price");
+		var book_name= $(this).attr("book_name");
+		var book_image= $(this).attr("book_image");
+		
+		console.log(book_ea);
+		
 		/* 
 			*** 제이슨으로 배열 넘기기 ***
 			1. 배열을 선언하고 배열안에 checkbox 선택에 따른 값추가
@@ -74,14 +81,18 @@ document.getElementById("btn1").click(function(){
 		row_book_id.push(book_id);
 		row_book_ea.push(book_ea);
 		row_book_price.push(book_price);
+		row_book_name.push(book_name);
+		row_book_image.push(book_image);
+		
 	});
 	
 	/* 로컬스토리지에 배열을 JSON 오브젝트로 값 저장 */
 	localStorage.setItem("book_id", JSON.stringify(row_book_id));
 	localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
 	localStorage.setItem("book_price", JSON.stringify(row_book_price));
-	}
-})
+	localStorage.setItem("book_name", JSON.stringify(row_book_name));
+	localStorage.setItem("book_image", JSON.stringify(row_book_image));
+});
 </script>
 <body>
 
@@ -128,12 +139,12 @@ document.getElementById("btn1").click(function(){
 					<th class="th1" width="40px">수량</th>
 					<th class="th1" width="30px">삭제</th>
 				</tr>
-
+				
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<!-- 체크박스 , 상품명, 총가격, 수량, 삭제 td -->
 						<td>
-							<input type="checkbox" name="chk" book_id="${dto.book_id }" ea="${dto.ea }" book_price="${dto.book_price }" style="padding-top: 50px;">
+							<input type="checkbox" name="chk" book_image="${dto.book_image }" book_name="${dto.book_name }" book_id="${dto.book_id }" ea="${dto.ea }" book_price="${dto.book_price }" style="padding-top: 50px;">
 						</td>
 						
 						<td>${dto.book_name }</td>
@@ -143,7 +154,7 @@ document.getElementById("btn1").click(function(){
 							<span id="${dto.book_id }"><c:out value="${fmt }"/></span>원
 						</td>
 						
-						<td>
+						<td class="cart-ea">
 							<input type="number" class="ea" min="1" value="${dto.ea }" onchange="tot(this.value,${dto.book_price },${dto.book_id })">
 						</td>
 	
@@ -162,8 +173,9 @@ document.getElementById("btn1").click(function(){
 			<button type="button" id="btn1" class="btn1" onclick="location.href='index.jsp?main=payment/payform.jsp'">선택 상품 주문</button>
 
 			<!-- 쇼핑 계속하기 클릭시 메인으로 이동하기 ? -->
-			<button type="button" class="btn2"
-				onclick="location.href='index.jsp'">쇼핑 계속하기</button>
+			<button type="button" class="btn2" onclick="return false">쇼핑 계속하기</button>
+			<!-- <button type="button" class="btn2"
+				onclick="location.href='index.jsp'">쇼핑 계속하기</button> -->
 		</div>
 		
 	</div>

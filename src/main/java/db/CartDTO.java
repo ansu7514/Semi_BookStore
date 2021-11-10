@@ -5,18 +5,16 @@ public class CartDTO {
 	private String user_id;
 	private String book_id;
 	private String book_name;
+	private String book_image;
 	private int book_price;
 	private int ea;
 
-	public CartDTO() {
-		// TODO Auto-generated constructor stub
+	public String getBook_image() {
+		return book_image;
 	}
-	
-	public CartDTO(String user_id, String book_id) {
-		this.user_id = user_id;
-		this.book_id = book_id;
+	public void setBook_image(String book_image) {
+		this.book_image = book_image;
 	}
-	
 	public String getUser_id() {
 		return user_id;
 	}

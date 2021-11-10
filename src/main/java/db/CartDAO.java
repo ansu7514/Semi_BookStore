@@ -63,7 +63,7 @@ public class CartDAO {
 		ResultSet rs = null;
 		ArrayList<CartDTO> list = new ArrayList<CartDTO>();
 		
-		String sql = "select b.book_name book_name, b.book_price book_price, c.user_id user_id, c.book_id book_id, c.ea ea from BOOK b, CART c where b.book_id = c.book_id and user_id=?";
+		String sql = "select b.book_image book_image, b.book_name book_name, b.book_price book_price, c.user_id user_id, c.book_id book_id, c.ea ea from BOOK b, CART c where b.book_id = c.book_id and user_id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -79,6 +79,7 @@ public class CartDAO {
 				dto.setEa(rs.getInt("ea"));
 				dto.setBook_name(rs.getString("book_name"));
 				dto.setBook_price(rs.getInt("book_price"));
+				dto.setBook_image(rs.getString("book_image"));
 				
 				list.add(dto);
 			}
