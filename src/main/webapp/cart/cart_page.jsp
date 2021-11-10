@@ -12,6 +12,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="css/cart.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -43,22 +44,24 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 
 <!-- 가격 자릿수 콤마, 총가격 -->
 <script type="text/javascript">
-function tot(num,price) {
-	var a=(String)(num*price);
-	a=a.replace(/\B(?=(\d{3})+(?!\d))/g,",");
-	
-	document.getElementById(i).innerText=a;
-	
-}
+	function tot(num,price,book_id) {
+		var a=(String)(num*price);
+		a=a.replace(/\B(?=(\d{3})+(?!\d))/g,",");
+		
+		$("#"+book_id).text(a);
+	}
 
 /* 배열 저장을 위한 객체선언 */
 var row_book_id = new Array();
 var row_book_ea = new Array();
+var row_book_price = new Array();
 
-function sel(i,book_id, book_ea){
-	
-	if($("input:checkbox[id=chk]:checked").each(function(){
-
+document.getElementById("btn1").click(function(){
+	$("input:checkbox[id=chk]:checked").each(function(){
+		
+		var book_id= $(this).attr("book_id");
+		var book_ea= $(this).attr("ea");
+		var book_price= $(this).attr("row_book_price");
 		/* 
 			*** 제이슨으로 배열 넘기기 ***
 			1. 배열을 선언하고 배열안에 checkbox 선택에 따른 값추가
@@ -70,29 +73,15 @@ function sel(i,book_id, book_ea){
 		/* book_id, book_ea값 배열에 추가 */
 		row_book_id.push(book_id);
 		row_book_ea.push(book_ea);
-		
-		/* 배열에 잘 저장됐는지 검산 */
-		console.log("book_id 단순배열 저장:" + row_book_id);
-		
-		/* 로컬스토리지에 배열을 JSON 오브젝트로 값 저장 */
-		localStorage.setItem("book_id", JSON.stringify(row_book_id));
-		localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
-		
-		/* 출력용 선언 */
-		var output_id = localStorage.getItem("book_id");
-		var output_book_id = JSON.parse(output_id);
-		
-		/* 검산값 */
-		console.log("book_id 제이슨배열 저장:" + output_book_id);
-		
-		var output_ea = localStorage.getItem("book_ea");
-		var output_book_ea = JSON.parse(output_ea);
-		
-		/* 검산값 */
-		console.log("book_ea 제이슨배열 저장:" + output_book_ea);
+		row_book_price.push(book_price);
+	});
+	
+	/* 로컬스토리지에 배열을 JSON 오브젝트로 값 저장 */
+	localStorage.setItem("book_id", JSON.stringify(row_book_id));
+	localStorage.setItem("book_ea", JSON.stringify(row_book_ea));
+	localStorage.setItem("book_price", JSON.stringify(row_book_price));
 	}
-}
-
+})
 </script>
 <body>
 
@@ -114,9 +103,6 @@ function sel(i,book_id, book_ea){
 	}
 
 </script>
-
-
-
 	<!-- 전체 div -->
 	<div class="wrapper">
 
@@ -147,17 +133,18 @@ function sel(i,book_id, book_ea){
 					<tr>
 						<!-- 체크박스 , 상품명, 총가격, 수량, 삭제 td -->
 						<td>
-							<input type="checkbox" name="chk" book_id="${dto.book_id }" ea="${dto.ea }" style="padding-top: 50px;">
+							<input type="checkbox" name="chk" book_id="${dto.book_id }" ea="${dto.ea }" book_price="${dto.book_price }" style="padding-top: 50px;">
 						</td>
 						
 						<td>${dto.book_name }</td>
 						
 						<td>
-							${df.format(dto.book_price * dto.ea)}원
+							<fmt:formatNumber var="fmt" groupingUsed="true" value="${dto.book_price*dto.ea }"/>
+							<span id="${dto.book_id }"><c:out value="${fmt }"/></span>원
 						</td>
 						
 						<td>
-							<input type="number" class="ea" min="1" value="${dto.ea }" onchange="tot(this.value,${dto.book_price })">
+							<input type="number" class="ea" min="1" value="${dto.ea }" onchange="tot(this.value,${dto.book_price },${dto.book_id })">
 						</td>
 	
 						<!-- 삭제 버튼 -->
@@ -172,14 +159,13 @@ function sel(i,book_id, book_ea){
 		
 		<!-- 선택상품주문, 이전 페이지 클릭하는 버튼 div -->
 		<div class="btndiv">
-			<button type="button" class="btn1" onclick="location.href='index.jsp?main=payment/payform.jsp'">선택 상품 주문</button>
+			<button type="button" id="btn1" class="btn1" onclick="location.href='index.jsp?main=payment/payform.jsp'">선택 상품 주문</button>
 
 			<!-- 쇼핑 계속하기 클릭시 메인으로 이동하기 ? -->
 			<button type="button" class="btn2"
 				onclick="location.href='index.jsp'">쇼핑 계속하기</button>
-
 		</div>
-
+		
 	</div>
 
 </body>

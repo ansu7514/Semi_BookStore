@@ -26,10 +26,10 @@
 		String user_id = (String)session.getAttribute("myid");
 		String book_id = request.getParameter("book_id");
 		String ea = request.getParameter("ea");
-				
-		/* 책이름과 가격, 이미지를 받아오기 위한 BookDAO, BookDTO 선언 */
-		BookDAO Bdao = new BookDAO();
-		BookDTO Bdto = Bdao.getBook(book_id);
+		
+		CartDAO cart = new CartDAO();
+		ArrayList<CartDTO> list = cart.selectCart(user_id);
+		request.setAttribute("list", list);
 		
 		/* 금액에 , 표시를 할 포맷 선언 */
 		DecimalFormat df = new DecimalFormat("###,###");
