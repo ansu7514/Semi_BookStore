@@ -264,9 +264,20 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		          dataType:"html",
 		          url:"order/order_date_add.jsp",
 		          data:{"user_id":"<%=user_id%>", "input_start": dday, "input_end": ddday},
-		          success:function(){	        	  
+		          success:function(data){	        	  
+		        	 
+		        	  var obj = JSON.parse(data);
 		        	  
-		             location.reload();
+		             /* location.reload(); */
+		             
+		             /* 출력할 값들 json으로 변환후 넣음 */
+		             console.log(JSON.stringify(obj));
+		             
+						$.each(obj, function(k,v){
+							
+							/* 여기 테이블 대체하면 됨 */
+							
+						})
 		          }
 		       });  
 			
