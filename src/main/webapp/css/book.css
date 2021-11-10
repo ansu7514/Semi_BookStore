@@ -33,7 +33,7 @@
 
 #img {
 	width: 45%;
-	padding-left: 14%;
+	padding-left: 10%;
 }
 
 #bookImg {
@@ -65,6 +65,7 @@
 	height: 100px;
 	display: flex;
 	justify-content: center;
+	margin-left: 12px;
 }
 
 #book-rate{
@@ -72,9 +73,14 @@
 	margin: 0px;
 }
 
-svg{
+/* 큰 별 */
+#book-rate> .jq-ry-group-wrapper> .jq-ry-group> svg {
 	width: 100px;
 	height: 100px;
+}
+
+#book-rate {
+	width: 500px !important;
 }
 /* 별점 끄읏 */
 

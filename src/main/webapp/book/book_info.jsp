@@ -176,14 +176,6 @@
 						<script type="text/javascript">
 							$("#book-rate").rateYo({rating: <%=avg%>});
 						</script>
-						
-<!-- 						<div class="star-ratings-fill" id="star">
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-							<span class="star">⭐</span>
-						</div> -->
 					
 						<div id="summary"></div>
 						
