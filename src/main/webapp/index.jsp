@@ -34,7 +34,8 @@
 
 <title>가을 책방</title>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
 	<%
 	request.setCharacterEncoding("utf-8");
 	

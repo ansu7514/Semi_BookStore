@@ -44,27 +44,27 @@
 					
 					<div class="heart_div">
 						<span class="glyphicon glyphicon-heart" id="heart_tag" style="color: red; margin-top: 18px;"></span>
-						<span id="heart_tag" style="margin-top: 15px;" onclick="getLike('<%= user_id %>', '${dto.user_id }', ${dto.book_id })">Likes</span>
-						<span class="review-like" style="margin-left: 10px;"></span>			
+						<span id="heart_tag" style="margin-top: 15px;" onclick="heartLike(this)" user_id="<%= user_id%>" re_user_id="${dto.user_id }" book_id="${dto.book_id }">Likes</span>
+						<span class="review-like" style="margin-left: 10px;">0</span>			
 					</div>
 					
 					<script type="text/javascript">
 						// 좋아요 체크
-						function getLike(user_id, re_user_id, book_id) {
+						function heartLike(e) {
 							$.ajax({
 								url:"review/review_like.jsp",
 								type:"post",
 								dataType:"html",
 								data:{
-									"user_id" : user_id,
-									"re_user_id" : re_user_id,
-									"book_id" : book_id
+									"user_id" : $(e).attr("user_id"),
+									"re_user_id" : $(e).attr("re_user_id"),
+									"book_id" : $(e).attr("re_user_id")
 								},
 								success:function(e){
 									$(".review-like").text(e);
 								}
 							});
-						}
+						};
 					</script>
 					
 					<span class="review-date">${dto.writeday }</span>

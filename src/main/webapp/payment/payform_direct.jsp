@@ -134,7 +134,7 @@
 	
 
 <body>
-<form action="payment/order_date_add.jsp" method="post">
+<form action="payment/payform_add.jsp" method="post">
 	<!-- 전체 div -->
 	<div id="wrapper">
 		<span id="title">주문결제</span>
