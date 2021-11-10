@@ -1,3 +1,5 @@
+<%@page import="db.BookDTO"%>
+<%@page import="db.BookDAO"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.util.Date"%>
@@ -13,6 +15,9 @@
 	
 		OrderDAO dao = new OrderDAO();
 		OrderDTO dto = new OrderDTO();
+		BookDAO Bdao = new BookDAO();
+		BookDTO Bdto = new BookDTO();
+		
 		ArrayList<OrderDTO> date_list = new ArrayList<OrderDTO>();
 		
 		String user_id = (String)session.getAttribute("myid");
@@ -39,7 +44,7 @@
 		
 		for(int i=0; i<date_list.size(); i++){
 			JSONObject sObj = new JSONObject();
-			sObj.put("book_id", date_list.get(i).getBook_id()); //책아이디
+			sObj.put("book_name", Bdao.getBook(date_list.get(i).getBook_id()).getBook_name()); //책이름
 			sObj.put("book_ea", date_list.get(i).getEa()); //매수
 			sObj.put("book_price", date_list.get(i).getBook_price()); //가격
 			sObj.put("book_recipient", date_list.get(i).getRecipient()); //수령인

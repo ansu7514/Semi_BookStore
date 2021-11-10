@@ -257,7 +257,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		if((dday_month > ddday_month) || (dday_month = ddday_month) && (dday_day > ddday_day)) {
 			alert("날짜를 다시 선택해주세요");
 		} else if(dday_month < ddday_month || (dday_month = ddday_month && dday_day <= ddday_day)) {
-			alert((dday, ddday));
+			/* alert((dday, ddday)); */
 			
 		      $.ajax({
 		          type:"post",
@@ -267,17 +267,62 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		          success:function(data){	        	  
 		        	 
 		        	  var obj = JSON.parse(data);
+		        	  var s = "";
+		        	  
+		        	  var obj_count = Object.keys(obj).length;
 		        	  
 		             /* location.reload(); */
 		             
 		             /* 출력할 값들 json으로 변환후 넣음 */
 		             console.log(JSON.stringify(obj));
-		             
+		            
+		             	//key :"list", value: 배열 안의 obj
+		             	//v[index].book_price
 						$.each(obj, function(k,v){
 							
 							/* 여기 테이블 대체하면 됨 */
+							s+= "<table class='table table-bordered' id='order_table'>";
+							s+= "<tr>";
+							s+=	"<th class='order_th'>주문한 책</th>";
+							s+=	"<th class='order_th'>권수</th>";
+							s+=	"<th class='order_th'>결제 가격</th>";
+							s+=	"<th class='order_th'>수령인</th>";
+							s+=	"<th class='order_th'>배송지</th>";
+							s+=	"<th class='order_th'>결제일</th>";
+							s+=	"<th class='order_th'>결제 방법</th>";
+							s+=	"</tr>";
 							
-						})
+							$.each(v, function(index,item){
+								s+=	"<tr>";
+										
+								<!-- 책이름 -->
+								s+= "<td>" + item.book_name + "</td>";
+								
+								<!-- 권수 -->
+								s+= "<td>" + item.book_ea + "</td>";
+										
+								<!-- 결제 가격 -->
+								s+= "<td>" + item.book_price + "</td>";
+										
+								<!-- 수령인 -->
+								s+= "<td>" + item.book_recipient + "</td>";
+								
+								<!-- 배송지 -->
+								s+= "<td>" + item.book_location + "</td>";
+										
+								<!-- 결제일 -->
+								s+= "<td>" + item.book_pay_day + "</td>";
+										
+								<!-- 결제방법 -->
+								s+= "<td>" + item.book_pay_method + "</td>";
+								s+=	"</tr>";
+							});
+						});
+					
+					
+						s+="</table>";
+						
+						$(".order_table_list").html(s);
 		          }
 		       });  
 			
