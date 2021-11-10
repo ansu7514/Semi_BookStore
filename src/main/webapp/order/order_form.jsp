@@ -155,6 +155,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 				DecimalFormat df = new DecimalFormat("###,###");
 				
 				for(int i = 0; i < list.size(); i++ ) {
+					
 					OrderDTO order_dto = list.get(i);
 				%>
 					<tr>
@@ -251,7 +252,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		var dday_day = dday.substring(8, 9);
 		var ddday_day = ddday.substring(8, 9);
 		
-		if(dday_month > ddday_month || (dday_month = ddday_month) && (dday_day > ddday_day)) {
+		if((dday_month > ddday_month) || (dday_month = ddday_month) && (dday_day > ddday_day)) {
 			alert("날짜를 다시 선택해주세요");
 		} else if(dday_month < ddday_month || (dday_month = ddday_month && dday_day <= ddday_day)) {
 			alert((dday, ddday));
