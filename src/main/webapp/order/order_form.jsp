@@ -30,6 +30,8 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Roboto+Mono:ital,wght@1,200&family=Zen+Antique&display=swap"
 	rel="stylesheet">
 </head>
+
+
 <body>
 
 	<!-- 주문 내역 리스트 jsp -->
@@ -124,13 +126,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 		<!-- 지정한 날짜 조회하기 -->
 		<div class="order_table_date">
 			<!-- 시작점 , 최소시작일 : 2021-01-01 -->
-			<input id="input_start" type="date" min="2021-01-01">
+			<input id="input_start" name="input_start" type="date" min="2021-01-01">
 			
 			<b>~</b>
 			<!-- 마감시점 , 최대막날 : 2021-11-10 -->
-			<input id="input_end" type="date" max="2021-12-31" value="">&nbsp;&nbsp;
+			<input id="input_end" name="input_end" type="date" max="2021-12-31" value="">&nbsp;&nbsp;
 			
-			<input id="input_submit" type="submit" onclick="input(<%= user_id %>)" value="조회">
+			<input id="input_submit" type="button" onclick="input()" value="조회">
 		
 		</div>
 		
@@ -242,7 +244,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	
 	<script type="text/javascript">
 	<!-- 지정한 날짜 조회하기 (스크립트) -->
-	function input(user_id){
+	function input(){
 		const dday = document.querySelector("#input_start").value;
 		const ddday =document.querySelector("#input_end").value;
 		
@@ -256,10 +258,25 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 			alert("날짜를 다시 선택해주세요");
 		} else if(dday_month < ddday_month || (dday_month = ddday_month && dday_day <= ddday_day)) {
 			alert((dday, ddday));
+			
+		      $.ajax({
+		          type:"post",
+		          dataType:"html",
+		          url:"order/order_date_add.jsp",
+		          data:{"user_id":"<%=user_id%>", "input_start": dday, "input_end": ddday},
+		          success:function(){	        	  
+		        	  
+		             location.reload();
+		          }
+		       });  
+			
 		} else if(dday == "null" || dday == "" || ddday == "null" || ddday == "") {
 			alert("날짜를 입력해주세요");
 		}
+		
+		
 	}
+	
 	</script>
 </body>
 </html>

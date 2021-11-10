@@ -272,7 +272,7 @@ public class OrderDAO {
 		
 	
 	//특정기간 주문조회
-	public ArrayList<OrderDTO> orderDateList(String user_id, Date from, Date to){
+	public ArrayList<OrderDTO> orderDateList(String user_id, String from, String to){
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -284,8 +284,8 @@ public class OrderDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, user_id);
-			pstmt.setDate(2, from);
-			pstmt.setDate(3, to);
+			pstmt.setString(2, from);
+			pstmt.setString(3, to);
 			
 			rs = pstmt.executeQuery();
 			
