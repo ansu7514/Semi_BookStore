@@ -38,14 +38,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	
 	java.sql.Date birth = java.sql.Date.valueOf(birthday);
 	
-	/* out.println(user_id);
-	out.println(user_pass);
-	out.println(user_name);
-	out.println(birth);
-	out.println(gender);
-	out.println(addr);
-	out.println(hp); */
-	
 	dto.setUser_id(user_id);
 	dto.setUser_pass(user_pass);
 	dto.setUser_name(user_name);

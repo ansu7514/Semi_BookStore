@@ -3,19 +3,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-
 	request.setCharacterEncoding("utf-8");
 	
-	String user_id = request.getParameter("user_id");
-	int book_id = Integer.parseInt(request.getParameter("book_id"));
-	
 	HeartDTO dto = new HeartDTO();
+
+	String user_id = request.getParameter("user_id");
+	String re_user_id = request.getParameter("re_user_id");
+	String book_id = request.getParameter("book_id");
 	
 	HeartDAO dao = new HeartDAO();
 	
-	int like = dao.getLike(dto);
+	dto.setLike_user_id(user_id);
+	dto.setRe_user_id(re_user_id);
+	dto.setBook_id(book_id);
 	
-	System.out.println(like);
+	dao.like(dto);
 	
-	out.println(like);
+	out.println(dao.getLike(dto));
 %>

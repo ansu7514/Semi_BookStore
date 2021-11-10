@@ -1,5 +1,5 @@
 $(function(){
-/*	//리뷰작성
+	//리뷰작성
 	$("#submit-review").on("click", function(){
 		
 		if($('#comment-content').val() == ""){
@@ -43,7 +43,7 @@ $(function(){
 				location.reload();
 			}
 		});
-	});*/
+	});
 	
 	//리뷰작성
 	$(document).on("click", ".submit-review", function(){

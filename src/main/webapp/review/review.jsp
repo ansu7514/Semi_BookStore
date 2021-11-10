@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="css/review.css?after">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <%
+	String user_id = (String)session.getAttribute("myid");
+
 	String book_id = request.getParameter("book_id");
 	ReviewDAO dao = new ReviewDAO();
 	ArrayList<ReviewDTO> list = dao.readReview(book_id);
@@ -42,19 +44,20 @@
 					
 					<div class="heart_div">
 						<span class="glyphicon glyphicon-heart" id="heart_tag" style="color: red; margin-top: 18px;"></span>
-						<span id="heart_tag" style="margin-top: 15px;" onclick="getLike('${dto.user_id }', ${dto.book_id })">Likes</span>
+						<span id="heart_tag" style="margin-top: 15px;" onclick="getLike('<%= user_id %>', '${dto.user_id }', ${dto.book_id })">Likes</span>
 						<span class="review-like" style="margin-left: 10px;"></span>			
 					</div>
 					
 					<script type="text/javascript">
 						// 좋아요 체크
-						function getLike(user_id, book_id) {
+						function getLike(user_id, re_user_id, book_id) {
 							$.ajax({
 								url:"review/review_like.jsp",
 								type:"post",
 								dataType:"html",
 								data:{
 									"user_id" : user_id,
+									"re_user_id" : re_user_id,
 									"book_id" : book_id
 								},
 								success:function(e){
@@ -84,6 +87,28 @@
 				</div>
 			</div>
 			
+			<script type="text/javascript" src="JS/jquery.min.js"></script>
+			<script type="text/javascript" src="JS/jquery.rateyo.js"></script>	  
+			<script src="JS/rating.js"></script>
+			
+			<%
+			ReviewDAO re_dao = new ReviewDAO();
+			
+			ArrayList<ReviewDTO> re_list = dao.readReview(book_id);
+			
+			for(int i = 0; i < re_list.size(); i++) {
+				ReviewDTO re_dto = re_list.get(i);
+			%>
+			
+			<script type="text/javascript">
+				$(".rateyo").rateYo({rating: <%= re_dto.getRating() %> });			
+			</script>
+				
+			<%
+			}
+			%>
+			
+			
 		</c:forEach>
 		
 		<!-- 별점 & 리뷰-->
@@ -95,11 +120,6 @@
 		<script type="text/javascript" src="JS/jquery.min.js"></script>
 		<script type="text/javascript" src="JS/jquery.rateyo.js"></script>	  
 		<script src="JS/rating.js"></script>
-		<script type="text/javascript">
-			$(".rateyo").rateYo({rating:/* 점수넣기*/5 });			
-		</script>
-		
-		
 		
 		<hr class="white-gray-hr">
 		

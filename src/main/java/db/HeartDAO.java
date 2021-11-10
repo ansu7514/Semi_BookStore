@@ -20,7 +20,7 @@ public class HeartDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getLike_user_id());
-			pstmt.setString(1, dto.getRe_user_id());
+			pstmt.setString(2, dto.getRe_user_id());
 			pstmt.setString(3, dto.getBook_id());
 			
 			pstmt.executeUpdate();
